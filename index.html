@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="logo.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Tapri Central — CSS Art Comfort Food. A street kitchen order counter showcasing six hyper-real Indian comfort dishes sculpted in pure CSS. DEV Frontend Challenge submission."
+    />
+    <meta name="author" content="Tapri Central" />
+    <meta name="keywords" content="CSS art, comfort food, Indian street food, tapri, chai, DEV challenge, vada pav, masala chai, pani puri, idli, dosa" />
+    <meta name="theme-color" content="#0a0806" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tapri Central" />
+    <meta property="og:title" content="Tapri Central — CSS Art Comfort Food Counter" />
+    <meta property="og:description" content="Street kitchen order counter · six comfort foods · pure CSS art · zero photographs." />
+    <meta property="og:image" content="og-cover.svg" />
+    <meta property="og:locale" content="en_IN" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tapri Central — CSS Art Comfort Food" />
+    <meta name="twitter:description" content="Six comfort foods sculpted in pure CSS on a street kitchen order counter." />
+    <meta name="twitter:image" content="og-cover.svg" />
+    <title>Tapri Central — CSS Art Comfort Food</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+      />
+    </noscript>
+    <link rel="stylesheet" href="css/scene.css" />
+    <link rel="stylesheet" href="css/counter-app.css" />
+    <link rel="stylesheet" href="css/effects.css" />
+    <link rel="stylesheet" href="css/tapri-lighting.css" />
+    <link rel="stylesheet" href="css/ambient-warmth.css" />
+    <link rel="stylesheet" href="css/dishes/vada-pav.css" />
+    <link rel="stylesheet" href="css/dishes/chai.css" />
+    <link rel="stylesheet" href="css/dishes/pani-puri.css" />
+    <link rel="stylesheet" href="css/dishes/idli.css" />
+    <link rel="stylesheet" href="css/dishes/dosa.css" />
+    <link rel="stylesheet" href="css/dishes/poha.css" />
+    <link rel="stylesheet" href="css/food-item-interactions.css" />
+    <link rel="stylesheet" href="css/dish-modal.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/performance.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.css" />
+  </head>
+  <body class="counter-app">
+    <div class="app-night-shell">
+      <div class="app-night-shell__fx" aria-hidden="true">
+        <div class="page-night-sky"></div>
+        <div class="page-ambient-lights">
+          <div class="ambient-orb ambient-orb--lamp-tl"></div>
+          <div class="ambient-orb ambient-orb--moon-tr"></div>
+          <div class="ambient-orb ambient-orb--street-br"></div>
+          <div class="ambient-orb ambient-orb--center"></div>
+          <div class="ambient-orb ambient-orb--neon"></div>
+          <div class="ambient-orb ambient-orb--chai-warm"></div>
+        </div>
+        <div class="tapri-light-rig tapri-light-rig--page" aria-hidden="true">
+          <div class="tapri-street-lamp">
+            <div class="tapri-street-lamp__pole"></div>
+            <div class="tapri-street-lamp__head"></div>
+            <div class="tapri-street-lamp__glow"></div>
+            <div class="tapri-street-lamp__beam"></div>
+          </div>
+          <div class="tapri-light-beam tapri-light-beam--warm-l"></div>
+          <div class="tapri-light-beam tapri-light-beam--warm-r"></div>
+          <div class="tapri-light-beam tapri-light-beam--neon"></div>
+          <div class="tapri-light-beam tapri-light-beam--moon"></div>
+          <div class="tapri-light-crossover"></div>
+          <div class="tapri-neon-spill"></div>
+          <div class="tapri-light-pool tapri-light-pool--a"></div>
+          <div class="tapri-light-pool tapri-light-pool--b"></div>
+          <div class="tapri-light-pool tapri-light-pool--c"></div>
+        </div>
+        <div class="page-bokeh-field" id="page-bokeh-field"></div>
+        <div class="steam-mote-field" aria-hidden="true">
+          <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
+          <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
+        </div>
+        <div class="corner-lights" aria-hidden="true">
+          <span class="corner-light corner-light--tl"></span>
+          <span class="corner-light corner-light--tr"></span>
+          <span class="corner-light corner-light--bl"></span>
+          <span class="corner-light corner-light--br"></span>
+        </div>
+        <div class="edge-glow-rails" aria-hidden="true">
+          <span class="edge-glow edge-glow--left"></span>
+          <span class="edge-glow edge-glow--right"></span>
+        </div>
+        <div class="app-night-shell__lamp-wash"></div>
+        <div class="app-night-shell__rim-light"></div>
+        <div class="app-night-shell__top-beam"></div>
+        <div class="page-vignette"></div>
+        <div class="page-film-grain"></div>
+      </div>
+
+      <div class="app-stage">
+    <a class="skip-link" href="#artwork">Skip to counter</a>
+
+    <header class="app-header">
+      <a class="app-brand-link" href="index.html">
+        <img class="app-logo" src="logo.svg" width="36" height="36" alt="" aria-hidden="true" />
+        <span class="ui-vrule ui-vrule--brand" aria-hidden="true"></span>
+        <div class="app-brand-text">
+          <p class="app-brand-script">टपरी सेंट्रल</p>
+          <h1>Tapri Central</h1>
+          <p class="app-brand-tagline">Street Kitchen · Comfort Food · Order Counter</p>
+        </div>
+      </a>
+      <span class="ui-vrule ui-vrule--header" aria-hidden="true"></span>
+      <nav class="app-nav" aria-label="Site navigation">
+        <a class="app-nav-link" href="welcome.html">Welcome</a>
+        <a class="app-nav-link app-nav-link--active" href="index.html" aria-current="page">Counter</a>
+        <a class="app-nav-link" href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge</a>
+        <span class="app-nav-pill app-nav-pill--live"><span class="live-dot" aria-hidden="true"></span> Live</span>
+        <time class="app-clock" id="live-clock" datetime="">--:--</time>
+      </nav>
+    </header>
+
+    <div class="stats-bar" aria-label="Tonight's stats">
+      <div class="stat-card">
+        <p class="stat-label">Orders Tonight</p>
+        <p class="stat-value stat-value--accent" id="stat-orders">47</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Menu Items</p>
+        <p class="stat-value">6</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Technique</p>
+        <p class="stat-value">CSS Art</p>
+      </div>
+      <div class="stat-card">
+        <p class="stat-label">Now Serving</p>
+        <p class="stat-value stat-value--serving" id="stat-serving" aria-live="polite">#049 · Masala Chai</p>
+      </div>
+    </div>
+
+    <hr class="ui-hrule ui-hrule--page" aria-hidden="true" />
+
+    <div class="app-shell">
+      <aside class="order-sidebar" aria-label="Order queue">
+        <h2 class="sidebar-title ui-section-label">
+          <span class="ui-hrule" aria-hidden="true"></span>
+          <span>Active Queue</span>
+          <span class="ui-hrule" aria-hidden="true"></span>
+        </h2>
+        <ol class="queue-list" data-lenis-prevent>
+          <li class="queue-item" data-dish="vada-pav" data-order-num="#048"><span class="queue-num">#048</span><span class="queue-name">Vada Pav ×2</span><span class="queue-status">Hot</span></li>
+          <li class="queue-item queue-item--active" data-dish="chai" data-order-num="#049"><span class="queue-num">#049</span><span class="queue-name">Masala Chai</span><span class="queue-status">Ready</span></li>
+          <li class="queue-item" data-dish="pani-puri" data-order-num="#050"><span class="queue-num">#050</span><span class="queue-name">Pani Puri ×6</span><span class="queue-status">Fresh</span></li>
+          <li class="queue-item" data-dish="idli" data-order-num="#051"><span class="queue-num">#051</span><span class="queue-name">Idli Platter</span><span class="queue-status">Hot</span></li>
+          <li class="queue-item" data-dish="dosa" data-order-num="#052"><span class="queue-num">#052</span><span class="queue-name">Paneer Dosa</span><span class="queue-status">Ready</span></li>
+          <li class="queue-item" data-dish="poha" data-order-num="#053"><span class="queue-num">#053</span><span class="queue-name">Indori Poha</span><span class="queue-status">Fresh</span></li>
+        </ol>
+        <div class="challenge-badge">
+          <hr class="ui-hrule ui-hrule--inset" aria-hidden="true" />
+          <strong>DEV · CSS Art: Comfort Food</strong>
+          <p>Six dishes inspired by the food you grew up eating — sculpted entirely in CSS. Hover for parallax · click any card for the full dish story.</p>
+        </div>
+      </aside>
+
+      <main id="artwork" class="counter-main" aria-label="Tapri Central street kitchen counter with CSS art food orders">
+        <div class="counter-top">
+          <div class="night-atmosphere" aria-hidden="true">
+            <div class="night-stars"></div>
+            <div class="night-moon-halo"></div>
+            <div class="night-bokeh">
+              <span class="bokeh-orb"></span>
+              <span class="bokeh-orb"></span>
+              <span class="bokeh-orb"></span>
+              <span class="bokeh-orb"></span>
+              <span class="bokeh-orb"></span>
+              <span class="bokeh-orb"></span>
+            </div>
+            <div class="night-window"></div>
+            <div class="night-mist"></div>
+          </div>
+          <div class="counter-backdrop" aria-hidden="true"></div>
+          <div class="counter-light-rig" aria-hidden="true">
+            <div class="counter-light-beam counter-light-beam--string"></div>
+            <div class="counter-light-beam counter-light-beam--cross-left"></div>
+            <div class="counter-light-beam counter-light-beam--cross-right"></div>
+            <div class="counter-light-beam counter-light-beam--neon-spill"></div>
+            <div class="counter-light-crossover"></div>
+            <div class="counter-ceiling-fan-glow"></div>
+            <div class="counter-surface-pool counter-surface-pool--1"></div>
+            <div class="counter-surface-pool counter-surface-pool--2"></div>
+            <div class="counter-surface-pool counter-surface-pool--3"></div>
+            <div class="counter-surface-pool counter-surface-pool--4"></div>
+            <div class="counter-surface-pool counter-surface-pool--5"></div>
+            <div class="counter-surface-pool counter-surface-pool--6"></div>
+            <div class="counter-surface-pool counter-surface-pool--7"></div>
+            <div class="counter-surface-pool counter-surface-pool--8"></div>
+            <div class="counter-neon-floor-spill"></div>
+          </div>
+          <div class="hanging-lamp" aria-hidden="true">
+            <div class="hanging-lamp__cord"></div>
+            <div class="hanging-lamp__shade"></div>
+            <div class="hanging-lamp__filament"></div>
+          </div>
+          <div class="hanging-lamp hanging-lamp--right" aria-hidden="true">
+            <div class="hanging-lamp__cord"></div>
+            <div class="hanging-lamp__shade"></div>
+            <div class="hanging-lamp__filament"></div>
+          </div>
+          <div class="counter-lamp-beam" aria-hidden="true"></div>
+          <div class="counter-lamp-beam counter-lamp-beam--secondary" aria-hidden="true"></div>
+          <div class="counter-lamp" aria-hidden="true"></div>
+          <div class="counter-lamp counter-lamp--secondary" aria-hidden="true"></div>
+          <div class="tapri-neon-sign" aria-hidden="true">
+            <span class="tapri-neon-sign__dot"></span>
+            <span class="tapri-neon-sign__text">OPEN</span>
+          </div>
+          <div class="counter-string-lights" id="counter-string-lights" aria-hidden="true"></div>
+          <div class="counter-night-vignette" aria-hidden="true"></div>
+
+          <div class="counter-section-head ui-section-label">
+            <span class="ui-hrule" aria-hidden="true"></span>
+            <span class="counter-section-title">Live Order Counter · CSS Art Plates</span>
+            <span class="ui-hrule" aria-hidden="true"></span>
+          </div>
+
+          <div class="counter-surface">
+            <div class="order-grid" data-lenis-prevent>
+
+              <article class="order-card order-card--vada-pav dish dish--vada-pav" data-dish="vada-pav" tabindex="0" aria-label="Vada Pav — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#048</span>
+                  <span class="order-badge order-badge--hot">Hot</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art vada-pav-art">
+                    <div class="vada-pav-ambient-glow"></div>
+                    <div class="vada-pav-heat-shimmer"></div>
+                    <div class="vada-pav-steam-wrapper">
+                      <div class="steam-line steam-1"></div>
+                      <div class="steam-line steam-2"></div>
+                      <div class="steam-line steam-3"></div>
+                    </div>
+                    <div class="vada-pav">
+                      <div class="vada-pav-bun vada-pav-bun-top"><div class="bun-bake-highlight"></div><div class="hot-butter-glaze"></div></div>
+                      <div class="vada-pav-chutney-sauce"></div>
+                      <div class="vada-pav-masala-crumbs"></div>
+                      <div class="vada-pav-chili"><div class="chili-stem"></div></div>
+                      <div class="vada-pav-vada"></div>
+                      <div class="vada-pav-bun vada-pav-bun-bottom"><div class="bun-bottom-sliced-surface"></div><div class="bun-bottom-crust-shading"></div></div>
+                    </div>
+                    <div class="vada-pav-plate"><div class="plate-inner-rim"></div><div class="plate-base-shadow"></div></div>
+                    <div class="vada-pav-shadow-deep"></div>
+                    <div class="vada-pav-shadow-ambient"></div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">वड़ा पाव</span>Vada Pav</h3>
+                  <p class="order-card__meta"><span>Mumbai street classic</span><span class="order-price">₹20</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+              <article class="order-card order-card--chai order-card--serving dish dish--chai" data-dish="chai" tabindex="0" aria-label="Masala Chai — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#049</span>
+                  <span class="order-badge order-badge--ready">Steaming</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art chai-glass-art">
+                    <div class="ambient-studio-light"></div>
+                    <div class="thermal-heat-glow"></div>
+                    <div class="steam-convection-engine">
+                      <div class="steam-wave steam-left"></div>
+                      <div class="steam-wave steam-center"></div>
+                      <div class="steam-wave steam-right"></div>
+                    </div>
+                    <div class="display-assembly">
+                      <div class="glass-cup-assembly">
+                        <div class="glass-container">
+                          <div class="glass-lip-rim"></div>
+                          <div class="glass-inner-specular"></div>
+                          <div class="glass-condensation"></div>
+                          <div class="tea-liquid-volume">
+                            <div class="tea-liquid-surface">
+                              <div class="tea-froth-foam"></div>
+                              <div class="tea-meniscus-shimmer"></div>
+                              <div class="cardamom-float"></div>
+                            </div>
+                            <div class="tea-liquid-depth"><div class="tea-spice-flecks"></div></div>
+                          </div>
+                          <div class="glass-flute flute-1"></div>
+                          <div class="glass-flute flute-2"></div>
+                          <div class="glass-flute flute-3"></div>
+                          <div class="glass-flute flute-4"></div>
+                          <div class="glass-specular-shimmer"></div>
+                          <div class="glass-solid-base-bottom"></div>
+                        </div>
+                      </div>
+                      <div class="biscuits-rack">
+                        <div class="biscuit biscuit-primary"><div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div></div>
+                        <div class="biscuit biscuit-secondary"><div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div></div>
+                        <div class="biscuit-crumb-dust"></div>
+                      </div>
+                      <div class="clay-plate-3d">
+                        <div class="plate-lip-bevel"></div>
+                        <div class="plate-sunken-basin"><div class="tea-spill drop-alpha"></div><div class="tea-spill drop-beta"></div><div class="tea-spill drop-gamma"></div></div>
+                        <div class="plate-foot-ring"></div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-deep"></div>
+                    <div class="floor-shadow-ambient"></div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">मसाला चाय</span>Masala Chai</h3>
+                  <p class="order-card__meta"><span>Cutting + biscuits</span><span class="order-price">₹15</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+              <article class="order-card order-card--pani-puri dish dish--pani-puri" data-dish="pani-puri" tabindex="0" aria-label="Pani Puri — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#050</span>
+                  <span class="order-badge order-badge--fresh">Fresh</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art pani-puri-art">
+                    <div class="chocolate-dish">
+                      <div class="dish-gloss-rim"></div>
+                      <div class="puris-render-cluster">
+                        <div class="clay-puri-shell p-3d-bg-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-2"></div></div></div>
+                        <div class="clay-puri-shell p-3d-bg-right"><div class="teekha-pool"><div class="bead-boondi b-3"></div><div class="bead-boondi b-4"></div></div></div>
+                        <div class="clay-puri-shell p-3d-mid-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-3"></div></div></div>
+                        <div class="clay-puri-shell p-3d-center"><div class="teekha-pool"><div class="bead-boondi b-2"></div><div class="bead-boondi b-4"></div><div class="bead-boondi b-5"></div></div></div>
+                        <div class="clay-puri-shell p-3d-mid-right"><div class="teekha-pool"><div class="bead-boondi b-2"></div><div class="bead-boondi b-3"></div></div></div>
+                        <div class="clay-puri-shell p-3d-fg-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-4"></div></div></div>
+                        <div class="clay-puri-shell p-3d-fg-right"><div class="teekha-pool"><div class="bead-boondi b-3"></div><div class="bead-boondi b-5"></div></div></div>
+                      </div>
+                    </div>
+                    <div class="render-shadow-contact"></div>
+                    <div class="render-shadow-ambient"></div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">पानी पूरी</span>Pani Puri</h3>
+                  <p class="order-card__meta"><span>6 pc · teekha pani</span><span class="order-price">₹40</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+              <article class="order-card order-card--idli dish dish--idli" data-dish="idli" tabindex="0" aria-label="Idli Platter — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#051</span>
+                  <span class="order-badge order-badge--hot">Piping Hot</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art idli-platter-art">
+                    <div class="studio-key-ray"></div>
+                    <div class="thermal-glow-aura"></div>
+                    <div class="thermal-steam-engine">
+                      <div class="steam-trail st-1"></div>
+                      <div class="steam-trail st-2"></div>
+                      <div class="steam-trail st-3"></div>
+                    </div>
+                    <div class="platter-stage-3d">
+                      <div class="clay-dish-3d">
+                        <div class="clay-lip-specular"></div>
+                        <div class="clay-internal-wall-shade"></div>
+                        <div class="fibrous-banana-leaf-3d">
+                          <div class="leaf-backbone-spine"></div>
+                          <div class="leaf-capillary-ribs"></div>
+                          <div class="idli-fan-cluster-3d">
+                            <div class="porous-idli-3d idli-3d-pos-1"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                            <div class="porous-idli-3d idli-3d-pos-2"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                            <div class="porous-idli-3d idli-3d-pos-3"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                            <div class="porous-idli-3d idli-3d-pos-4"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div><div class="hot-steam-sheen"></div></div>
+                          </div>
+                          <div class="bowls-front-row-3d">
+                            <div class="glazed-katori-3d bowl-left-white">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip"></div>
+                              <div class="fluid-chamber-3d"><div class="liquid-meniscus-glow red-meniscus"></div><div class="liquid-mass-body red-chutney-core"><div class="tadka-oil-glaze"><div class="curry-leaf-float clf-1"></div><div class="mustard-speck m-1"></div></div></div></div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                            <div class="glazed-katori-3d bowl-center-yellow">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip yellow-lip-tint"></div>
+                              <div class="fluid-chamber-3d"><div class="liquid-meniscus-glow white-meniscus"></div><div class="liquid-mass-body white-chutney-core"><div class="coconut-shred-fibers"></div><div class="tadka-oil-glaze"><div class="curry-leaf-float clf-2"></div><div class="mustard-speck m-2"></div><div class="mustard-speck m-3"></div></div></div></div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                            <div class="glazed-katori-3d bowl-right-sambar">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip"></div>
+                              <div class="fluid-chamber-3d">
+                                <div class="liquid-meniscus-glow sambar-meniscus"></div>
+                                <div class="sambar-fluid-volume">
+                                  <div class="sambar-oil-horizon"><div class="surface-garnish-stack"><div class="drumstick-cylinder-3d"><div class="pulp-core-3d"></div></div><div class="mustard-speck m-4"></div><div class="charred-chili-flake"></div></div></div>
+                                  <div class="sambar-broth-depth"></div>
+                                </div>
+                              </div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-occlusion-dark"></div>
+                    <div class="floor-shadow-atmospheric-soft"></div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">इडली</span>Idli Platter</h3>
+                  <p class="order-card__meta"><span>Sambar + chutneys</span><span class="order-price">₹60</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+              <article class="order-card order-card--dosa dish dish--dosa" data-dish="dosa" tabindex="0" aria-label="Paneer Dosa — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#052</span>
+                  <span class="order-badge order-badge--ready">Ready</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art dosa-platter-art">
+                    <div class="key-spotlight-ray"></div>
+                    <div class="ambient-fill-glow"></div>
+                    <div class="dosa-thermal-glow"></div>
+                    <div class="dosa-steam-engine">
+                      <div class="dosa-steam-trail ds-st-1"></div>
+                      <div class="dosa-steam-trail ds-st-2"></div>
+                      <div class="dosa-steam-trail ds-st-3"></div>
+                    </div>
+                    <div class="platter-stage-3d">
+                      <div class="ceramic-cocoa-plate">
+                        <div class="plate-specular-rim"></div>
+                        <div class="plate-basin-depth"></div>
+                        <div class="organic-leaf-liner">
+                          <div class="leaf-backbone-vein"></div>
+                          <div class="leaf-capillary-ribs"></div>
+                          <div class="ceramic-katori">
+                            <div class="katori-rim-polish"></div>
+                            <div class="chutney-paste-mass">
+                              <div class="chutney-fibrous-noise"></div>
+                              <div class="chutney-gloss-sheen"></div>
+                              <div class="tadka-oil-bleed"><div class="wilted-curry-leaf"></div><div class="charred-onion-sliver sl-1"></div><div class="charred-onion-sliver sl-2"></div></div>
+                            </div>
+                            <div class="katori-cast-shadow"></div>
+                          </div>
+                          <div class="paneer-dosa-cylinder">
+                            <div class="dosa-crispy-hull">
+                              <div class="dosa-lace-pattern"></div>
+                              <div class="dosa-griddle-burns"></div>
+                              <div class="dosa-subsurface-glow"></div>
+                              <div class="dosa-oil-glaze"></div>
+                              <div class="dosa-ghee-drip"></div>
+                              <div class="dosa-crackle-rim"></div>
+                              <div class="dosa-open-aperture">
+                                <div class="aperture-interior-darkness">
+                                  <div class="core-onion-slice onion-s1"></div>
+                                  <div class="core-onion-slice onion-s2"></div>
+                                  <div class="paneer-cubes-pile">
+                                    <div class="roasted-paneer-cube paneer-c1"></div>
+                                    <div class="roasted-paneer-cube paneer-c2"></div>
+                                    <div class="roasted-paneer-cube paneer-c3"></div>
+                                    <div class="roasted-paneer-cube paneer-c4"></div>
+                                    <div class="roasted-paneer-cube paneer-c5"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dosa-contact-shadow"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ground-shadow-occlusion"></div>
+                    <div class="ground-shadow-ambient"></div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">पनीर डोसा</span>Paneer Dosa</h3>
+                  <p class="order-card__meta"><span>Cone · coconut chutney</span><span class="order-price">₹90</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+
+              <article class="order-card order-card--poha dish dish--poha" data-dish="poha" tabindex="0" aria-label="Indori Poha — click for dish details">
+                <div class="order-card__head">
+                  <span class="order-id">#053</span>
+                  <span class="order-badge order-badge--fresh">Fresh</span>
+                </div>
+                <div class="order-card__viewport">
+                  <div class="dish-art poha-art">
+                  <div class="bowl-shadow"></div>
+                      <div class="bowl-outer">
+                          <div class="bowl-rim">
+                              <div class="bowl-interior">
+                  
+                                  <canvas class="poha-canvas" data-poha-canvas width="344" height="344"></canvas>
+                  
+                                  <div class="spoon-heat-glow"></div>
+                  
+                                  <div class="spoon-steam">
+                                      <div class="spoon-steam-wisp"></div>
+                                      <div class="spoon-steam-wisp"></div>
+                                      <div class="spoon-steam-wisp"></div>
+                                      <div class="spoon-steam-wisp"></div>
+                                  </div>
+                  
+                                  <div class="steam-container">
+                                      <div class="steam-vane"></div>
+                                      <div class="steam-vane"></div>
+                                      <div class="steam-vane"></div>
+                                  </div>
+                  
+                              </div>
+                          </div>
+                      </div>
+                  
+                      <div class="lemon-container">
+                          <div class="lemon-rind">
+                              <div class="lemon-flesh">
+                                  <div class="lemon-membrane m-1"></div>
+                                  <div class="lemon-membrane m-2"></div>
+                                  <div class="lemon-pulp"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="order-card__foot">
+                  <h3 class="order-card__title"><span class="order-card__script">पोहा</span>Indori Poha</h3>
+                  <p class="order-card__meta"><span>Flattened rice · sev</span><span class="order-price">₹35</span></p>
+                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                </div>
+              </article>
+
+
+            </div>
+          </div>
+          <div class="counter-lip-bar" aria-hidden="true"></div>
+        </div>
+      </main>
+    </div>
+
+    <div class="dish-modal" id="dish-modal" hidden>
+      <div class="dish-modal__backdrop" data-close aria-hidden="true"></div>
+      <div class="dish-modal__panel" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Order Ticket</span>
+          <button class="dish-modal__close" type="button" aria-label="Close dish details">&times;</button>
+        </div>
+        <div class="dish-modal__scroll" data-lenis-prevent>
+          <div class="dish-modal__content" id="dish-modal-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="ui-hrule ui-hrule--page" aria-hidden="true" />
+
+    <footer class="page-foot">
+      <p class="page-foot-brand ui-section-label">
+        <span class="ui-hrule" aria-hidden="true"></span>
+        <span>Tapri Central · CSS Art Comfort Food</span>
+        <span class="ui-hrule" aria-hidden="true"></span>
+      </p>
+      <p>DEV Frontend Challenge · Hover cards for parallax · <code>@keyframes</code> steam &amp; heat</p>
+      <nav aria-label="Footer">
+        <ul class="page-foot-nav">
+          <li><a href="welcome.html">Welcome</a></li>
+          <li><a href="index.html" aria-current="page">Order Counter</a></li>
+          <li><a href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge Details</a></li>
+        </ul>
+      </nav>
+    </footer>
+
+      </div><!-- /.app-stage -->
+    </div><!-- /.app-night-shell -->
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.min.js"></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

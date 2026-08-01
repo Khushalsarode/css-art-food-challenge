@@ -1,0 +1,113 @@
+/* ═══ Food-item interactions on counter cards ═══
+   Hover targets the food element directly — cards stay static. */
+
+.order-card [class*="vada-pav-"],
+.order-card [class*="glass-cup"],
+.order-card [class*="biscuit"],
+.order-card [class*="clay-plate"],
+.order-card [class*="clay-puri"],
+.order-card [class*="porous-idli"],
+.order-card [class*="glazed-katori"],
+.order-card [class*="paneer-dosa"],
+.order-card [class*="ceramic-katori"],
+.order-card [class*="roasted-paneer"],
+.order-card .bowl-outer,
+.order-card .lemon-container {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.order-card .vada-pav-vada,
+.order-card .glass-cup-assembly,
+.order-card .paneer-dosa-cylinder,
+.order-card .porous-idli-3d,
+.order-card .clay-puri-shell,
+.order-card .bowl-outer {
+  transition:
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.35s ease,
+    filter 0.35s ease,
+    box-shadow 0.45s ease;
+}
+
+/* ── Vada Pav ── */
+.order-card--vada-pav .vada-pav-vada:hover {
+  transform: scale(1.06) translateY(-6px) rotate(1deg);
+}
+
+.order-card--vada-pav .vada-pav-art:has(.vada-pav-vada:hover) .vada-pav-bun-top {
+  transform: translateY(-32px) rotate(-4deg);
+}
+
+.order-card--vada-pav .vada-pav-art:has(.vada-pav-vada:hover) .vada-pav-chutney-sauce {
+  transform: scaleY(1.15) translateY(-14px);
+  opacity: 1;
+}
+
+.order-card--vada-pav .vada-pav-art:has(.vada-pav-vada:hover) .vada-pav-steam-wrapper {
+  opacity: 0.9;
+  transform: translateY(-10px);
+}
+
+/* Chai — :has() rules live in chai.css; cup/biscuit pointer-events in counter-app */
+
+/* Pani puri — shell:hover rules live in pani-puri.css */
+
+/* ── Idli ── */
+.order-card--idli .idli-platter-art:has(.porous-idli-3d:hover) .platter-stage-3d {
+  transform: rotateX(25deg) rotateY(-4deg) translateY(-16px);
+}
+
+.order-card--idli .idli-platter-art:has(.porous-idli-3d:hover) .thermal-steam-engine {
+  opacity: 1;
+  transform: translateY(-20px) scale(1.08);
+}
+
+.order-card--idli .idli-platter-art:has(.porous-idli-3d:hover) .thermal-glow-aura {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.order-card--idli .porous-idli-3d:hover {
+  transform: translateY(-8px) scale(1.04);
+}
+
+/* Dosa — :has() rules live in dosa.css */
+
+/* ═══ POHA ═══ */
+.order-card--poha .poha-art {
+  pointer-events: none;
+}
+
+.order-card--poha .order-card__viewport {
+  perspective: 950px;
+  --card-viewport-h: 220px;
+  min-height: var(--card-viewport-h);
+}
+
+.order-card--poha .bowl-outer,
+.order-card--poha .lemon-container {
+  pointer-events: auto;
+}
+
+.order-card--poha .bowl-outer:hover {
+  transform: perspective(900px) rotateX(4deg) rotateY(-3deg) scale(1.03);
+}
+
+.order-card--poha .poha-art:has(.bowl-outer:hover) canvas {
+  transform: scale(1.05);
+}
+
+.order-card--poha .lemon-container:hover {
+  transform: rotate(-8deg) translateY(-12px) scale(1.1);
+}
+
+.order-card--poha .poha-art:has(.bowl-outer:hover) .spoon-steam {
+  opacity: 1;
+  transform: translateY(-8px) scale(1.06);
+}
+
+.order-card--poha .poha-art:has(.bowl-outer:hover) .spoon-heat-glow {
+  opacity: 1;
+  transform: scale(1.15);
+}

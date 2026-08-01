@@ -1,0 +1,93 @@
+/* ═══ Tapri Central — Design tokens ═══ */
+
+:root {
+  /* Background & surfaces */
+  --bg: #0a0806;
+  --wall: #14100c;
+  --wall-lit: #221a14;
+  --counter-steel: #3a3f44;
+  --counter-steel-lit: #5a6268;
+  --counter-wood: #3d2818;
+  --counter-wood-lit: #5c4030;
+
+  /* Lighting — single string-lamp source top-left */
+  --light-x: 28%;
+  --light-y: 12%;
+  --shadow-cast-x: 4px;
+  --shadow-cast-y: 6px;
+  --lamp: #ffb84d;
+  --lamp-soft: rgba(255, 184, 77, 0.28);
+  --lamp-glow: rgba(255, 160, 60, 0.15);
+  --specular: rgba(255, 248, 230, 0.55);
+  --specular-soft: rgba(255, 240, 210, 0.25);
+
+  /* Night sky & street ambience */
+  --night-sky-top: #0c0e14;
+  --night-sky-deep: #060508;
+  --moon-glow: rgba(180, 200, 255, 0.08);
+  --street-bokeh: rgba(255, 200, 120, 0.35);
+  --neon-open: #ff6b35;
+  --neon-open-glow: rgba(255, 107, 53, 0.55);
+  --mist: rgba(140, 160, 190, 0.06);
+
+  /* SaaS night surfaces */
+  --surface-glass: rgba(14, 10, 8, 0.72);
+  --surface-glass-border: rgba(255, 184, 77, 0.12);
+  --surface-glass-highlight: rgba(255, 184, 77, 0.06);
+  --surface-glow: rgba(255, 140, 60, 0.08);
+
+  /* Shadows */
+  --shadow-deep: rgba(0, 0, 0, 0.65);
+  --shadow-mid: rgba(0, 0, 0, 0.4);
+  --contact-shadow: rgba(0, 0, 0, 0.5);
+
+  /* Food palette */
+  --dosa-gold: #c89840;
+  --dosa-crisp: #8b6020;
+  --idli-white: #f5f0e8;
+  --vada-gold: #d4a030;
+  --pav-cream: #f0e4c8;
+  --chai-tea: #8b5a28;
+  --pani-green: #3a8a58;
+  --sambar-red: #c04028;
+  --chutney-green: #4a8a38;
+  --chutney-red: #a03028;
+
+  /* Typography */
+  --text: #f5efe8;
+  --text-muted: rgba(245, 239, 232, 0.55);
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body: 'Hind', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Z-index scale */
+  --z-bg: 0;
+  --z-counter: 1;
+  --z-dish: 3;
+  --z-steam: 5;
+  --z-lights: 2;
+  --z-night: 1;
+  --z-grain: 20;
+
+  /* Scrollbars — tapri-night theme */
+  --scrollbar-track: rgba(14, 10, 8, 0.92);
+  --scrollbar-track-edge: rgba(255, 184, 77, 0.1);
+  --scrollbar-thumb: rgba(255, 184, 77, 0.38);
+  --scrollbar-thumb-hover: rgba(255, 184, 77, 0.58);
+  --scrollbar-thumb-active: rgba(255, 184, 77, 0.72);
+  --scrollbar-size: 8px;
+
+  /* Responsive dish art scales (order cards) */
+  --dish-scale-vada: 0.44;
+  --dish-scale-chai: 0.4;
+  --dish-scale-pani: 0.42;
+  --dish-scale-idli: 0.38;
+  --dish-scale-dosa: 0.37;
+  --dish-scale-poha: 0.34;
+  --card-viewport-h: 210px;
+  --card-scale-mult: 1;
+  --page-gutter: 1.25rem;
+  --app-header-h: 64px;
+
+  /* Clay texture (data URI noise — no filter box artifact) */
+  --clay-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+}

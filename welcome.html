@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="logo.svg" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="Welcome to Chai Tapri — your street-side chai stall. Pure CSS art shop owner greeting before the Tapri Central order counter."
+    />
+    <meta name="author" content="Tapri Central" />
+    <meta name="theme-color" content="#0a0806" />
+    <title>Welcome to Chai Tapri — Tapri Central</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Hind:wght@400;500;600&display=swap"
+      />
+    </noscript>
+    <link rel="stylesheet" href="css/scene.css" />
+    <link rel="stylesheet" href="css/counter-app.css" />
+    <link rel="stylesheet" href="css/effects.css" />
+    <link rel="stylesheet" href="css/tapri-lighting.css" />
+    <link rel="stylesheet" href="css/ambient-warmth.css" />
+    <link rel="stylesheet" href="css/performance.css" />
+    <link rel="stylesheet" href="css/welcome.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.css" />
+  </head>
+  <body class="counter-app welcome-page">
+    <div class="app-night-shell">
+      <div class="app-night-shell__fx" aria-hidden="true">
+        <div class="page-night-sky"></div>
+        <div class="page-ambient-lights">
+          <div class="ambient-orb ambient-orb--lamp-tl"></div>
+          <div class="ambient-orb ambient-orb--moon-tr"></div>
+          <div class="ambient-orb ambient-orb--street-br"></div>
+          <div class="ambient-orb ambient-orb--center"></div>
+          <div class="ambient-orb ambient-orb--neon"></div>
+          <div class="ambient-orb ambient-orb--chai-warm"></div>
+        </div>
+        <div class="tapri-light-rig tapri-light-rig--page" aria-hidden="true">
+          <div class="tapri-street-lamp">
+            <div class="tapri-street-lamp__pole"></div>
+            <div class="tapri-street-lamp__head"></div>
+            <div class="tapri-street-lamp__glow"></div>
+            <div class="tapri-street-lamp__beam"></div>
+          </div>
+          <div class="tapri-light-beam tapri-light-beam--warm-l"></div>
+          <div class="tapri-light-beam tapri-light-beam--warm-r"></div>
+          <div class="tapri-light-beam tapri-light-beam--neon"></div>
+          <div class="tapri-light-beam tapri-light-beam--moon"></div>
+          <div class="tapri-light-crossover"></div>
+          <div class="tapri-neon-spill"></div>
+          <div class="tapri-light-pool tapri-light-pool--a"></div>
+          <div class="tapri-light-pool tapri-light-pool--b"></div>
+          <div class="tapri-light-pool tapri-light-pool--c"></div>
+        </div>
+        <div class="page-bokeh-field" id="page-bokeh-field"></div>
+        <div class="steam-mote-field" aria-hidden="true">
+          <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
+          <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
+        </div>
+        <div class="corner-lights" aria-hidden="true">
+          <span class="corner-light corner-light--tl"></span>
+          <span class="corner-light corner-light--tr"></span>
+          <span class="corner-light corner-light--bl"></span>
+          <span class="corner-light corner-light--br"></span>
+        </div>
+        <div class="edge-glow-rails" aria-hidden="true">
+          <span class="edge-glow edge-glow--left"></span>
+          <span class="edge-glow edge-glow--right"></span>
+        </div>
+        <div class="app-night-shell__lamp-wash"></div>
+        <div class="app-night-shell__rim-light"></div>
+        <div class="app-night-shell__top-beam"></div>
+        <div class="page-vignette"></div>
+        <div class="page-film-grain"></div>
+      </div>
+
+      <div class="app-stage">
+        <a class="skip-link" href="#welcome-main">Skip to welcome</a>
+
+        <header class="app-header">
+          <a class="app-brand-link" href="welcome.html">
+            <img class="app-logo" src="logo.svg" width="36" height="36" alt="" aria-hidden="true" />
+            <span class="ui-vrule ui-vrule--brand" aria-hidden="true"></span>
+            <div class="app-brand-text">
+              <p class="app-brand-script">चाय टपरी</p>
+              <h1>Chai Tapri</h1>
+              <p class="app-brand-tagline">Street Kitchen · Tapri Central</p>
+            </div>
+          </a>
+          <span class="ui-vrule ui-vrule--header" aria-hidden="true"></span>
+          <nav class="app-nav" aria-label="Site navigation">
+            <a class="app-nav-link app-nav-link--active" href="welcome.html" aria-current="page">Welcome</a>
+            <a class="app-nav-link" href="index.html">Counter</a>
+            <a class="app-nav-link" href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge</a>
+            <span class="app-nav-pill app-nav-pill--live"><span class="live-dot" aria-hidden="true"></span> Open</span>
+            <time class="app-clock" id="live-clock" datetime="">--:--</time>
+          </nav>
+        </header>
+
+        <main id="welcome-main" class="welcome-main">
+          <div class="welcome-intro">
+            <p class="welcome-script">चाय टपरी में आपका स्वागत है</p>
+            <h2 class="welcome-title">Welcome to Chai Tapri</h2>
+            <p class="welcome-tagline">Arre bhai, cutting chai garam hai — andar aao, order counter pe khana padega!</p>
+          </div>
+
+          <div class="tapri-stall-scene" aria-hidden="true">
+            <div class="welcome-scene-glow"></div>
+            <div class="tapri-stall">
+              <div class="stall-light-rig" aria-hidden="true">
+                <div class="stall-light-beam stall-light-beam--overhead"></div>
+                <div class="stall-light-beam stall-light-beam--left"></div>
+                <div class="stall-light-beam stall-light-beam--neon"></div>
+                <div class="stall-light-crossover"></div>
+                <div class="stall-patila-glow"></div>
+                <div class="stall-bulb-sconce">
+                  <div class="stall-bulb-sconce__shade"></div>
+                  <div class="stall-bulb-sconce__glow"></div>
+                </div>
+                <div class="stall-floor-pool stall-floor-pool--left"></div>
+                <div class="stall-floor-pool stall-floor-pool--center"></div>
+                <div class="stall-owner-key-light"></div>
+              </div>
+              <div class="tapri-street-wall">
+                <div class="stall-wall-wash"></div>
+                <div class="street-wall__brick"></div>
+                <div class="street-wall__lamp-pool"></div>
+                <div class="stall-chalkboard">
+                  <span class="chalkboard__title">CUTTING CHAI</span>
+                  <span class="chalkboard__price">₹15</span>
+                  <span class="chalkboard__sub">Masala · Adrak · Elaichi</span>
+                </div>
+              </div>
+
+              <div class="tapri-stall__roof">
+                <div class="stall-roof__ridge"></div>
+                <div class="stall-roof__corrugation"></div>
+              </div>
+              <div class="tapri-stall__post tapri-stall__post--left"></div>
+              <div class="tapri-stall__post tapri-stall__post--right"></div>
+              <div class="tapri-stall__tarp"></div>
+
+              <div class="tapri-stall__counter">
+                <div class="stall-counter__edge"></div>
+                <div class="stall-counter__stain stall-counter__stain--1"></div>
+                <div class="stall-counter__stain stall-counter__stain--2"></div>
+                <div class="stall-props stall-props--left">
+                  <div class="stall-patila">
+                    <div class="patila__handle patila__handle--left"></div>
+                    <div class="patila__handle patila__handle--right"></div>
+                    <div class="patila__body"></div>
+                    <div class="patila__rim"></div>
+                    <div class="patila__tea-surface"></div>
+                    <div class="patila__steam"><span></span><span></span><span></span><span></span></div>
+                  </div>
+                  <div class="stall-burner">
+                    <div class="burner__flame"></div>
+                    <div class="burner__glow"></div>
+                  </div>
+                </div>
+                <div class="stall-props stall-props--right">
+                  <div class="stall-biscuit-stack">
+                    <div class="biscuit-pack"></div>
+                  </div>
+                  <div class="stall-glass-jar">
+                    <div class="glass-jar__lid"></div>
+                    <div class="glass-jar__sugar"></div>
+                  </div>
+                  <div class="stall-strainer"></div>
+                </div>
+              </div>
+
+              <div class="tapri-stall__lights" id="stall-string-lights"></div>
+              <div class="tapri-stall__lights stall-string-lights--back" id="stall-string-lights-back"></div>
+              <div class="tapri-neon-sign tapri-stall__open">
+                <span class="tapri-neon-sign__dot"></span>
+                <span class="tapri-neon-sign__text">OPEN</span>
+              </div>
+
+              <div class="owner-welcome-bubble">
+                <p class="owner-bubble__script">स्वागत है!</p>
+                <p class="owner-bubble__line">Welcome, bhai!</p>
+                <p class="owner-bubble__sub">Garam cutting chai ready hai</p>
+              </div>
+
+              <div class="tapri-owner">
+                <div class="tapri-owner__shadow"></div>
+                <div class="tapri-owner__figure">
+                  <div class="tapri-owner__head">
+                    <div class="owner-hair">
+                      <div class="owner-hair__part"></div>
+                      <div class="owner-hair__wave owner-hair__wave--1"></div>
+                      <div class="owner-hair__wave owner-hair__wave--2"></div>
+                    </div>
+                    <div class="owner-ear owner-ear--left">
+                      <div class="owner-ear__helix"></div>
+                      <div class="owner-ear__antihelix"></div>
+                      <div class="owner-ear__lobe"></div>
+                    </div>
+                    <div class="owner-ear owner-ear--right">
+                      <div class="owner-ear__helix"></div>
+                      <div class="owner-ear__antihelix"></div>
+                      <div class="owner-ear__lobe"></div>
+                    </div>
+                    <div class="owner-face">
+                      <div class="owner-face__skintone"></div>
+                      <div class="owner-face__lamp-light"></div>
+                      <div class="owner-temple owner-temple--left"></div>
+                      <div class="owner-temple owner-temple--right"></div>
+                      <div class="owner-zygomatic owner-zygomatic--left"></div>
+                      <div class="owner-zygomatic owner-zygomatic--right"></div>
+                      <div class="owner-jawline"></div>
+                      <div class="owner-chin"></div>
+                      <div class="owner-forehead-shine"></div>
+                      <div class="owner-forehead-lines"></div>
+                      <div class="owner-sweat-sheen"></div>
+                      <div class="owner-brow-ridge owner-brow-ridge--left"></div>
+                      <div class="owner-brow-ridge owner-brow-ridge--right"></div>
+                      <div class="owner-brow owner-brow--left"></div>
+                      <div class="owner-brow owner-brow--right"></div>
+                      <div class="owner-eye owner-eye--left">
+                        <span class="owner-eye__socket"></span>
+                        <span class="owner-eye__white"></span>
+                        <span class="owner-eye__iris"><span class="owner-eye__pupil"></span></span>
+                        <span class="owner-eye__shine owner-eye__shine--main"></span>
+                        <span class="owner-eye__shine owner-eye__shine--sub"></span>
+                        <span class="owner-eye__lid owner-eye__lid--upper"></span>
+                        <span class="owner-eye__lid owner-eye__lid--lower"></span>
+                        <span class="owner-eye__lash"></span>
+                        <span class="owner-eye__crow"></span>
+                      </div>
+                      <div class="owner-eye owner-eye--right">
+                        <span class="owner-eye__socket"></span>
+                        <span class="owner-eye__white"></span>
+                        <span class="owner-eye__iris"><span class="owner-eye__pupil"></span></span>
+                        <span class="owner-eye__shine owner-eye__shine--main"></span>
+                        <span class="owner-eye__shine owner-eye__shine--sub"></span>
+                        <span class="owner-eye__lid owner-eye__lid--upper"></span>
+                        <span class="owner-eye__lid owner-eye__lid--lower"></span>
+                        <span class="owner-eye__lash"></span>
+                        <span class="owner-eye__crow"></span>
+                      </div>
+                      <div class="owner-nose">
+                        <span class="owner-nose__bridge"></span>
+                        <span class="owner-nose__tip"></span>
+                        <span class="owner-nose__nostril owner-nose__nostril--left"></span>
+                        <span class="owner-nose__nostril owner-nose__nostril--right"></span>
+                        <span class="owner-nose__shadow"></span>
+                      </div>
+                      <div class="owner-cheek owner-cheek--left"></div>
+                      <div class="owner-cheek owner-cheek--right"></div>
+                      <div class="owner-nasolabial owner-nasolabial--left"></div>
+                      <div class="owner-nasolabial owner-nasolabial--right"></div>
+                      <div class="owner-mustache">
+                        <span class="owner-mustache__wing owner-mustache__wing--left"></span>
+                        <span class="owner-mustache__center"></span>
+                        <span class="owner-mustache__wing owner-mustache__wing--right"></span>
+                      </div>
+                      <div class="owner-beard-stubble"></div>
+                      <div class="owner-mouth">
+                        <span class="owner-philtrum"></span>
+                        <span class="owner-lip owner-lip--upper"></span>
+                        <span class="owner-lip owner-lip--lower"></span>
+                        <span class="owner-lip-corner owner-lip-corner--left"></span>
+                        <span class="owner-lip-corner owner-lip-corner--right"></span>
+                      </div>
+                    </div>
+                    <div class="owner-neck">
+                      <div class="owner-neck__muscle owner-neck__muscle--left"></div>
+                      <div class="owner-neck__muscle owner-neck__muscle--right"></div>
+                      <div class="owner-adams-apple"></div>
+                    </div>
+                  </div>
+                  <div class="tapri-owner__torso">
+                    <div class="owner-shoulders">
+                      <div class="owner-shoulder owner-shoulder--left"></div>
+                      <div class="owner-shoulder owner-shoulder--right"></div>
+                      <div class="owner-clavicle"></div>
+                    </div>
+                    <div class="owner-gamcha"></div>
+                    <div class="owner-kurta">
+                      <div class="kurta__collar kurta__collar--left"></div>
+                      <div class="kurta__collar kurta__collar--right"></div>
+                      <div class="kurta__placket"></div>
+                      <div class="kurta__button kurta__button--1"></div>
+                      <div class="kurta__button kurta__button--2"></div>
+                      <div class="kurta__button kurta__button--3"></div>
+                      <div class="kurta__fold kurta__fold--left"></div>
+                      <div class="kurta__fold kurta__fold--right"></div>
+                      <div class="kurta__chest-shadow"></div>
+                    </div>
+                    <div class="owner-apron">
+                      <div class="apron__pocket"></div>
+                      <div class="apron__strap apron__strap--left"></div>
+                      <div class="apron__strap apron__strap--right"></div>
+                    </div>
+                    <div class="owner-arm owner-arm--left">
+                      <div class="owner-upper-arm owner-upper-arm--left"></div>
+                      <div class="owner-elbow owner-elbow--left"></div>
+                      <div class="owner-forearm owner-forearm--left"></div>
+                      <div class="owner-wrist owner-wrist--left"></div>
+                      <div class="owner-hand owner-hand--left">
+                        <div class="owner-palm owner-palm--left"></div>
+                        <div class="owner-finger owner-finger--index owner-finger--left"></div>
+                        <div class="owner-finger owner-finger--middle owner-finger--left"></div>
+                        <div class="owner-finger owner-finger--ring owner-finger--left"></div>
+                      </div>
+                    </div>
+                    <div class="owner-arm owner-arm--right">
+                      <div class="owner-upper-arm owner-upper-arm--right"></div>
+                      <div class="owner-elbow owner-elbow--right"></div>
+                      <div class="owner-forearm owner-forearm--right"></div>
+                      <div class="owner-wrist owner-wrist--right"></div>
+                      <div class="owner-hand owner-hand--right">
+                        <div class="owner-palm owner-palm--right"></div>
+                        <div class="owner-finger owner-finger--thumb"></div>
+                        <div class="owner-finger owner-finger--index"></div>
+                        <div class="owner-finger owner-finger--middle"></div>
+                        <div class="owner-finger owner-finger--ring"></div>
+                        <div class="owner-kulhad">
+                          <div class="owner-kulhad__body"></div>
+                          <div class="owner-kulhad__clay-texture"></div>
+                          <div class="owner-kulhad__rim"></div>
+                          <div class="owner-kulhad__tea">
+                            <div class="owner-kulhad__meniscus"></div>
+                            <div class="owner-kulhad__cardamom"></div>
+                          </div>
+                          <div class="owner-kulhad__steam"><span></span><span></span><span></span></div>
+                          <div class="owner-kulhad__heat"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tapri-stall__ground"></div>
+            </div>
+          </div>
+
+          <div class="welcome-actions">
+            <a class="btn-primary" href="index.html">Enter Order Counter →</a>
+            <a class="btn-ghost" href="index.html#artwork">Skip to counter</a>
+          </div>
+        </main>
+
+        <hr class="ui-hrule ui-hrule--page" aria-hidden="true" />
+
+        <footer class="page-foot">
+          <p class="page-foot-brand ui-section-label">
+            <span class="ui-hrule" aria-hidden="true"></span>
+            <span>Chai Tapri · Tapri Central</span>
+            <span class="ui-hrule" aria-hidden="true"></span>
+          </p>
+          <p>Pure CSS shop owner · No photographs · DEV Frontend Challenge</p>
+          <nav aria-label="Footer">
+            <ul class="page-foot-nav">
+              <li><a href="welcome.html" aria-current="page">Welcome</a></li>
+              <li><a href="index.html">Order Counter</a></li>
+              <li><a href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge Details</a></li>
+            </ul>
+          </nav>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.min.js"></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

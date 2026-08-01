@@ -1,0 +1,321 @@
+/* ── Dish detail modal ── */
+
+.order-card[data-dish] {
+  cursor: pointer;
+}
+
+.order-card[data-dish]:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 3px;
+}
+
+.order-card__hint {
+  margin: 0.35rem 0 0;
+  font-size: 0.58rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 184, 77, 0.65);
+}
+
+body.dish-modal-open {
+  overflow: hidden;
+}
+
+.dish-modal[hidden] {
+  display: none !important;
+}
+
+.dish-modal:not([hidden]) {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.dish-modal:not([hidden]).dish-modal--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dish-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 2, 4, 0.78);
+  backdrop-filter: blur(10px) saturate(0.9);
+}
+
+.dish-modal__panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(520px, 100%);
+  max-height: min(88dvh, 720px);
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 184, 77, 0.18);
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(255, 140, 60, 0.1), transparent 55%),
+    linear-gradient(180deg, #1a1410 0%, #100c0a 100%);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55), 0 0 40px rgba(255, 140, 60, 0.08);
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.28s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dish-modal--visible .dish-modal__panel {
+  transform: translateY(0) scale(1);
+}
+
+.dish-modal__toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 184, 77, 0.12);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.dish-modal__toolbar-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.dish-modal__close {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.dish-modal__close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 184, 77, 0.35);
+}
+
+.dish-modal__close:focus-visible {
+  outline: 2px solid var(--lamp);
+  outline-offset: 2px;
+}
+
+.dish-modal__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+}
+
+.dish-modal__scroll::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+}
+
+.dish-modal__scroll::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 999px;
+  margin: 4px 0;
+  border-left: 1px solid var(--scrollbar-track-edge);
+}
+
+.dish-modal__scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--scrollbar-thumb-hover), var(--scrollbar-thumb));
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.dish-modal__scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--scrollbar-thumb-active), var(--scrollbar-thumb-hover));
+}
+
+.dish-modal__scroll::-webkit-scrollbar-thumb:active {
+  background: var(--scrollbar-thumb-active);
+}
+
+.dish-modal__content {
+  padding: 1rem 1.25rem 1.5rem;
+}
+
+.dish-modal__header {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 184, 77, 0.1);
+  padding-bottom: 1rem;
+}
+
+.dish-modal__script {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--lamp);
+}
+
+.dish-modal__title {
+  margin: 0.2rem 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.dish-modal__badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.dish-modal__badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.dish-modal__badge--price {
+  color: var(--lamp);
+  border-color: rgba(255, 184, 77, 0.35);
+  background: rgba(255, 184, 77, 0.1);
+}
+
+.dish-modal__famous {
+  margin: 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+.dish-modal__techniques {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.75rem;
+}
+
+.dish-modal__technique {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  background: rgba(255, 184, 77, 0.08);
+  border: 1px solid rgba(255, 184, 77, 0.2);
+  color: var(--lamp);
+  font-family: ui-monospace, 'Cascadia Code', monospace;
+}
+
+.dish-modal__body {
+  display: grid;
+  gap: 1rem;
+}
+
+.dish-modal__section h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lamp);
+}
+
+.dish-modal__section p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.dish-modal__section--health {
+  padding: 0.75rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(34, 197, 94, 0.06);
+  border: 1px solid rgba(34, 197, 94, 0.15);
+}
+
+.dish-modal__section--health h3 {
+  color: #86efac;
+}
+
+.dish-modal__section--css h3 {
+  color: #fcd34d;
+}
+
+.dish-modal__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+.dish-modal__list li + li {
+  margin-top: 0.25rem;
+}
+
+.dish-modal__note {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text-muted);
+}
+
+.dish-modal__nutrition {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.dish-modal__nutrition div {
+  padding: 0.55rem 0.65rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-align: center;
+}
+
+.dish-modal__nutrition dt {
+  margin: 0;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.dish-modal__nutrition dd {
+  margin: 0.2rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dish-modal:not([hidden]),
+  .dish-modal__panel {
+    transition: none;
+  }
+}

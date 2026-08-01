@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Tapri Central — kulhad chai logo">
+  <defs>
+    <linearGradient id="clay" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8a868"/>
+      <stop offset="45%" stop-color="#b87048"/>
+      <stop offset="100%" stop-color="#704028"/>
+    </linearGradient>
+    <linearGradient id="tea" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5d8a8"/>
+      <stop offset="100%" stop-color="#8b5a28"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="30%" r="55%">
+      <stop offset="0%" stop-color="#ffb84d" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ffb84d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="32" cy="28" r="28" fill="url(#glow)"/>
+  <path d="M24 14 Q26 8 24 4" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M32 12 Q35 6 33 2" stroke="rgba(255,255,255,0.65)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M40 14 Q42 8 40 4" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <ellipse cx="32" cy="22" rx="18" ry="5" fill="#604830"/>
+  <path d="M16 22 Q16 48 32 52 Q48 48 48 22 Z" fill="url(#clay)"/>
+  <path d="M20 24 Q20 44 32 47 Q44 44 44 24 Z" fill="url(#tea)" opacity="0.95"/>
+  <ellipse cx="32" cy="24" rx="12" ry="3.5" fill="#f5e8c8" opacity="0.6"/>
+  <ellipse cx="32" cy="21" rx="19" ry="4" fill="none" stroke="#f5e8c8" stroke-width="1" opacity="0.35"/>
+  <ellipse cx="32" cy="54" rx="16" ry="4" fill="#0a0806" opacity="0.35"/>
+</svg>

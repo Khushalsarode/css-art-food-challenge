@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Replace origin with your deployed domain (must match sitemap.xml loc URLs)
+Sitemap: https://tapri-central.pages.dev/sitemap.xml

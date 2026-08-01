@@ -1,0 +1,64 @@
+/* ═══ Tapri Central — Static cards, live food art, smooth scroll ═══
+   Cards never lift; food items inside keep motion + direct hover. */
+
+/* ── Cards: static shell only ── */
+.order-card {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(255, 184, 77, 0.12);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.order-card,
+.order-card:hover,
+.order-card:focus-within,
+.order-card.is-raised {
+  transform: none !important;
+}
+
+.order-card:focus-visible {
+  outline: 2px solid rgba(255, 184, 77, 0.55);
+  outline-offset: 2px;
+}
+
+.order-card__viewport {
+  overflow: visible;
+}
+
+/* Now serving — static border (set in HTML on chai card) */
+.order-card--serving {
+  border-color: rgba(255, 184, 77, 0.45) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 184, 77, 0.28),
+    0 8px 24px rgba(255, 140, 60, 0.14) !important;
+}
+
+.order-card .dish-art {
+  pointer-events: none;
+}
+
+.order-sidebar,
+.stat-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+html[data-page-hidden="true"] .app-night-shell__fx *,
+html[data-page-hidden="true"] .counter-light-rig *,
+html[data-page-hidden="true"] .tapri-light-rig--page *,
+html[data-page-hidden="true"] .steam-mote-field *,
+html[data-page-hidden="true"] .corner-lights *,
+html[data-page-hidden="true"] .edge-glow-rails * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-card .dish-art,
+  .order-card .dish-art *,
+  .order-card .dish-art *::before,
+  .order-card .dish-art *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
