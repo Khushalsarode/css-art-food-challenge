@@ -76,14 +76,38 @@
   --scrollbar-thumb-active: rgba(255, 184, 77, 0.72);
   --scrollbar-size: 8px;
 
+  /* Tapri 3D food lighting (shared across dish art) */
+  --food-key-x: 32%;
+  --food-key-y: 18%;
+  --food-key-warm: rgba(255, 184, 77, 0.14);
+  --food-fill-amber: rgba(255, 140, 60, 0.1);
+  --food-shadow-core: rgba(0, 0, 0, 0.42);
+  --food-shadow-ambient: rgba(0, 0, 0, 0.14);
+  --food-specular: rgba(255, 248, 230, 0.62);
+  --food-specular-soft: rgba(255, 240, 210, 0.28);
+  --food-subsurface: rgba(255, 200, 100, 0.22);
+  --food-rim-highlight: rgba(255, 255, 255, 0.38);
+  --food-rim-warm: #ffb84d;
+  --food-rim-cool: rgba(255, 255, 255, 0.52);
+  --food-shadow-contact-offset: 3px;
+  --vol-wall-h: 12px;
+  --vol-hemisphere-rim: 5px;
+  --food-perspective: 1200px;
+  --food-rest-tilt-x: 20deg;
+  --food-rest-tilt-y: -4deg;
+  --food-bezier-spring: cubic-bezier(0.25, 1.35, 0.4, 1);
+  --food-dur: 550ms;
+
   /* Responsive dish art scales (order cards) */
-  --dish-scale-vada: 0.44;
-  --dish-scale-chai: 0.4;
-  --dish-scale-pani: 0.42;
-  --dish-scale-idli: 0.38;
-  --dish-scale-dosa: 0.37;
-  --dish-scale-poha: 0.34;
-  --card-viewport-h: 210px;
+  --dish-scale-vada: 0.46;
+  --dish-scale-chai: 0.41;
+  --dish-scale-pani: 0.44;
+  --dish-scale-idli: 0.41;
+  --dish-scale-dosa: 0.4;
+  --dish-scale-poha: 0.4;
+  --dish-scale-misal: 0.26;
+  --dish-scale-chips: 0.29;
+  --card-viewport-h: 220px;
   --card-scale-mult: 1;
   --page-gutter: 1.25rem;
   --app-header-h: 64px;
@@ -91,3 +115,13 @@
   /* Clay texture (data URI noise — no filter box artifact) */
   --clay-texture: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
 }
+
+/* Per-dish lighting rigs */
+.dish--vada-pav { --food-key-x: 28%; --food-key-y: 12%; --food-key-warm: rgba(255, 184, 77, 0.18); }
+.dish--chai     { --food-key-x: 38%; --food-key-y: 8%;  --food-key-warm: rgba(255, 200, 120, 0.16); }
+.dish--pani-puri { --food-key-x: 30%; --food-key-y: 14%; --food-key-warm: rgba(255, 200, 80, 0.16); }
+.dish--idli     { --food-key-x: 34%; --food-key-y: 10%; --food-key-warm: rgba(255, 220, 180, 0.14); }
+.dish--dosa     { --food-key-x: 26%; --food-key-y: 16%; --food-key-warm: rgba(255, 170, 60, 0.17); }
+.dish--poha     { --food-key-x: 32%; --food-key-y: 14%; --food-key-warm: rgba(255, 180, 100, 0.15); }
+.dish--misal-pav { --food-key-x: 30%; --food-key-y: 12%; --food-key-warm: rgba(255, 160, 80, 0.16); }
+.dish--banana-chips { --food-key-x: 34%; --food-key-y: 10%; --food-key-warm: rgba(255, 210, 90, 0.15); }

@@ -1,0 +1,372 @@
+/* ═══ Jalgaon Banana Chips — high-fidelity CSS platter (counter-scoped) ═══ */
+
+.banana-chips-art {
+  position: relative;
+  width: 760px;
+  height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  flex-shrink: 0;
+}
+
+.banana-chips-art .linen-tablecloth {
+  position: relative;
+  width: 760px;
+  height: 760px;
+  background: #bfb096;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, transparent 3px, rgba(122, 102, 78, 0.06) 4px, transparent 5px);
+  background-size: 4px 4px, 4px 4px, 6px 6px, 12px 12px;
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banana-chips-art .wooden-bowl {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  background: #452818;
+  border: 15px solid #331b0e;
+  border-top-color: #4f311d;
+  box-shadow:
+    inset 0 12px 35px rgba(0, 0, 0, 0.9),
+    25px 45px 65px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.4s var(--food-bezier-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.banana-chips-art .bowl-wood-grain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 38% 38%, transparent 58%, rgba(28, 12, 4, 0.3) 92%);
+  pointer-events: none;
+}
+
+.banana-chips-art .inner-shadow-rim {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 6px 18px 38px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  z-index: 85;
+}
+
+.banana-chips-art .chips-overflow-mound {
+  position: relative;
+  width: 97%;
+  height: 97%;
+}
+
+.banana-chips-art .banana-coin {
+  position: absolute;
+  background: radial-gradient(circle at 45% 45%, #ffd447 0%, #ebb91e 52%, #cf9c11 80%, #a67b02 100%);
+  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  border: 1px solid #b38b10;
+  transition: filter 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.banana-chips-art .pith-center {
+  position: absolute;
+  width: 46%;
+  height: 46%;
+  top: 27%;
+  left: 27%;
+  background: radial-gradient(circle, #fdf4c6 8%, rgba(232, 187, 32, 0.65) 50%, transparent 72%);
+  border-radius: 50%;
+  background-image: repeating-radial-gradient(circle at 50% 50%, transparent, transparent 3px, #cc9a0e 4px, transparent 5px);
+  opacity: 0.88;
+}
+
+.banana-chips-art .fiber-grain {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: repeating-radial-gradient(circle at 44% 44%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 2px, transparent 3px, transparent 5px);
+  opacity: 0.85;
+}
+
+.banana-chips-art .toasted-lip {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-shadow:
+    inset 3px 0 4px rgba(110, 58, 4, 0.3),
+    inset -3px 0 4px rgba(110, 58, 4, 0.3),
+    inset 0 3px 4px rgba(110, 58, 4, 0.2);
+}
+
+.banana-chips-art .sun-sheen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, transparent 42%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Layer matrix */
+.banana-chips-art .c-bg-1 { width: 92px; height: 88px; left: 50px; top: 15px; border-radius: 46% 52% 48% 50%; transform: rotate(12deg); z-index: 1; opacity: 0.72; }
+.banana-chips-art .c-bg-2 { width: 95px; height: 90px; right: 60px; top: 20px; border-radius: 51% 47% 53% 48%; transform: rotate(-38deg); z-index: 2; opacity: 0.72; }
+.banana-chips-art .c-bg-3 { width: 88px; height: 86px; left: 15px; top: 115px; border-radius: 48% 50% 52% 47%; transform: rotate(45deg); z-index: 3; opacity: 0.75; }
+.banana-chips-art .c-bg-4 { width: 94px; height: 91px; right: 20px; top: 125px; border-radius: 53% 45% 48% 52%; transform: rotate(-15deg); z-index: 4; opacity: 0.75; }
+.banana-chips-art .c-bg-5 { width: 90px; height: 90px; left: 160px; top: 5px; border-radius: 50% 48% 52% 50%; transform: rotate(70deg); z-index: 5; opacity: 0.78; }
+
+.banana-chips-art .c-mid-1 { width: 96px; height: 92px; left: 110px; top: 45px; border-radius: 49% 51% 53% 47%; transform: rotate(6deg); z-index: 6; }
+.banana-chips-art .c-mid-2 { width: 91px; height: 89px; right: 115px; top: 60px; border-radius: 52% 48% 47% 51%; transform: rotate(40deg); z-index: 7; }
+.banana-chips-art .c-mid-3 { width: 98px; height: 94px; left: 50px; top: 175px; border-radius: 47% 54% 50% 48%; transform: rotate(-55deg); z-index: 8; }
+.banana-chips-art .c-mid-4 { width: 93px; height: 90px; right: 55px; top: 185px; border-radius: 50% 46% 52% 50%; transform: rotate(22deg); z-index: 9; }
+.banana-chips-art .c-mid-5 { width: 95px; height: 92px; left: 145px; top: 225px; border-radius: 52% 49% 47% 52%; transform: rotate(-20deg); z-index: 10; }
+.banana-chips-art .c-mid-6 { width: 92px; height: 88px; right: 140px; top: 10px; border-radius: 45% 52% 48% 50%; transform: rotate(-75deg); z-index: 11; }
+
+.banana-chips-art .c-mid-7  { width: 94px; height: 90px; left: 30px; top: 85px; border-radius: 50% 50% 46% 54%; transform: rotate(65deg); z-index: 16; }
+.banana-chips-art .c-mid-8  { width: 96px; height: 92px; right: 25px; top: 95px; transform: rotate(-42deg); border-radius: 48% 52% 50% 48%; z-index: 17; }
+.banana-chips-art .c-mid-9  { width: 100px; height: 95px; left: 100px; top: 105px; border-radius: 53% 47% 51% 50%; transform: rotate(18deg); z-index: 18; }
+.banana-chips-art .c-mid-10 { width: 93px; height: 89px; right: 90px; top: 135px; border-radius: 46% 54% 48% 52%; transform: rotate(-28deg); z-index: 19; }
+.banana-chips-art .c-mid-11 { width: 98px; height: 94px; left: 120px; top: 165px; border-radius: 51% 49% 53% 47%; transform: rotate(32deg); z-index: 20; }
+
+.banana-chips-art .c-fg-center-main {
+  width: 106px;
+  height: 102px;
+  left: 140px;
+  top: 130px;
+  border-radius: 51% 49% 52% 48% / 53% 47% 53% 48%;
+  z-index: 45;
+  box-shadow: 4px 12px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid #e1b424;
+  cursor: pointer;
+}
+
+.banana-chips-art .c-fg-left-tilt {
+  width: 98px;
+  height: 94px;
+  left: 80px;
+  top: 110px;
+  border-radius: 48% 52% 50% 50%;
+  transform: rotate(-24deg);
+  z-index: 38;
+  box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.42);
+}
+
+.banana-chips-art .c-fg-bottom-prominent {
+  width: 104px;
+  height: 100px;
+  left: 195px;
+  top: 195px;
+  border-radius: 50% 50% 46% 54%;
+  transform: rotate(10deg);
+  z-index: 50;
+  box-shadow: 5px 14px 24px rgba(0, 0, 0, 0.55);
+  border: 1px solid #e6ba29;
+}
+
+.banana-chips-art .c-fg-right-edge {
+  width: 96px;
+  height: 92px;
+  right: 45px;
+  top: 145px;
+  border-radius: 52% 48% 50% 50%;
+  transform: rotate(52deg);
+  z-index: 34;
+  box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+.banana-chips-art .c-fg-top-stack {
+  width: 100px;
+  height: 96px;
+  left: 185px;
+  top: 55px;
+  border-radius: 47% 53% 49% 51%;
+  transform: rotate(-12deg);
+  z-index: 40;
+}
+
+.banana-chips-art .c-spill-left { width: 90px; height: 86px; left: -15px; bottom: 140px; transform: rotate(-65deg); border-radius: 46% 54% 50% 50%; z-index: 60; box-shadow: -4px 8px 15px rgba(0, 0, 0, 0.5); }
+.banana-chips-art .c-spill-right { width: 92px; height: 88px; right: -10px; bottom: 130px; transform: rotate(70deg); border-radius: 52% 48% 50% 50%; z-index: 60; box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.5); }
+.banana-chips-art .c-spill-front { width: 94px; height: 90px; left: 110px; bottom: -10px; transform: rotate(15deg); border-radius: 50% 50% 45% 55%; z-index: 60; box-shadow: 0 10px 18px rgba(0, 0, 0, 0.55); }
+.banana-chips-art .c-spill-top-rim { width: 88px; height: 85px; left: 160px; top: -15px; transform: rotate(-40deg); border-radius: 48% 52% 50% 48%; z-index: 60; box-shadow: 0 -5px 12px rgba(0, 0, 0, 0.3); }
+
+/* Side decorations */
+.banana-chips-art .salt-bowl {
+  position: absolute;
+  left: 55px;
+  top: 55px;
+  width: 125px;
+  height: 125px;
+  background: radial-gradient(circle at 40% 40%, #593924 0%, #382012 70%, #1c0e06 100%);
+  border-radius: 50%;
+  border: 6px solid #2b160b;
+  box-shadow: 8px 14px 22px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+
+.banana-chips-art .salt-crystals {
+  position: absolute;
+  width: 76%;
+  height: 76%;
+  top: 12%;
+  left: 12%;
+  background: radial-gradient(circle, #ffffff 45%, #e0e0e0 78%, transparent 85%);
+  border-radius: 50%;
+  background-image:
+    radial-gradient(circle at 50% 50%, #fff 2px, transparent 3px),
+    radial-gradient(circle at 35% 65%, #fff 1.5px, transparent 2.5px);
+  background-size: 8px 8px;
+}
+
+.banana-chips-art .banana-cluster {
+  position: absolute;
+  right: -25px;
+  top: -25px;
+  width: 260px;
+  height: 210px;
+  transform: rotate(-14deg);
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.banana-chips-art .banana-fruit {
+  position: absolute;
+  background: linear-gradient(to bottom, #7fa33b 0%, #597822 60%, #334710 100%);
+  border-radius: 42% 42% 35% 35% / 22% 22% 78% 78%;
+}
+
+.banana-chips-art .b1 { width: 185px; height: 56px; top: 30px; right: 20px; transform: rotate(12deg); }
+.banana-chips-art .b2 { width: 195px; height: 62px; top: 75px; right: -10px; transform: rotate(6deg); }
+
+.banana-chips-art .loose-chips-container {
+  position: absolute;
+  left: 45px;
+  bottom: 65px;
+  width: 210px;
+  height: 210px;
+  pointer-events: none;
+}
+
+.banana-chips-art .loose-1 { width: 78px; height: 75px; bottom: 85px; left: 10px; transform: rotate(22deg); z-index: 5; }
+.banana-chips-art .loose-2 { width: 80px; height: 77px; bottom: 15px; left: 45px; transform: rotate(-18deg); z-index: 6; }
+.banana-chips-art .loose-3 { width: 76px; height: 72px; bottom: 35px; left: -12px; transform: rotate(58deg); z-index: 4; }
+
+.banana-chips-art .vintage-spoon {
+  position: absolute;
+  right: 55px;
+  bottom: 55px;
+  width: 95px;
+  height: 265px;
+  transform: rotate(-36deg);
+  filter: drop-shadow(6px 10px 14px rgba(0, 0, 0, 0.38));
+  cursor: pointer;
+  transition: transform 0.4s var(--food-bezier-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+}
+
+.banana-chips-art .spoon-cup {
+  width: 52px;
+  height: 78px;
+  background: linear-gradient(135deg, #41423d 0%, #878983 35%, #a4a69c 45%, #52544e 80%, #1f201d 100%);
+  border-radius: 50% 50% 46% 46%;
+  position: relative;
+  overflow: hidden;
+}
+
+.banana-chips-art .metal-shine {
+  position: absolute;
+  width: 32%;
+  height: 100%;
+  left: 22%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.24), transparent);
+  transform: skewX(-18deg);
+}
+
+.banana-chips-art .spoon-neck {
+  width: 12px;
+  height: 22px;
+  background: linear-gradient(to right, #41423d, #7d7e78, #1f201d);
+  margin-left: 20px;
+  margin-top: -2px;
+}
+
+.banana-chips-art .spoon-stem {
+  width: 10px;
+  height: 175px;
+  background: linear-gradient(to right, #30312c 0%, #767771 40%, #8e9187 60%, #181917 100%);
+  margin-left: 21px;
+  border-radius: 0 0 4px 4px;
+  position: relative;
+}
+
+.banana-chips-art .filigree-carving {
+  position: absolute;
+  bottom: 12px;
+  left: 1.5px;
+  width: 7px;
+  height: 68px;
+  background-image: repeating-linear-gradient(0deg, #111, #111 2px, transparent 2px, transparent 5px);
+  opacity: 0.88;
+}
+
+.banana-chips-art .chili-dish {
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle at 40% 40%, #ded5c3 0%, #b2a894 70%, #7c7260 100%);
+  border-radius: 50%;
+  box-shadow: 4px 7px 14px rgba(0, 0, 0, 0.32);
+  pointer-events: none;
+}
+
+.banana-chips-art .masala-powder {
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  top: 11%;
+  left: 11%;
+  background: radial-gradient(circle, #aa2509 50%, #6b1201 92%);
+  border-radius: 50%;
+}
+
+/* Hovers */
+.banana-chips-art .wooden-bowl:hover .banana-coin,
+.order-card--banana-chips .banana-chips-art .wooden-bowl:hover .banana-coin {
+  filter: brightness(1.04) contrast(1.03);
+}
+
+.banana-chips-art .wooden-bowl:hover,
+.order-card--banana-chips .banana-chips-art .wooden-bowl:hover {
+  transform: scale(1.03) translateY(-4px);
+}
+
+.banana-chips-art .c-fg-center-main:hover,
+.order-card--banana-chips .banana-chips-art .c-fg-center-main:hover {
+  transform: scale(1.06) translateY(-4px);
+  box-shadow: 8px 18px 28px rgba(0, 0, 0, 0.6);
+  z-index: 70;
+}
+
+.banana-chips-art .vintage-spoon:hover,
+.order-card--banana-chips .banana-chips-art .vintage-spoon:hover {
+  transform: rotate(-30deg) translateY(-6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banana-chips-art .wooden-bowl,
+  .banana-chips-art .banana-coin,
+  .banana-chips-art .vintage-spoon {
+    transition: none;
+  }
+}

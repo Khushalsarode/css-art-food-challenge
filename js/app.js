@@ -155,6 +155,53 @@
         'Use thick poha, less oil in tadka, extra peanuts for protein, and skip sev or use baked sev.',
       nutrition: { calories: '~250 kcal', protein: '~5 g', carbs: '~38 g', fat: '~9 g', fiber: '~3 g' },
     },
+    'misal-pav': {
+      id: 'misal-pav',
+      script: 'मिसळ पाव',
+      name: 'Misal Pav',
+      price: '₹80',
+      origin: 'Pune, Maharashtra',
+      famous: 'A volcanic bowl of kat — spicy tarri, farsan mountain, and buttered laadi pav for scooping.',
+      techniques: ['kat meniscus ripples', 'farsan sev strands', 'cast iron thali', 'brushed steel bowl', 'pav butter glaze', 'wet lemon wedges'],
+      history:
+        'Misal evolved from humble usal (sprouted bean curry) into Pune\u2019s signature breakfast — kat poured over farsan, eaten with pav, raw onion, and lemon. Every misal joint guards its spice blend.',
+      ingredients: [
+        'Matki & moong usal base',
+        'Spicy kat / tar rassa',
+        'Crunchy farsan (sev, gathiya)',
+        'Laadi pav with butter glaze',
+        'Raw onion & coriander',
+        'Fresh lemon wedges',
+      ],
+      howToEat:
+        'Mix the usal and tar gently, pile farsan on top just before eating so it stays crisp. Tear pav, dunk into the rassa, alternate with spoonfuls. Squeeze lemon, add raw onion if you like heat.',
+      healthyStyle:
+        'Ask for less oil in tar, skip extra farsan, and share one plate. Homemade misal can use less salt and baked sev.',
+      nutrition: { calories: '~450 kcal', protein: '~14 g', carbs: '~52 g', fat: '~18 g', fiber: '~4 g' },
+    },
+    'banana-chips': {
+      id: 'banana-chips',
+      script: 'केळी चिप्स',
+      name: 'Jalgaon Banana Chips',
+      price: '₹50',
+      origin: 'Jalgaon · Maharashtra (Banana City)',
+      famous: 'Paper-thin nendran coins, double-fried in coconut oil — Jalgaon\u2019s famous tea-time crunch.',
+      techniques: ['25-layer coin matrix', 'pith radial segments', 'walnut wood bowl', 'linen weave', 'sun sheen highlights'],
+      history:
+        'Jalgaon sits in the heart of Maharashtra\u2019s banana belt. Local chip makers slice raw nendran bananas into coins, fry them golden, and sell them by the bowl at every bus stand and chai tapri.',
+      ingredients: [
+        'Raw nendran bananas',
+        'Coconut / groundnut oil',
+        'Rock salt',
+        'Optional chili masala',
+        'Turmeric (some batches)',
+      ],
+      howToEat:
+        'Eat straight from the bowl with chai — pinch a coin, dip in salt or chili masala if you like heat. Best when still audibly crisp.',
+      healthyStyle:
+        'Share one bowl, blot excess oil on tissue, skip extra salt, and pair with unsweetened chai instead of a second serving.',
+      nutrition: { calories: '~320 kcal', protein: '~2 g', carbs: '~38 g', fat: '~18 g', fiber: '~3 g' },
+    },
   };
 
   var modal = null;
@@ -346,8 +393,8 @@
     }
 
     function applyShadow() {
-      ctx.shadowColor = 'rgba(0,0,0,.15)';
-      ctx.shadowBlur = 4;
+      ctx.shadowColor = 'rgba(40, 24, 8, 0.18)';
+      ctx.shadowBlur = 5;
       ctx.shadowOffsetY = 2;
     }
 
@@ -362,8 +409,14 @@
       var i;
       for (i = 0; i < count; i++) {
         var theta = rand(0, Math.PI * 2);
-        var r = maxRadius * Math.pow(Math.random(), 0.7);
-        var pt = { x: centerX + r * Math.cos(theta), y: centerY + r * Math.sin(theta) * 0.96 + r * 0.05, dist: r };
+        var r = maxRadius * Math.pow(Math.random(), 0.82);
+        var moundLift = Math.sqrt(Math.max(0, 1 - Math.pow(r / maxRadius, 2))) * 18;
+        var pt = {
+          x: centerX + r * Math.cos(theta),
+          y: centerY + r * Math.sin(theta) * 0.92 - moundLift,
+          dist: r,
+          depth: moundLift
+        };
         if (extra) {
           var ex = extra();
           for (var k in ex) {
@@ -376,24 +429,37 @@
       return points;
     }
 
-    function drawFlake(x, y, angle, size, hue, light) {
+    function flakeLight(hue, light, depth) {
+      var lift = Math.min(1, depth / 18);
+      var lit = light + lift * 8;
+      return 'hsl(' + hue + ',88%,' + Math.min(78, lit) + '%)';
+    }
+
+    function drawFlake(x, y, angle, size, hue, light, depth) {
+      depth = depth || 0;
       ctx.save();
       ctx.translate(x, y);
       ctx.rotate(angle);
-      applyShadow();
-      ctx.fillStyle = 'hsl(' + hue + ',88%,' + light + '%)';
+      var shadowStr = 0.12 + (depth / 18) * 0.08;
+      ctx.shadowColor = 'rgba(40, 24, 8, ' + shadowStr + ')';
+      ctx.shadowBlur = 4 + depth * 0.15;
+      ctx.shadowOffsetY = 2 + depth * 0.08;
+      ctx.fillStyle = flakeLight(hue, light, depth);
       ctx.beginPath();
       ctx.moveTo(-size, -size * 0.35);
       ctx.bezierCurveTo(-size * 0.5, -size * 0.65, size * 0.4, -size * 0.55, size, -size * 0.15);
       ctx.bezierCurveTo(size * 1.1, size * 0.35, size * 0.5, size * 0.65, -size * 0.2, size * 0.55);
       ctx.bezierCurveTo(-size * 0.8, size * 0.45, -size * 1.1, size * 0.15, -size, -size * 0.35);
       ctx.fill();
-      clearShadow();
-      ctx.fillStyle = 'rgba(255,255,255,.22)';
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+      ctx.shadowOffsetY = 0;
+      var specOpacity = 0.15 + (depth / 18) * 0.2;
+      ctx.fillStyle = 'rgba(255,255,255,' + specOpacity + ')';
       ctx.beginPath();
       ctx.ellipse(-size * 0.25, -size * 0.18, size * 0.35, size * 0.12, 0, 0, Math.PI * 2);
       ctx.fill();
-      ctx.strokeStyle = 'hsl(' + hue + ',82%,' + (light - 15) + '%)';
+      ctx.strokeStyle = 'hsl(' + hue + ',82%,' + (light - 15 - depth * 0.3) + '%)';
       ctx.lineWidth = 0.7;
       ctx.beginPath();
       ctx.moveTo(-size * 0.6, 0);
@@ -413,11 +479,11 @@
         else near.push(f);
       });
       ctx.filter = 'blur(2px)';
-      far.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light); });
+      far.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light, f.depth); });
       ctx.filter = 'blur(0.8px)';
-      mid.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light); });
+      mid.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light, f.depth); });
       ctx.filter = 'none';
-      near.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light); });
+      near.forEach(function (f) { drawFlake(f.x, f.y, f.angle, f.size, f.hue, f.light, f.depth); });
     }
 
     function drawPeanut(x, y, angle, pw, ph) {
@@ -579,9 +645,10 @@
       ctx.rotate(angle);
       applyShadow();
       var handle = ctx.createLinearGradient(-92, -6, 8, 6);
-      handle.addColorStop(0, '#6f757d');
-      handle.addColorStop(0.5, '#f4f6f8');
-      handle.addColorStop(1, '#7a8088');
+      handle.addColorStop(0, '#5a6068');
+      handle.addColorStop(0.35, '#e8eaed');
+      handle.addColorStop(0.65, '#f4f6f8');
+      handle.addColorStop(1, '#6a7078');
       ctx.fillStyle = handle;
       ctx.beginPath();
       ctx.moveTo(-92, -4);
@@ -592,13 +659,21 @@
       ctx.lineTo(-92, 4);
       ctx.closePath();
       ctx.fill();
-      var bowl = ctx.createRadialGradient(8, -6, 2, 16, 4, 30);
+      ctx.strokeStyle = 'rgba(0,0,0,0.12)';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+      var bowl = ctx.createRadialGradient(10, -8, 2, 18, 6, 32);
       bowl.addColorStop(0, '#ffffff');
-      bowl.addColorStop(0.7, '#aeb5bf');
-      bowl.addColorStop(1, '#6e757f');
+      bowl.addColorStop(0.45, '#d8dce2');
+      bowl.addColorStop(0.85, '#8a919a');
+      bowl.addColorStop(1, '#5a6068');
       ctx.fillStyle = bowl;
       ctx.beginPath();
       ctx.ellipse(16, 2, 30, 19, 0.15, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.35)';
+      ctx.beginPath();
+      ctx.ellipse(12, -4, 10, 5, 0.2, 0, Math.PI * 2);
       ctx.fill();
       ctx.save();
       ctx.beginPath();

@@ -1,0 +1,326 @@
+/* ═══ Tapri Central — shared 3D food art primitives ═══ */
+
+/* Key light wash on dish viewport */
+.food-key-ray {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at var(--food-key-x) var(--food-key-y),
+    var(--food-key-warm) 0%,
+    var(--food-fill-amber) 35%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Warm thermal aura (fried / steamed food) */
+.food-thermal-glow {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--food-subsurface) 0%, transparent 68%);
+  filter: blur(14px);
+  pointer-events: none;
+  z-index: 1;
+  animation: food-thermal-pulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes food-thermal-pulse {
+  0% { transform: translateX(-50%) scale(0.88); opacity: 0.45; }
+  100% { transform: translateX(-50%) scale(1.12); opacity: 0.82; }
+}
+
+/* Three-trail steam engine */
+.food-steam-engine {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 88px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  z-index: 12;
+  pointer-events: none;
+  opacity: 0.48;
+  transition: opacity var(--food-dur) var(--food-bezier-spring),
+    transform var(--food-dur) var(--food-bezier-spring);
+}
+
+.food-steam-trail {
+  width: 5px;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(
+    to top,
+    transparent,
+    rgba(255, 255, 255, 0.55) 38%,
+    rgba(255, 255, 255, 0.12) 72%,
+    transparent
+  );
+  filter: blur(3px);
+}
+
+.food-steam-trail--1 { animation: food-vapor-rise 2.1s infinite ease-in-out; }
+.food-steam-trail--2 { animation: food-vapor-rise 2.6s infinite ease-in-out 0.35s; width: 6px; }
+.food-steam-trail--3 { animation: food-vapor-rise 1.9s infinite ease-in-out 0.15s; }
+
+@keyframes food-vapor-rise {
+  0% { transform: translateY(28px) scaleX(0.65) skewX(0deg); opacity: 0; }
+  45% { transform: translateY(4px) scaleX(1.45) skewX(-10deg); opacity: 0.62; }
+  100% { transform: translateY(-32px) scaleX(0.4) skewX(10deg); opacity: 0; }
+}
+
+/* Dual floor shadows */
+.floor-shadow-occlusion,
+.render-shadow-contact {
+  position: absolute;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--floor-shadow-w, 158px);
+  height: 11px;
+  background: var(--food-shadow-core);
+  border-radius: 50%;
+  filter: blur(4px);
+  z-index: 0;
+  transition: transform var(--food-dur) var(--food-bezier-spring),
+    opacity var(--food-dur) var(--food-bezier-spring);
+}
+
+.floor-shadow-ambient,
+.render-shadow-ambient {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--floor-shadow-ambient-w, 198px);
+  height: 20px;
+  background: var(--food-shadow-ambient);
+  border-radius: 50%;
+  filter: blur(9px);
+  z-index: 0;
+  transition: transform var(--food-dur) var(--food-bezier-spring),
+    opacity var(--food-dur) var(--food-bezier-spring);
+}
+
+/* Subtle idle levitation for food stages */
+@keyframes food-stage-levitate {
+  0% { transform: rotateX(calc(var(--food-rest-tilt-x) - 1deg)) rotateY(calc(var(--food-rest-tilt-y) - 0.5deg)) translateY(4px); }
+  100% { transform: rotateX(calc(var(--food-rest-tilt-x) + 1deg)) rotateY(calc(var(--food-rest-tilt-y) + 0.5deg)) translateY(-4px); }
+}
+
+/* Fried blister texture mixin class */
+.food-fried-surface {
+  background-image:
+    repeating-radial-gradient(circle at 20% 30%, transparent 0 2px, rgba(0, 0, 0, 0.06) 2.5px 3.5px, transparent 4px),
+    repeating-radial-gradient(circle at 72% 58%, transparent 0 1.5px, rgba(0, 0, 0, 0.05) 2px 3px, transparent 3.5px);
+}
+
+/* Specular cap highlight */
+.food-specular-cap::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 18%;
+  width: 55%;
+  height: 22%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, var(--food-specular), transparent);
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+/* ── Volume builders (stylized 3D cartoon) ── */
+
+.food-rim-light {
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.22))
+    drop-shadow(0 3px 6px rgba(0, 0, 0, 0.18));
+}
+
+.food-subsurface-wash {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at var(--food-key-x) var(--food-key-y), var(--food-subsurface) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 140, 60, 0.12) 0%, transparent 45%);
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+.food-contact-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: calc(-1 * var(--food-shadow-contact-offset, 3px));
+  transform: translateX(-50%);
+  width: 88%;
+  height: 8px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.food-cast-shadow {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--cast-w, 80%);
+  height: var(--cast-h, 10px);
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: 50%;
+  filter: blur(var(--cast-blur, 4px));
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Cylinder: domed cap + visible side wall */
+.food-volume-cylinder {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.food-volume-cylinder__cap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.food-volume-cylinder__wall {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  height: var(--vol-wall-h, 12px);
+  bottom: -2px;
+  border-radius: 0 0 42% 42% / 0 0 80% 80%;
+  transform: rotateX(-72deg);
+  transform-origin: top center;
+  z-index: 1;
+  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.22);
+  pointer-events: none;
+}
+
+/* Hemisphere shell (pani puri, bowl caps) */
+.food-volume-hemisphere {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.food-volume-hemisphere__dome {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50% 46% 46% / 54% 54% 46% 46%;
+  z-index: 2;
+}
+
+.food-volume-hemisphere__rim {
+  position: absolute;
+  left: 4%;
+  bottom: 2px;
+  width: 92%;
+  height: var(--vol-hemisphere-rim, 5px);
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow:
+    inset 0 1px 2px rgba(255, 255, 255, 0.45),
+    0 1px 3px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.food-volume-hemisphere__cavity {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42%;
+  height: 34%;
+  border-radius: 50%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Sphere (vada, boondi) */
+.food-volume-sphere {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.food-volume-sphere__body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.food-volume-sphere__equator {
+  position: absolute;
+  left: 4%;
+  bottom: 18%;
+  width: 92%;
+  height: 14%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.22) 45%, rgba(0, 0, 0, 0.32) 100%);
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+}
+
+/* Concave liquid meniscus */
+.food-meniscus-pool {
+  position: relative;
+  border-radius: 50%;
+  overflow: visible;
+  transform-style: preserve-3d;
+}
+
+.food-meniscus-pool::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.42);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.food-meniscus-pool::after {
+  content: '';
+  position: absolute;
+  top: 15%;
+  left: 12%;
+  width: 55%;
+  height: 35%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.motion-reduced .food-thermal-glow,
+.motion-reduced .food-steam-trail,
+.motion-reduced .food-steam-engine {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-thermal-glow,
+  .food-steam-trail {
+    animation: none !important;
+  }
+
+  .food-steam-engine {
+    opacity: 0.35;
+  }
+}

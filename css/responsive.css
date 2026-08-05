@@ -473,6 +473,8 @@ video {
 
   :root {
     --dish-scale-poha: 0.36;
+    --dish-scale-misal: 0.28;
+    --dish-scale-chips: 0.26;
   }
 
   .order-card__viewport {
@@ -522,13 +524,15 @@ video {
 @media (max-width: 960px) {
   :root {
     --page-gutter: 1rem;
-    --card-viewport-h: 190px;
+    --card-viewport-h: 192px;
     --dish-scale-vada: 0.48;
     --dish-scale-chai: 0.44;
     --dish-scale-pani: 0.46;
-    --dish-scale-idli: 0.42;
-    --dish-scale-dosa: 0.4;
+    --dish-scale-idli: 0.44;
+    --dish-scale-dosa: 0.42;
     --dish-scale-poha: 0.34;
+    --dish-scale-misal: 0.26;
+    --dish-scale-chips: 0.27;
   }
 
   .app-shell {
@@ -640,13 +644,15 @@ video {
 @media (max-width: 600px) {
   :root {
     --page-gutter: 0.85rem;
-    --card-viewport-h: 178px;
+    --card-viewport-h: 182px;
     --dish-scale-vada: 0.54;
     --dish-scale-chai: 0.5;
     --dish-scale-pani: 0.52;
     --dish-scale-idli: 0.48;
     --dish-scale-dosa: 0.46;
     --dish-scale-poha: 0.36;
+    --dish-scale-misal: 0.28;
+    --dish-scale-chips: 0.26;
   }
 
   .stats-bar {
@@ -758,9 +764,9 @@ video {
     --dish-scale-idli: 0.44;
     --dish-scale-dosa: 0.42;
     --dish-scale-poha: 0.34;
+    --dish-scale-misal: 0.26;
+    --dish-scale-chips: 0.25;
   }
-
-  .app-brand-tagline {
     display: none;
   }
 

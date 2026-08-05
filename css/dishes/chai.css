@@ -15,9 +15,9 @@
   --cg-biscuit-body: #e3ae66;
   --cg-biscuit-shadow: #8f5f24;
   --cg-cardamom: #6b8f3c;
-  --cg-bezier: cubic-bezier(0.25, 1.35, 0.5, 1);
+  --cg-bezier: var(--food-bezier-spring, cubic-bezier(0.25, 1.35, 0.5, 1));
   --cg-pop: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  --cg-dur: 550ms;
+  --cg-dur: var(--food-dur, 550ms);
 }
 
 .chai-glass-art {
@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   overflow: visible;
-  perspective: 950px;
+  perspective: var(--food-perspective, 950px);
 }
 
 /* ── Card-level hover ── */
@@ -106,7 +106,7 @@
   position: absolute;
   top: 22px;
   height: 118px;
-  width: 108px;
+  width: 128px;
   z-index: 10;
   display: flex;
   justify-content: space-around;
@@ -116,11 +116,11 @@
 }
 
 .chai-glass-art .steam-wave {
-  width: 6px;
+  width: 8px;
   height: 100%;
-  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.6) 28%, rgba(255, 255, 255, 0.18) 68%, transparent);
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.55) 22%, rgba(255, 255, 255, 0.15) 62%, transparent);
   border-radius: 50%;
-  filter: blur(3.5px);
+  filter: blur(5px);
 }
 
 .chai-glass-art .steam-left   { animation: cg-rising-vapor 2.4s infinite ease-in-out; }
@@ -151,13 +151,75 @@
   width: 100%;
   height: 100%;
   background:
-    linear-gradient(160deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(0, 0, 0, 0.12) 100%);
+    linear-gradient(160deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.04) 45%, rgba(0, 0, 0, 0.1) 100%);
   clip-path: polygon(0% 0%, 100% 0%, 82% 100%, 18% 100%);
   border-radius: 4px 4px 18px 18px;
   box-shadow:
     inset 0 0 14px rgba(255, 255, 255, 0.28),
     inset -6px -5px 16px rgba(0, 0, 0, 0.12),
     0 8px 18px rgba(0, 0, 0, 0.15);
+  transform: translateZ(2px);
+  transform-style: preserve-3d;
+  backdrop-filter: blur(0.5px);
+}
+
+.chai-glass-art .glass-inner-wall {
+  position: absolute;
+  inset: 3px 5px 4px 5px;
+  clip-path: polygon(0% 0%, 100% 0%, 84% 100%, 16% 100%);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08) 0%, rgba(140, 90, 40, 0.06) 50%, rgba(0, 0, 0, 0.04) 100%);
+  border-radius: 2px 2px 14px 14px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.chai-glass-art .glass-cup-shadow {
+  --cast-w: 70%;
+  --cast-h: 8px;
+  bottom: -6px;
+  left: 50%;
+  opacity: 0.45;
+  z-index: 0;
+}
+
+.glass-highlight-arc {
+  position: absolute;
+  width: 12px;
+  height: 60%;
+  top: 12%;
+  border-radius: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.55), transparent 80%);
+  z-index: 7;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+
+.glass-highlight-arc--1 { left: 8%; transform: rotate(-4deg); }
+.glass-highlight-arc--2 { right: 10%; height: 45%; top: 20%; opacity: 0.5; transform: rotate(6deg); }
+
+.glass-caustic-spot {
+  position: absolute;
+  top: 18px;
+  left: 38%;
+  width: 28px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 220, 160, 0.45) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.chai-glass-art .glass-container::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: -2px;
+  width: 10px;
+  height: calc(100% - 12px);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.04));
+  border-radius: 0 6px 6px 0;
+  transform: skewY(-1.5deg);
+  pointer-events: none;
 }
 
 .glass-condensation {
@@ -165,7 +227,7 @@
   inset: 8px 2px 20px 2px;
   z-index: 6;
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.58;
   transition: opacity 0.45s ease;
   background-image:
     radial-gradient(ellipse at 12% 35%, rgba(255, 255, 255, 0.5) 1px, transparent 3px),
@@ -197,11 +259,13 @@
 .chai-glass-art .glass-flute {
   position: absolute;
   top: 6px;
-  width: 4px;
+  width: 3px;
   height: calc(100% - 22px);
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.38), transparent);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.42), transparent);
   box-shadow: -1px 0 2px var(--cg-glass-tint-shadow);
   z-index: 5;
+  border-radius: 2px;
+  transform: skewX(-2deg);
 }
 
 .chai-glass-art .flute-1 { left: 24%; }
@@ -290,6 +354,8 @@
   width: 92%;
   height: 72%;
   z-index: 2;
+  transform: translateZ(4px);
+  transform-style: preserve-3d;
 }
 
 .chai-glass-art .tea-liquid-surface {
@@ -384,16 +450,55 @@
   position: absolute;
   width: 54px;
   height: 38px;
-  background:
-    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-    linear-gradient(135deg, var(--cg-biscuit-body) 0%, var(--cg-biscuit-crust) 100%);
-  border-radius: 5px;
-  box-shadow:
-    2px 5px 8px rgba(0, 0, 0, 0.32),
-    inset -2px -3px 4px var(--cg-biscuit-shadow);
+  transform-style: preserve-3d;
   pointer-events: auto;
   cursor: pointer;
   transition: transform var(--cg-dur) var(--cg-bezier), filter 0.35s ease;
+}
+
+.biscuit-top-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 5px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 255, 255, 0.25) 0%, transparent 50%),
+    linear-gradient(135deg, var(--cg-biscuit-body) 0%, var(--cg-biscuit-crust) 100%);
+  box-shadow:
+    2px 5px 8px rgba(0, 0, 0, 0.32),
+    inset -2px -3px 4px var(--cg-biscuit-shadow);
+  z-index: 2;
+}
+
+.chai-glass-art .biscuit-inner-rim,
+.chai-glass-art .biscuit-dots,
+.biscuit-sugar-crust {
+  z-index: 3;
+}
+
+.biscuit-side-face {
+  position: absolute;
+  background: linear-gradient(to bottom, var(--cg-biscuit-crust), var(--cg-biscuit-shadow));
+  z-index: 1;
+}
+
+.biscuit-side-face--front {
+  bottom: -4px;
+  left: 2px;
+  width: calc(100% - 4px);
+  height: 5px;
+  border-radius: 0 0 3px 3px;
+  transform: rotateX(-65deg);
+  transform-origin: top center;
+}
+
+.biscuit-side-face--right {
+  right: -3px;
+  top: 3px;
+  width: 4px;
+  height: calc(100% - 6px);
+  border-radius: 0 2px 2px 0;
+  transform: rotateY(65deg);
+  transform-origin: left center;
 }
 
 .biscuit-sugar-crust {
@@ -425,6 +530,13 @@
   background-repeat: repeat;
   opacity: 0.75;
   pointer-events: none;
+}
+
+.chai-glass-art .biscuit-primary,
+.chai-glass-art .biscuit-secondary {
+  box-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.18),
+    inset 0 2px 4px rgba(255, 255, 255, 0.35);
 }
 
 .chai-glass-art .biscuit-primary {

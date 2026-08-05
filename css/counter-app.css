@@ -952,15 +952,16 @@
   flex-shrink: 0;
 }
 
-.order-card--vada-pav .vada-pav-art { transform: scale(calc(var(--dish-scale-vada) * var(--card-scale-mult, 1))); margin-top: 20px; }
+.order-card--vada-pav .vada-pav-art { transform: scale(calc(var(--dish-scale-vada) * var(--card-scale-mult, 1))); margin-top: 14px; }
 .order-card--vada-pav .vada-pav-art { pointer-events: none; }
 .order-card--vada-pav .vada-pav-vada,
-.order-card--vada-pav .vada-pav-bun-top { pointer-events: auto; }
+.order-card--vada-pav .vada-pav-bun-top,
+.order-card--vada-pav .vada-pav-chili { pointer-events: auto; }
 
-.order-card--chai .chai-glass-art { transform: scale(calc(var(--dish-scale-chai) * var(--card-scale-mult, 1))); margin-top: 24px; }
-.order-card--pani-puri .pani-puri-art { transform: scale(calc(var(--dish-scale-pani) * var(--card-scale-mult, 1))); margin-top: 18px; }
-.order-card--idli .idli-platter-art { transform: scale(calc(var(--dish-scale-idli) * var(--card-scale-mult, 1))); margin-top: 22px; }
-.order-card--dosa .dosa-platter-art { transform: scale(calc(var(--dish-scale-dosa) * var(--card-scale-mult, 1))); margin-top: 22px; }
+.order-card--chai .chai-glass-art { transform: scale(calc(var(--dish-scale-chai) * var(--card-scale-mult, 1))); margin-top: 22px; }
+.order-card--pani-puri .pani-puri-art { transform: scale(calc(var(--dish-scale-pani) * var(--card-scale-mult, 1))); margin-top: 12px; }
+.order-card--idli .idli-platter-art { transform: scale(calc(var(--dish-scale-idli) * var(--card-scale-mult, 1))); margin-top: 18px; }
+.order-card--dosa .dosa-platter-art { transform: scale(calc(var(--dish-scale-dosa) * var(--card-scale-mult, 1))); margin-top: 18px; }
 
 .order-card--chai .chai-glass-art {
   pointer-events: none;
@@ -1021,10 +1022,44 @@
 }
 
 /* ── Poha dish integration ── */
-.order-card--poha .poha-art { transform: scale(calc(var(--dish-scale-poha) * var(--card-scale-mult, 1))); margin-top: 12px; }
+.order-card--poha .poha-art { transform: scale(calc(var(--dish-scale-poha) * var(--card-scale-mult, 1))); margin-top: 16px; }
 
 .order-card--poha .order-card__viewport {
   transform-style: preserve-3d;
+}
+
+/* ── Misal Pav dish integration ── */
+.order-card--misal-pav .misal-pav-art {
+  transform: scale(calc(var(--dish-scale-misal) * var(--card-scale-mult, 1)));
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.order-card--misal-pav .brushed-steel-bowl,
+.order-card--misal-pav .laadi-pav,
+.order-card--misal-pav .carved-metal-spoon {
+  pointer-events: auto;
+}
+
+.order-card--misal-pav .order-card__viewport {
+  overflow: hidden;
+}
+
+/* ── Jalgaon Banana Chips integration ── */
+.order-card--banana-chips .banana-chips-art {
+  transform: scale(calc(var(--dish-scale-chips) * var(--card-scale-mult, 1)));
+  transform-origin: center center;
+  pointer-events: none;
+}
+
+.order-card--banana-chips .wooden-bowl,
+.order-card--banana-chips .c-fg-center-main,
+.order-card--banana-chips .vintage-spoon {
+  pointer-events: auto;
+}
+
+.order-card--banana-chips .order-card__viewport {
+  overflow: hidden;
 }
 
 .page-foot {

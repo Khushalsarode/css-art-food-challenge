@@ -1,289 +1,504 @@
-/* ═══ Vada Pav — user component adapted for Tapri Central counter ═══ */
+/* ═══ Vada Pav — isometric 3D stylized realism ═══ */
 
 .dish--vada-pav {
-  --vp-bun-crust: #8b4513;
-  --vp-bun-toast: #cd853f;
-  --vp-bun-gold: #e6a15c;
-  --vp-bun-crumb: #fff8dc;
-  --vp-vada-deep: #b8860b;
+  --vp-bun-crust: #7a3f12;
+  --vp-bun-toast: #c47a3a;
+  --vp-bun-gold: #e8a855;
+  --vp-bun-crumb: #fff4dc;
+  --vp-bun-side: #5c2e0e;
+  --vp-vada-deep: #9a6b08;
   --vp-vada-body: #d4af37;
-  --vp-vada-light: #ffd700;
-  --vp-chutney-red: #a61c1c;
-  --vp-chutney-green: #1b6622;
+  --vp-vada-light: #ffe566;
+  --vp-vada-core: #7a5206;
+  --vp-chutney-red: #b91c1c;
+  --vp-chutney-green: #15803d;
   --vp-chili-bright: #22c55e;
   --vp-chili-dark: #14532d;
   --vp-plate-rim: #ffffff;
-  --vp-plate-base: #f1f5f9;
-  --vp-plate-shadow: rgba(15, 23, 42, 0.08);
-  --vp-bezier: cubic-bezier(0.25, 1, 0.5, 1);
-  --vp-dur: 400ms;
+  --vp-plate-base: #e8edf2;
+  --vp-plate-well: #d1d9e0;
+  --vp-bezier: var(--food-bezier-spring);
+  --vp-dur: var(--food-dur);
 }
 
 .vada-pav-art {
   position: relative;
-  width: 320px;
-  height: 240px;
+  width: 360px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
+  perspective: var(--food-perspective);
 }
 
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-bun-top { transform: translateY(-32px) rotate(-4deg); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-chutney-sauce { transform: scaleY(1.15) translateY(-14px); opacity: 1; }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-masala-crumbs { transform: translateY(-8px) scale(1.05); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-chili { transform: translate(-25%, -22px) rotate(28deg) scale(1.05); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-vada { transform: scale(1.06) translateY(-6px) rotate(1deg); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-bun-bottom { transform: translateY(4px); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-plate { transform: scale(1.02) translateY(2px); box-shadow: 0 15px 25px rgba(0,0,0,0.08); }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-shadow-deep { transform: scale(0.85); opacity: 0.5; }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-shadow-ambient { transform: scale(0.9); opacity: 0.3; }
-.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-steam-wrapper { opacity: 0.9; transform: translateY(-10px); }
-
-.vada-pav-ambient-glow {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(255, 237, 213, 0.35) 0%, rgba(254, 243, 199, 0.15) 35%, transparent 75%);
-  opacity: 0.6;
-  pointer-events: none;
+/* ── 3D stage ── */
+.vada-pav-stage-3d {
+  position: relative;
+  width: 250px;
+  height: 220px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--food-rest-tilt-x)) rotateY(-8deg);
+  animation: food-stage-levitate 6.5s ease-in-out infinite alternate;
+  z-index: 2;
+  transition: transform var(--vp-dur) var(--vp-bezier);
 }
 
-.vada-pav-heat-shimmer {
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, transparent 70%);
-  filter: blur(8px);
-  animation: vp-heat-pulse 3s ease-in-out infinite alternate;
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-stage-3d {
+  transform: rotateX(24deg) rotateY(-6deg) translateY(-10px);
 }
 
-@keyframes vp-heat-pulse {
-  0% { transform: scale(0.9); opacity: 0.4; }
-  100% { transform: scale(1.1); opacity: 0.8; }
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-steam-wrapper {
+  opacity: 0.88;
+  transform: translateX(-50%) translateY(-12px);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-thermal-glow {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.15);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .floor-shadow-occlusion,
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-shadow-deep {
+  transform: translateX(-50%) scale(0.78);
+  opacity: 0.55;
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .floor-shadow-ambient,
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-shadow-ambient {
+  transform: translateX(-50%) scale(0.86);
+  opacity: 0.28;
 }
 
 .vada-pav-steam-wrapper {
-  position: absolute;
-  top: 15px;
-  height: 70px;
-  width: 100px;
-  z-index: 10;
-  display: flex;
-  justify-content: space-around;
-  opacity: 0.4;
-  pointer-events: none;
-  transition: opacity var(--vp-dur) var(--vp-bezier), transform var(--vp-dur) var(--vp-bezier);
+  top: 6px;
 }
 
-.vada-pav-art .steam-line {
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.6) 50%, transparent);
-  border-radius: 4px;
-  filter: blur(3px);
-}
-
-.vada-pav-art .steam-1 { animation: vp-steam-rise 2s infinite ease-in-out; }
-.vada-pav-art .steam-2 { animation: vp-steam-rise 2.4s infinite ease-in-out 0.4s; }
-.vada-pav-art .steam-3 { animation: vp-steam-rise 1.8s infinite ease-in-out 0.2s; }
-
-@keyframes vp-steam-rise {
-  0% { transform: translateY(20px) scaleX(1) skewX(0deg); opacity: 0; }
-  50% { transform: translateY(0) scaleX(1.5) skewX(8deg); opacity: 0.5; }
-  100% { transform: translateY(-20px) scaleX(0.5) skewX(-8deg); opacity: 0; }
-}
-
+/* ── Ceramic plate ── */
 .vada-pav-plate {
   position: absolute;
-  bottom: 25px;
-  width: 210px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--vp-plate-rim), var(--vp-plate-base));
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  width: 228px;
+  height: 52px;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(0, 0, 0, 0.02) 0deg 10deg, transparent 10deg 20deg),
+    linear-gradient(to bottom, var(--vp-plate-rim) 0%, var(--vp-plate-base) 55%, var(--vp-plate-well) 100%);
   border-radius: 50%;
+  box-shadow:
+    0 14px 32px rgba(15, 23, 42, 0.18),
+    inset 0 -6px 10px rgba(15, 23, 42, 0.08),
+    inset 0 4px 8px rgba(255, 255, 255, 0.65);
   z-index: 1;
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06), inset 0 -4px 6px rgba(15, 23, 42, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: transform var(--vp-dur) var(--vp-bezier), box-shadow var(--vp-dur) var(--vp-bezier);
 }
 
-.plate-inner-rim {
-  width: 176px;
-  height: 32px;
-  border: 1px solid rgba(148, 163, 184, 0.15);
+.plate-lip-bevel {
+  position: absolute;
+  inset: 4px;
   border-radius: 50%;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+  border-top: 2px solid var(--food-rim-highlight);
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.06);
+  pointer-events: none;
+}
+
+.plate-inner-rim {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 78%;
+  height: 58%;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 50%;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.05);
 }
 
 .plate-base-shadow {
   position: absolute;
-  bottom: -4px;
-  width: 160px;
-  height: 20px;
-  background-color: var(--vp-plate-shadow);
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72%;
+  height: 14px;
+  background: rgba(15, 23, 42, 0.12);
   border-radius: 50%;
+  filter: blur(3px);
   z-index: -1;
-  filter: blur(2px);
 }
 
+.plate-foot-ring {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(-4px);
+  width: 62%;
+  height: 10px;
+  background: linear-gradient(to bottom, var(--vp-plate-well), #94a3b8);
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.2);
+  z-index: 0;
+}
+
+/* ── Pav stack ── */
 .dish--vada-pav .vada-pav {
-  position: relative;
-  width: 190px;
-  height: 140px;
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(18px);
+  width: 198px;
+  height: 168px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
-  margin-top: -5px;
+  transform-style: preserve-3d;
+  z-index: 4;
 }
 
 .vada-pav-bun {
   width: 100%;
+  transform-style: preserve-3d;
   transition: transform var(--vp-dur) var(--vp-bezier);
 }
 
 .vada-pav-bun-top {
-  height: 68px;
-  background: linear-gradient(to bottom, var(--vp-bun-crust) 0%, var(--vp-bun-toast) 35%, var(--vp-bun-gold) 85%, var(--vp-bun-crumb) 100%);
-  border-radius: 42% 46% 14% 12% / 60% 65% 12% 10%;
-  box-shadow: inset 0 -5px 6px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
-  z-index: 5;
+  height: 72px;
+  --vol-wall-h: 14px;
+  z-index: 8;
   position: relative;
+  transform: translateZ(12px);
+}
+
+.bun-dome-cap {
+  height: 100%;
+  border-radius: 44% 48% 16% 14% / 62% 66% 14% 12%;
+  background:
+    radial-gradient(ellipse at 35% 22%, var(--vp-bun-gold) 0%, transparent 55%),
+    linear-gradient(to bottom, var(--vp-bun-crust) 0%, var(--vp-bun-toast) 38%, var(--vp-bun-gold) 82%, var(--vp-bun-crumb) 100%);
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.14),
+    inset 0 -6px 8px rgba(0, 0, 0, 0.14),
+    inset 0 3px 6px rgba(255, 255, 255, 0.35);
+}
+
+.bun-cylinder-wall {
+  background: linear-gradient(to right, var(--vp-bun-side), var(--vp-bun-toast) 35%, var(--vp-bun-side) 100%);
+}
+
+.bun-cylinder-wall--bottom {
+  top: -2px;
+  bottom: auto;
+  background: linear-gradient(to right, var(--vp-bun-crust), var(--vp-bun-toast) 40%, var(--vp-bun-crust));
+}
+
+.bun-side-face {
+  position: absolute;
+  bottom: -4px;
+  left: 6%;
+  width: 88%;
+  height: 14px;
+  border-radius: 0 0 40% 40%;
+  background: linear-gradient(to bottom, var(--vp-bun-toast), var(--vp-bun-side));
+  transform: rotateX(72deg) translateZ(-2px);
+  transform-origin: top center;
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+}
+
+.bun-side-face--bottom {
+  top: -2px;
+  bottom: auto;
+  height: 10px;
+  background: linear-gradient(to top, var(--vp-bun-gold), var(--vp-bun-side));
 }
 
 .bun-bake-highlight {
   position: absolute;
-  top: 8px;
-  left: 18px;
-  width: 78%;
-  height: 20px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), transparent);
+  top: 10px;
+  left: 16%;
+  width: 72%;
+  height: 22px;
+  background: linear-gradient(to bottom, var(--food-specular), transparent);
   border-radius: 50%;
-  filter: blur(1.5px);
+  filter: blur(2px);
+  pointer-events: none;
 }
 
 .hot-butter-glaze {
   position: absolute;
-  inset: 6px;
+  inset: 8px;
   border-radius: inherit;
-  background: radial-gradient(circle at 45% 25%, rgba(254, 243, 199, 0.4) 0%, transparent 60%);
+  background: radial-gradient(circle at 42% 28%, rgba(254, 243, 199, 0.45) 0%, transparent 58%);
   mix-blend-mode: overlay;
-  filter: blur(1px);
+  pointer-events: none;
 }
 
 .vada-pav-bun-bottom {
   position: relative;
-  height: 52px;
-  margin-top: -22px;
-  z-index: 1;
-  background: linear-gradient(to bottom, var(--vp-bun-crumb) 0%, var(--vp-bun-gold) 35%, var(--vp-bun-toast) 75%, var(--vp-bun-crust) 100%);
-  border-radius: 12% 14% 35% 30% / 25% 20% 75% 70%;
-  box-shadow: inset 0 4px 4px rgba(255, 255, 255, 0.4);
+  height: 54px;
+  margin-top: -20px;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at 40% 80%, var(--vp-bun-toast) 0%, transparent 50%),
+    linear-gradient(to bottom, var(--vp-bun-crumb) 0%, var(--vp-bun-gold) 40%, var(--vp-bun-toast) 78%, var(--vp-bun-crust) 100%);
+  border-radius: 14% 16% 38% 34% / 28% 22% 78% 72%;
+  box-shadow:
+    inset 0 5px 6px rgba(255, 255, 255, 0.45),
+    0 6px 14px rgba(0, 0, 0, 0.12);
+  transform: translateZ(4px);
 }
 
 .bun-bottom-sliced-surface {
   position: absolute;
   top: 0;
-  left: 3%;
-  width: 94%;
-  height: 12px;
-  background-color: var(--vp-bun-crumb);
+  left: 4%;
+  width: 92%;
+  height: 14px;
+  background: var(--vp-bun-crumb);
   border-radius: 50%;
-  box-shadow: inset 0 -2px 4px rgba(0,0,0,0.08);
-  filter: blur(0.3px);
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.08);
+  z-index: 3;
+}
+
+.bun-bottom-crust-shading {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(ellipse at 50% 100%, rgba(0, 0, 0, 0.12) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+.bun-chutney-stain {
+  position: absolute;
+  top: 2px;
+  left: 12%;
+  width: 76%;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(21, 128, 61, 0.35) 0%, rgba(185, 28, 28, 0.2) 55%, transparent 80%);
   z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Vada sphere ── */
+.vada-pav-vada-wrap {
+  position: relative;
+  width: 152px;
+  margin-top: -18px;
+  z-index: 5;
+  transform: translateZ(8px);
 }
 
 .vada-pav-vada {
-  width: 148px;
-  height: 84px;
-  background: radial-gradient(circle at 40% 30%, var(--vp-vada-light) 0%, var(--vp-vada-body) 55%, var(--vp-vada-deep) 100%);
-  border-radius: 53% 47% 44% 56% / 52% 48% 52% 48%;
-  margin-top: -16px;
-  z-index: 3;
+  width: 152px;
+  height: 88px;
   position: relative;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.16), inset -5px -6px 12px rgba(0,0,0,0.2);
+  transform: translateZ(0);
+  border-radius: 52% 48% 46% 54% / 54% 50% 50% 46%;
   transition: transform var(--vp-dur) var(--vp-bezier);
 }
 
-.vada-pav-vada::after {
+.vada-pav-vada .food-volume-sphere__body {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 32% 28%, var(--vp-vada-light) 0%, var(--vp-vada-body) 42%, var(--vp-vada-deep) 78%, var(--vp-vada-core) 100%);
+  box-shadow:
+    0 12px 22px rgba(0, 0, 0, 0.22),
+    inset -6px -10px 16px rgba(0, 0, 0, 0.22),
+    inset 4px 6px 10px rgba(255, 255, 255, 0.28);
+}
+
+.vada-cast-shadow {
+  --cast-w: 72%;
+  --cast-h: 8px;
+  bottom: -4px;
+  left: 50%;
+  opacity: 0.55;
+}
+
+.stack-plate-shadow {
+  --cast-w: 85%;
+  --cast-h: 12px;
+  --cast-blur: 6px;
+  bottom: -6px;
+  opacity: 0.4;
+}
+
+.vada-pav-vada .food-volume-sphere__body::after {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
   background-image:
-    radial-gradient(circle at 20% 40%, var(--vp-vada-deep) 2px, transparent 3px),
-    radial-gradient(circle at 75% 30%, #5c3a07 2.5px, transparent 3.5px),
-    radial-gradient(circle at 80% 70%, var(--vp-vada-deep) 3px, transparent 4px);
-  opacity: 0.75;
+    radial-gradient(circle at 22% 38%, var(--vp-vada-core) 2px, transparent 3px),
+    radial-gradient(circle at 68% 32%, #5c3a07 2.5px, transparent 3.5px),
+    radial-gradient(circle at 78% 68%, var(--vp-vada-deep) 2.8px, transparent 4px),
+    radial-gradient(circle at 42% 72%, var(--vp-vada-core) 1.8px, transparent 2.8px);
+  opacity: 0.8;
   mix-blend-mode: multiply;
 }
 
+/* ── Chutney layers ── */
+.vada-pav-chutney-layer {
+  position: relative;
+  width: 168px;
+  height: 22px;
+  margin-top: -8px;
+  z-index: 6;
+  transform-style: preserve-3d;
+  transform: translateZ(10px);
+}
+
 .vada-pav-chutney-sauce {
-  width: 160px;
-  height: 14px;
-  background: radial-gradient(circle at 30% 50%, var(--vp-chutney-red) 30%, var(--vp-chutney-green) 45%, var(--vp-chutney-red) 80%);
-  border-radius: 50% 40% 45% 50%;
-  margin-top: -6px;
-  z-index: 4;
-  opacity: 0.9;
-  mix-blend-mode: multiply;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 50%;
   transition: transform var(--vp-dur) var(--vp-bezier), opacity var(--vp-dur) var(--vp-bezier);
+}
+
+.chutney-green {
+  top: 0;
+  width: 158px;
+  height: 14px;
+  background: radial-gradient(ellipse at 35% 40%, #4ade80 0%, var(--vp-chutney-green) 45%, #0f4a1f 85%, #052e16 100%);
+  box-shadow:
+    inset 0 3px 6px rgba(0, 0, 0, 0.35),
+    inset 0 -2px 4px rgba(74, 222, 128, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%) translateZ(2px);
+}
+
+.chutney-tamarind {
+  top: 5px;
+  width: 140px;
+  height: 12px;
+  background: radial-gradient(ellipse at 40% 45%, #ef4444 0%, var(--vp-chutney-red) 50%, #7f1d1d 90%);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.35);
+  opacity: 0.94;
+  transform: translateX(-50%) translateZ(4px);
+}
+
+.chutney-drip {
+  position: absolute;
+  width: 4px;
+  border-radius: 0 0 50% 50%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.chutney-drip--green {
+  top: 10px;
+  left: 22%;
+  height: 10px;
+  background: linear-gradient(to bottom, var(--vp-chutney-green), transparent);
+}
+
+.chutney-drip--red {
+  top: 12px;
+  right: 24%;
+  height: 8px;
+  background: linear-gradient(to bottom, var(--vp-chutney-red), transparent);
 }
 
 .vada-pav-masala-crumbs {
   position: absolute;
-  width: 130px;
-  height: 10px;
-  top: 64px;
-  z-index: 4;
+  width: 132px;
+  height: 12px;
+  top: 68px;
+  z-index: 7;
+  transform: translateZ(11px);
   background-image:
-    radial-gradient(circle at 10% 20%, var(--vp-chutney-red) 2px, transparent 3px),
-    radial-gradient(circle at 90% 80%, var(--vp-vada-deep) 1.5px, transparent 2.5px);
-  opacity: 0.85;
+    radial-gradient(circle at 12% 30%, var(--vp-chutney-red) 2px, transparent 3px),
+    radial-gradient(circle at 88% 70%, var(--vp-vada-deep) 1.8px, transparent 2.8px),
+    radial-gradient(circle at 55% 50%, var(--vp-chutney-green) 1.5px, transparent 2.5px);
+  opacity: 0.88;
   transition: transform var(--vp-dur) var(--vp-bezier);
 }
 
+/* ── Fried chili ── */
 .vada-pav-chili {
   position: absolute;
-  width: 84px;
-  height: 11px;
-  background: linear-gradient(to bottom, var(--vp-chili-bright), var(--vp-chili-dark));
-  border-radius: 4px 60% 40% 4px / 4px 80% 20% 4px;
-  top: 55px;
-  left: 48%;
-  transform: translate(-35%, 0) rotate(12deg);
-  z-index: 4;
-  box-shadow: 1px 4px 6px rgba(0, 0, 0, 0.25);
+  width: 88px;
+  height: 16px;
+  top: 56px;
+  left: 52%;
+  transform: translate(-38%, 0) rotate(14deg) rotateY(8deg) translateZ(12px);
+  z-index: 9;
   transition: transform var(--vp-dur) var(--vp-bezier);
 }
 
-.vada-pav-shadow-deep {
+.chili-curve {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--vp-chili-bright), #16a34a 45%, var(--vp-chili-dark));
+  border-radius: 4px 62% 38% 4px / 4px 82% 18% 4px;
+  box-shadow:
+    1px 5px 8px rgba(0, 0, 0, 0.28),
+    inset 0 1px 2px rgba(255, 255, 255, 0.35),
+    inset -2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+.chili-stem {
   position: absolute;
-  bottom: 14px;
-  width: 170px;
+  top: -5px;
+  left: -4px;
+  width: 8px;
   height: 10px;
-  background: rgba(15, 23, 42, 0.2);
-  border-radius: 50%;
-  z-index: 0;
-  filter: blur(4px);
-  transition: transform var(--vp-dur) var(--vp-bezier), opacity var(--vp-dur) var(--vp-bezier);
+  background: linear-gradient(135deg, #4ade80, #166534);
+  border-radius: 50% 50% 20% 20%;
+  transform: rotate(-25deg);
+  box-shadow: inset 0 -1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.vada-pav-shadow-ambient {
-  position: absolute;
-  bottom: 8px;
-  width: 200px;
-  height: 16px;
-  background: rgba(15, 23, 42, 0.06);
-  border-radius: 50%;
-  z-index: 0;
-  filter: blur(8px);
-  transition: transform var(--vp-dur) var(--vp-bezier), opacity var(--vp-dur) var(--vp-bezier);
+/* ── Micro hovers (card + standalone) ── */
+.order-card--vada-pav .vada-pav-bun-top:hover,
+.dish--vada-pav:not(.order-card) .vada-pav-bun-top:hover {
+  transform: translateZ(20px) translateY(-6px) rotate(-3deg);
 }
 
-.motion-reduced .vada-pav-heat-shimmer,
-.motion-reduced .vada-pav-art .steam-line {
+.order-card--vada-pav .vada-pav-vada:hover,
+.dish--vada-pav:not(.order-card) .vada-pav-vada:hover {
+  transform: translateZ(14px) scale(1.05) rotate(1deg);
+}
+
+.order-card--vada-pav .vada-pav-vada-wrap:hover .vada-pav-vada,
+.dish--vada-pav:not(.order-card) .vada-pav-vada-wrap:hover .vada-pav-vada {
+  transform: translateZ(14px) scale(1.05) rotate(1deg);
+}
+
+.order-card--vada-pav .vada-pav-chili:hover,
+.dish--vada-pav:not(.order-card) .vada-pav-chili:hover {
+  transform: translate(-38%, -4px) rotate(22deg) translateZ(16px) scale(1.06);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-bun-top {
+  transform: translateZ(18px) translateY(-8px) rotate(-4deg);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-vada,
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-vada-wrap .vada-pav-vada {
+  transform: translateZ(12px) scale(1.05);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-chutney-layer {
+  transform: translateZ(12px) scaleY(1.08);
+}
+
+.dish--vada-pav:not(.order-card):is(:hover, .is-raised, :focus-within) .vada-pav-plate {
+  transform: translateX(-50%) translateZ(2px) scale(1.02);
+}
+
+.motion-reduced .vada-pav-stage-3d {
   animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vada-pav-stage-3d {
+    animation: none !important;
+  }
 }

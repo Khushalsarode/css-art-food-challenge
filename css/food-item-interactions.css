@@ -12,7 +12,13 @@
 .order-card [class*="ceramic-katori"],
 .order-card [class*="roasted-paneer"],
 .order-card .bowl-outer,
-.order-card .lemon-container {
+.order-card .lemon-container,
+.order-card .brushed-steel-bowl,
+.order-card .laadi-pav,
+.order-card .carved-metal-spoon,
+.order-card .banana-chips-art .wooden-bowl,
+.order-card .banana-chips-art .c-fg-center-main,
+.order-card .banana-chips-art .vintage-spoon {
   pointer-events: auto;
   cursor: pointer;
 }
@@ -39,8 +45,8 @@
   transform: translateY(-32px) rotate(-4deg);
 }
 
-.order-card--vada-pav .vada-pav-art:has(.vada-pav-vada:hover) .vada-pav-chutney-sauce {
-  transform: scaleY(1.15) translateY(-14px);
+.order-card--vada-pav .vada-pav-art:has(.vada-pav-vada:hover) .vada-pav-chutney-layer {
+  transform: translateZ(14px) scaleY(1.1);
   opacity: 1;
 }
 

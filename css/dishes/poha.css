@@ -1,360 +1,417 @@
-/* ═══ Poha — Tapri Central counter integration ═══ */
+/* ═══ Indori Poha — 3D bowl + canvas mound + CSS garnishes ═══ */
 
 .dish--poha {
-  --dish-bezier: cubic-bezier(0.25, 1, 0.5, 1);
+  --ph-bowl-light: #8b5a96;
+  --ph-bowl-mid: #5c2d66;
+  --ph-bowl-deep: #2a0f30;
+  --ph-bowl-rim: #3c1642;
+  --ph-interior: #1a081e;
+  --ph-lemon-rind: #fcd116;
+  --ph-lemon-flesh: #fbe134;
+  --ph-sev: #f97316;
+  --ph-peanut: #d97706;
+  --ph-bezier: var(--food-bezier-spring);
+  --ph-dur: var(--food-dur);
 }
 
 .poha-art {
   position: relative;
-  width: 500px;
-  height: 500px;
+  width: 360px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: visible;
-  perspective: 1200px;
-  transform-style: preserve-3d;
+  perspective: var(--food-perspective);
 }
 
-        .bowl-shadow {
-            position: absolute;
-            width: 420px;
-            height: 420px;
-            border-radius: 50%;
-            background: radial-gradient(circle,
-                    rgba(28,11,36,.45) 0%,
-                    rgba(0,0,0,0) 70%);
-            transform: translateY(35px) scaleY(.9);
-            filter: blur(15px);
-        }
+.poha-stage-3d {
+  position: relative;
+  width: 280px;
+  height: 260px;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--food-rest-tilt-x)) rotateY(var(--food-rest-tilt-y));
+  animation: food-stage-levitate 7.5s ease-in-out infinite alternate;
+  z-index: 2;
+  transition: transform var(--ph-dur) var(--ph-bezier);
+}
 
-        .bowl-outer {
-            position: relative;
-            width: 380px;
-            height: 380px;
-            border-radius: 50%;
-            padding: 12px;
-            box-sizing: border-box;
-            background: radial-gradient(circle at 30% 25%,
-                    #764580 0%,
-                    #461f4d 45%,
-                    #220926 100%);
-            box-shadow:
-                inset -12px -12px 25px rgba(0,0,0,.65),
-                inset 12px 12px 25px rgba(255,255,255,.2),
-                0 20px 45px rgba(0,0,0,.35);
-            transition: transform .5s cubic-bezier(.2,.8,.2,1),
-                        box-shadow .5s;
-            transform-style: preserve-3d;
-        }
+.dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) .poha-stage-3d {
+  transform: rotateX(24deg) rotateY(-2deg) translateY(-8px);
+}
 
-        .dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) .bowl-outer {
-            box-shadow:
-                0 45px 80px rgba(0,0,0,.45),
-                inset -15px -15px 25px rgba(0,0,0,.55),
-                inset 15px 15px 25px rgba(255,255,255,.18);
-        }
+.dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) .bowl-outer {
+  box-shadow:
+    0 38px 62px rgba(0, 0, 0, 0.42),
+    inset -12px -12px 22px rgba(0, 0, 0, 0.55),
+    inset 12px 12px 22px rgba(255, 255, 255, 0.16);
+}
 
-        .bowl-outer::before {
-            content: "";
-            position: absolute;
-            inset: 18px;
-            border-radius: 50%;
-            background:
-                radial-gradient(
-                    ellipse at 28% 18%,
-                    rgba(255,255,255,.42),
-                    rgba(255,255,255,.05) 35%,
-                    transparent 55%
-                );
-            mix-blend-mode: screen;
-            pointer-events: none;
-        }
+.dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) canvas {
+  transform: scale(1.04) translateZ(2px);
+}
 
-        .bowl-rim {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            padding: 6px;
-            box-sizing: border-box;
-            background: #3c1642;
-            box-shadow:
-                inset 0 3px 6px rgba(255,255,255,.25),
-                0 4px 10px rgba(0,0,0,.5);
-        }
+.dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) .lemon-container {
+  transform: rotate(-10deg) translateY(-10px) translateZ(8px) scale(1.08);
+}
 
-        .poha-art::before {
-            content: "";
-            position: absolute;
-            inset: -80px;
-            background:
-                radial-gradient(circle,
-                    rgba(255,255,255,.18),
-                    transparent 70%);
-            animation: lightMove 8s ease-in-out infinite;
-            pointer-events: none;
-        }
+.poha-thermal-glow {
+  top: 28%;
+  width: 190px;
+  height: 150px;
+}
 
-        @keyframes lightMove {
-            0% { transform: translate(-20px, -10px); }
-            50% { transform: translate(20px, 15px); }
-            100% { transform: translate(-20px, -10px); }
-        }
+/* ── Bowl shadow ── */
+.poha-art .bowl-shadow,
+.poha-art .floor-shadow-occlusion {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(28, 11, 36, 0.48) 0%, transparent 72%);
+  filter: blur(14px);
+  z-index: 0;
+}
 
-        @keyframes steam {
-            0% {
-                opacity: 0;
-                transform:
-                    translateY(30px)
-                    translateX(0px)
-                    scale(.5)
-                    rotate(0deg);
-            }
-            20% { opacity: .6; }
-            50% {
-                transform:
-                    translateY(-20px)
-                    translateX(10px)
-                    scale(.9)
-                    rotate(8deg);
-            }
-            100% {
-                opacity: 0;
-                transform:
-                    translateY(-120px)
-                    translateX(-15px)
-                    scale(1.8)
-                    rotate(-12deg);
-            }
-        }
+/* ── Ceramic bowl (torus rim) ── */
+.poha-art .bowl-outer {
+  position: relative;
+  width: 272px;
+  height: 272px;
+  margin: 0 auto;
+  border-radius: 50%;
+  padding: 10px;
+  box-sizing: border-box;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(255, 255, 255, 0.04) 0deg 14deg, transparent 14deg 28deg),
+    radial-gradient(circle at 30% 24%, var(--ph-bowl-light) 0%, var(--ph-bowl-mid) 48%, var(--ph-bowl-deep) 100%);
+  box-shadow:
+    inset -10px -10px 22px rgba(0, 0, 0, 0.62),
+    inset 10px 10px 22px rgba(255, 255, 255, 0.18),
+    0 18px 38px rgba(0, 0, 0, 0.32);
+  transform: translateZ(6px);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.5s var(--ph-bezier), transform 0.5s var(--ph-bezier);
+}
 
-        .bowl-interior {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            border-radius: 50%;
-            background: radial-gradient(circle, #250d2b 50%, #0f0212 100%);
-            box-shadow: inset 0 12px 24px rgba(0,0,0,.85);
-            contain: layout style paint;
-        }
+.poha-art .bowl-rim-lip {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  border-top: 3px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    inset 0 4px 8px rgba(255, 255, 255, 0.15),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 3;
+  transform: translateZ(4px);
+}
 
-        .bowl-interior::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background:
-                radial-gradient(circle,
-                    transparent 55%,
-                    rgba(0,0,0,.18) 100%);
-            pointer-events: none;
-        }
+.poha-art .bowl-outer::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at 28% 18%,
+    rgba(255, 255, 255, 0.42),
+    rgba(255, 255, 255, 0.05) 38%,
+    transparent 58%
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
 
-        canvas {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            transition: transform .5s;
-            will-change: transform;
-        }
+.poha-art .bowl-rim {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  padding: 5px;
+  box-sizing: border-box;
+  background: var(--ph-bowl-rim);
+  box-shadow:
+    inset 0 3px 6px rgba(255, 255, 255, 0.22),
+    0 4px 10px rgba(0, 0, 0, 0.45);
+}
 
-        .dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) canvas {
-            transform: scale(1.04);
-        }
+.poha-art .bowl-interior {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2a102f 50%, var(--ph-interior) 100%);
+  box-shadow: inset 0 10px 22px rgba(0, 0, 0, 0.88);
+  contain: layout style paint;
+}
 
-        .steam-container {
-            position: absolute;
-            top: 15%;
-            left: 20%;
-            width: 60%;
-            height: 60%;
-            pointer-events: none;
-            opacity: .14;
-            filter: blur(12px);
-        }
+.poha-art .bowl-interior::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 52%, rgba(0, 0, 0, 0.2) 100%);
+  pointer-events: none;
+  z-index: 4;
+}
 
-        .steam-vane {
-            position: absolute;
-            bottom: 10px;
-            width: 50px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(
-                to top,
-                rgba(255,255,255,0),
-                rgba(255,255,255,.2),
-                rgba(255,255,255,0)
-            );
-            animation: steam 6s linear infinite;
-        }
+.poha-art canvas.poha-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transition: transform 0.5s var(--ph-bezier);
+  will-change: transform;
+}
 
-        .steam-vane:nth-child(1) { left: 15%; }
-        .steam-vane:nth-child(2) {
-            left: 45%;
-            width: 70px;
-            animation-delay: 2s;
-        }
-        .steam-vane:nth-child(3) {
-            left: 70%;
-            animation-delay: 4s;
-        }
+/* ── CSS garnish overlay (sev + peanuts + curry leaf) ── */
+.poha-garnish-layer {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
 
-        .lemon-container {
-            position: absolute;
-            right: -60px;
-            bottom: 0;
-            width: 130px;
-            height: 75px;
-            transform: rotate(-18deg);
-            filter: drop-shadow(6px 14px 10px rgba(0,0,0,.3));
-            transition: transform .45s;
-        }
+.poha-sev-strand {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, var(--ph-sev), #fb923c, var(--ph-sev), transparent);
+  opacity: 0.75;
+  transform-origin: center;
+}
 
-        .dish--poha:not(.order-card):is(:hover, .is-raised, :focus-within) .lemon-container {
-            transform:
-                rotate(-8deg)
-                translateY(-10px)
-                scale(1.08);
-        }
+.poha-sev-strand--1 { width: 42px; top: 22%; left: 28%; transform: rotate(-18deg); }
+.poha-sev-strand--2 { width: 36px; top: 38%; left: 52%; transform: rotate(24deg); }
+.poha-sev-strand--3 { width: 48px; top: 55%; left: 22%; transform: rotate(-8deg); }
+.poha-sev-strand--4 { width: 32px; top: 48%; left: 58%; transform: rotate(32deg); }
 
-        .lemon-rind {
-            width: 100%;
-            height: 100%;
-            padding: 5px;
-            box-sizing: border-box;
-            border-radius: 12px 110px 12px 110px;
-            background: linear-gradient(135deg, #fcd116, #caa205);
-        }
+.poha-art .lemon-rind-side {
+  position: absolute;
+  left: -3px;
+  top: 8%;
+  width: 6px;
+  height: 84%;
+  border-radius: 3px 0 0 3px;
+  background: linear-gradient(to right, #b8860b, var(--ph-lemon-rind));
+  z-index: 0;
+}
 
-        .lemon-flesh {
-            width: 100%;
-            height: 100%;
-            position: relative;
-            border-radius: 6px 100px 6px 100px;
-            background: #fbe134;
-            border: 2px solid #fffbba;
-        }
+.poha-art .lemon-seed {
+  position: absolute;
+  width: 3px;
+  height: 5px;
+  background: #fef9c3;
+  border-radius: 50%;
+  opacity: 0.85;
+}
 
-        .lemon-membrane {
-            position: absolute;
-            background: #fffdce;
-            opacity: .65;
-        }
+.poha-art .lemon-seed--1 { top: 35%; left: 40%; transform: rotate(20deg); }
+.poha-art .lemon-seed--2 { top: 55%; left: 55%; transform: rotate(-15deg); }
 
-        .m-1 {
-            width: 100%;
-            height: 2px;
-            top: 50%;
-            transform: rotate(12deg);
-        }
+/* ── Steam ── */
+.poha-art .steam-container {
+  position: absolute;
+  top: 12%;
+  left: 18%;
+  width: 64%;
+  height: 58%;
+  pointer-events: none;
+  opacity: 0.18;
+  filter: blur(10px);
+  z-index: 6;
+}
 
-        .m-2 {
-            width: 2px;
-            height: 100%;
-            left: 50%;
-            transform: rotate(32deg);
-        }
+.poha-art .steam-vane {
+  position: absolute;
+  bottom: 10px;
+  width: 44px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.22), transparent);
+  animation: poha-steam-rise 6s linear infinite;
+}
 
-        .lemon-pulp {
-            position: absolute;
-            inset: 0;
-            background-image:
-                radial-gradient(circle at 25% 30%, rgba(255,255,255,.7) 1px, transparent 2px),
-                radial-gradient(circle at 75% 45%, rgba(255,255,255,.6) 2px, transparent 4px),
-                radial-gradient(circle at 50% 75%, rgba(255,255,255,.5) 1px, transparent 3px);
-            background-size: 10px 10px;
-        }
+.poha-art .steam-vane:nth-child(1) { left: 15%; }
+.poha-art .steam-vane:nth-child(2) { left: 45%; width: 58px; animation-delay: 2s; }
+.poha-art .steam-vane:nth-child(3) { left: 68%; animation-delay: 4s; }
 
-        .spoon-steam {
-            position: absolute;
-            left: 33%;
-            top: 49%;
-            width: 72px;
-            height: 110px;
-            pointer-events: none;
-            z-index: 6;
-            filter: blur(10px);
-        }
+@keyframes poha-steam-rise {
+  0% { opacity: 0; transform: translateY(24px) scale(0.5); }
+  20% { opacity: 0.55; }
+  100% { opacity: 0; transform: translateY(-100px) scale(1.6) rotate(-10deg); }
+}
 
-        .spoon-steam-wisp {
-            position: absolute;
-            bottom: 0;
-            width: 28px;
-            height: 95px;
-            border-radius: 50%;
-            will-change: transform, opacity;
-            background: linear-gradient(
-                to top,
-                rgba(255,255,255,0),
-                rgba(255,248,220,.55),
-                rgba(255,255,255,.35),
-                rgba(255,255,255,0)
-            );
-            animation: spoonSteam 3.2s ease-in-out infinite;
-        }
+.poha-art .spoon-steam {
+  position: absolute;
+  left: 33%;
+  top: 48%;
+  width: 64px;
+  height: 96px;
+  pointer-events: none;
+  z-index: 7;
+  filter: blur(9px);
+}
 
-        .spoon-steam-wisp:nth-child(1) {
-            left: 0;
-            animation-delay: 0s;
-        }
+.poha-art .spoon-steam-wisp {
+  position: absolute;
+  bottom: 0;
+  width: 24px;
+  height: 82px;
+  border-radius: 50%;
+  background: linear-gradient(to top, transparent, rgba(255, 248, 220, 0.55), transparent);
+  animation: poha-spoon-steam 3.2s ease-in-out infinite;
+}
 
-        .spoon-steam-wisp:nth-child(2) {
-            left: 22px;
-            width: 34px;
-            height: 105px;
-            animation-delay: 0.9s;
-        }
+.poha-art .spoon-steam-wisp:nth-child(1) { left: 0; }
+.poha-art .spoon-steam-wisp:nth-child(2) { left: 20px; width: 30px; height: 92px; animation-delay: 0.9s; }
+.poha-art .spoon-steam-wisp:nth-child(3) { left: 40px; width: 22px; animation-delay: 1.8s; }
+.poha-art .spoon-steam-wisp:nth-child(4) { left: 10px; width: 18px; height: 68px; animation-delay: 2.4s; }
 
-        .spoon-steam-wisp:nth-child(3) {
-            left: 44px;
-            width: 24px;
-            animation-delay: 1.8s;
-        }
+@keyframes poha-spoon-steam {
+  0% { opacity: 0; transform: translateY(14px) scaleX(0.6); }
+  15% { opacity: 0.82; }
+  100% { opacity: 0; transform: translateY(-82px) scaleX(1.4) rotate(-6deg); }
+}
 
-        .spoon-steam-wisp:nth-child(4) {
-            left: 12px;
-            width: 20px;
-            height: 80px;
-            animation-delay: 2.4s;
-        }
+.poha-art .spoon-heat-glow {
+  position: absolute;
+  left: 33%;
+  top: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 180, 60, 0.24) 0%, transparent 72%);
+  pointer-events: none;
+  z-index: 5;
+  animation: poha-heat-pulse 2.2s ease-in-out infinite;
+}
 
-        @keyframes spoonSteam {
-            0% {
-                opacity: 0;
-                transform: translateY(18px) translateX(0) scaleX(.6) rotate(0deg);
-            }
-            15% { opacity: .85; }
-            45% {
-                transform: translateY(-35px) translateX(8px) scaleX(1.1) rotate(6deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-95px) translateX(-10px) scaleX(1.5) rotate(-8deg);
-            }
-        }
+@keyframes poha-heat-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.92; transform: scale(1.1); }
+}
 
-        .spoon-heat-glow {
-            position: absolute;
-            left: 33%;
-            top: 52%;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            background: radial-gradient(
-                circle,
-                rgba(255,180,60,.22) 0%,
-                rgba(255,120,40,.08) 45%,
-                transparent 70%
-            );
-            pointer-events: none;
-            z-index: 5;
-            animation: heatPulse 2s ease-in-out infinite;
-        }
+/* ── Lemon wedge (3D) ── */
+.poha-art .lemon-container {
+  position: absolute;
+  right: -8px;
+  bottom: 18px;
+  width: 96px;
+  height: 58px;
+  transform: rotate(-16deg) translateZ(14px);
+  filter: drop-shadow(4px 10px 8px rgba(0, 0, 0, 0.32));
+  transition: transform 0.45s var(--ph-bezier);
+  z-index: 8;
+}
 
-        @keyframes heatPulse {
-            0%, 100% { opacity: .55; transform: scale(1); }
-            50% { opacity: .95; transform: scale(1.12); }
-        }
+.poha-art .lemon-rind {
+  width: 100%;
+  height: 100%;
+  padding: 4px;
+  box-sizing: border-box;
+  border-radius: 12px 110px 12px 110px;
+  background: linear-gradient(145deg, var(--ph-lemon-rind), #caa205);
+  box-shadow:
+    inset 0 -2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 2px 3px rgba(255, 255, 255, 0.35);
+}
+
+.poha-art .lemon-rind::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 3px,
+    rgba(0, 0, 0, 0.04) 3px 4px
+  );
+  pointer-events: none;
+}
+
+.poha-art .lemon-flesh {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 6px 100px 6px 100px;
+  background: linear-gradient(135deg, var(--ph-lemon-flesh), #facc15);
+  border: 2px solid #fffbba;
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.45);
+}
+
+.poha-art .lemon-membrane {
+  position: absolute;
+  background: #fffdce;
+  opacity: 0.68;
+}
+
+.poha-art .lemon-membrane.m-1 {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  transform: rotate(12deg);
+}
+
+.poha-art .lemon-membrane.m-2 {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+  transform: rotate(32deg);
+}
+
+.poha-art .lemon-pulp {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.72) 1px, transparent 2px),
+    radial-gradient(circle at 75% 45%, rgba(255, 255, 255, 0.62) 2px, transparent 4px),
+    radial-gradient(circle at 50% 75%, rgba(255, 255, 255, 0.5) 1px, transparent 3px);
+  background-size: 10px 10px;
+}
+
+.poha-art .floor-shadow-ambient {
+  bottom: 4px;
+  width: 240px;
+  height: 18px;
+}
+
+/* Card hovers */
+.order-card--poha .bowl-outer:hover,
+.dish--poha:not(.order-card) .bowl-outer:hover {
+  transform: translateZ(10px) scale(1.02);
+}
+
+.order-card--poha .lemon-container:hover,
+.dish--poha:not(.order-card) .lemon-container:hover {
+  transform: rotate(-8deg) translateY(-8px) translateZ(12px) scale(1.06);
+}
+
+.motion-reduced .poha-stage-3d,
+.motion-reduced .poha-art .steam-vane,
+.motion-reduced .poha-art .spoon-steam-wisp,
+.motion-reduced .poha-art .spoon-heat-glow {
+  animation: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .poha-stage-3d {
+    animation: none !important;
+  }
+
+  .poha-art .steam-vane,
+  .poha-art .spoon-steam-wisp,
+  .poha-art .spoon-heat-glow {
+    animation: none !important;
+  }
+
+  .poha-art .steam-container {
+    opacity: 0.1;
+  }
+}
