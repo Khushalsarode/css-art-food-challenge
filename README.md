@@ -14,7 +14,7 @@ A single-page night-tapri experience for the [DEV Frontend Challenge: Comfort Fo
 
 | | |
 |---|---|
-| **Live demo** | `Yet_to_host` |
+| **Live demo** | `https://css-art-food-challenge.khushalsarode-in.workers.dev/` |
 | **Repository** | `https://github.com/Khushalsarode/css-art-food-challenge.git` |
 | **License** | [MIT](./LICENSE) |
 | **Docs index** | [docs/README.md](./docs/README.md) |
