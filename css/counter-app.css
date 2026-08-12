@@ -1,4 +1,4 @@
-/* ═══ Tapri Central — Street kitchen order counter shell ═══ */
+/* ═══ Nukkad Chat Corner — Street kitchen order counter shell ═══ */
 
 /* ── UI rules & dividers ── */
 .ui-hrule {
@@ -29,6 +29,10 @@
     transparent
   );
   box-shadow: 0 0 20px rgba(255, 184, 77, 0.12);
+}
+
+.page-foot-divider {
+  margin-top: auto;
 }
 
 .ui-hrule--inset {
@@ -188,6 +192,8 @@
   position: relative;
   z-index: 1;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .page-night-sky {
@@ -1070,8 +1076,10 @@
   padding: 2rem 1rem 2.5rem;
   font-size: 0.75rem;
   color: var(--text-muted);
-  margin-top: 0.5rem;
+  margin-top: 0;
   position: relative;
+  z-index: 2;
+  flex-shrink: 0;
   border-top: 1px solid var(--surface-glass-border);
   background:
     radial-gradient(ellipse 60% 80% at 50% 0%, rgba(255, 184, 77, 0.05), transparent 65%),

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Project discussions
+    url: YOUR_GITHUB_REPO_URL/discussions
+    about: Ask questions and share ideas that are not bug reports.
+  - name: Security advisories
+    url: YOUR_GITHUB_REPO_URL/security/advisories
+    about: Privately report a vulnerability (see SECURITY.md).
+  - name: Support guide
+    url: YOUR_GITHUB_REPO_URL/blob/master/SUPPORT.md
+    about: Where to get help and what maintainers can assist with.

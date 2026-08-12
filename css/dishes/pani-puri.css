@@ -226,10 +226,44 @@
   box-shadow:
     inset 0 4px 6px rgba(0, 0, 0, 0.65),
     0 0 12px var(--pp-pani-glow);
+  animation: pani-fill-rise 0.55s var(--pp-bezier) forwards;
 }
 
 .pani-puri-art .clay-puri-shell:hover .bead-boondi {
   animation: boondi-bounce 0.45s var(--pp-bezier) forwards;
+}
+
+/* Signature ritual: fill → tilt → pop readiness */
+.pani-puri-art:has(.clay-puri-shell:hover) .chocolate-dish {
+  animation: pani-cluster-ready 0.65s var(--pp-bezier) forwards;
+}
+
+.pani-puri-art:has(.clay-puri-shell:hover) .pani-puri-thermal-glow {
+  opacity: 1;
+  transform: scale(1.12);
+  filter: brightness(1.15);
+}
+
+.pani-puri-art .clay-puri-shell:hover::before {
+  animation: pani-shell-crack-glint 0.55s ease forwards;
+}
+
+@keyframes pani-fill-rise {
+  0%   { height: 22px; filter: brightness(1); }
+  55%  { height: 28px; filter: brightness(1.12); }
+  100% { height: 26px; filter: brightness(1.08); }
+}
+
+@keyframes pani-cluster-ready {
+  0%   { transform: rotateX(var(--food-rest-tilt-x, 18deg)) rotateY(var(--food-rest-tilt-y, -8deg)) rotateZ(0deg); }
+  40%  { transform: rotateX(24deg) rotateY(-10deg) rotateZ(-2deg); }
+  100% { transform: rotateX(21deg) rotateY(-9deg) rotateZ(-1deg); }
+}
+
+@keyframes pani-shell-crack-glint {
+  0%   { opacity: 0.55; filter: brightness(1); }
+  45%  { opacity: 0.95; filter: brightness(1.35); }
+  100% { opacity: 0.75; filter: brightness(1.15); }
 }
 
 @keyframes boondi-bounce {
@@ -308,7 +342,9 @@
 }
 
 .motion-reduced .pani-puri-stage-3d,
-.motion-reduced .pani-puri-art .clay-puri-shell:hover {
+.motion-reduced .pani-puri-art .clay-puri-shell:hover,
+.motion-reduced .pani-puri-art:has(.clay-puri-shell:hover) .chocolate-dish,
+.motion-reduced .pani-puri-art .clay-puri-shell:hover .teekha-pool {
   animation: none !important;
 }
 
@@ -320,17 +356,32 @@
   animation: none;
 }
 
+.motion-reduced .pani-puri-art .clay-puri-shell:hover .teekha-pool {
+  height: 26px;
+  filter: brightness(1.08);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .pani-puri-stage-3d {
     animation: none !important;
   }
 
-  .pani-puri-art .clay-puri-shell:hover {
+  .pani-puri-art .clay-puri-shell:hover,
+  .pani-puri-art:has(.clay-puri-shell:hover) .chocolate-dish,
+  .pani-puri-art .clay-puri-shell:hover .teekha-pool {
     animation: none;
+  }
+
+  .pani-puri-art .clay-puri-shell:hover {
     transform: translateY(-8px) scale(1.05);
   }
 
   .pani-puri-art .clay-puri-shell:hover .bead-boondi {
     animation: none;
+  }
+
+  .pani-puri-art .clay-puri-shell:hover .teekha-pool {
+    height: 26px;
+    filter: brightness(1.08);
   }
 }

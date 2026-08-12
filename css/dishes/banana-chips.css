@@ -1,4 +1,4 @@
-/* ═══ Jalgaon Banana Chips — high-fidelity CSS platter (counter-scoped) ═══ */
+/* ═══ Jalgaon Banana Chips — photorealistic CSS platter (counter-scoped) ═══ */
 
 .banana-chips-art {
   position: relative;
@@ -11,34 +11,71 @@
   flex-shrink: 0;
 }
 
+/* ── Linen tablecloth with woven fiber + warm vignette ── */
 .banana-chips-art .linen-tablecloth {
   position: relative;
   width: 760px;
   height: 760px;
-  background: #bfb096;
+  background-color: #c4b59a;
   background-image:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
-    linear-gradient(90deg, transparent 3px, rgba(122, 102, 78, 0.06) 4px, transparent 5px);
-  background-size: 4px 4px, 4px 4px, 6px 6px, 12px 12px;
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35);
+    radial-gradient(ellipse at 42% 38%, rgba(255, 248, 230, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 75%, rgba(90, 60, 30, 0.18) 0%, transparent 50%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, transparent 3px, rgba(122, 102, 78, 0.07) 4px, transparent 5px),
+    repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 3px,
+      rgba(140, 118, 88, 0.04) 3px,
+      rgba(140, 118, 88, 0.04) 4px
+    );
+  background-size:
+    100% 100%,
+    100% 100%,
+    3px 3px,
+    3px 3px,
+    5px 5px,
+    11px 11px,
+    8px 8px;
+  box-shadow:
+    inset 0 0 140px rgba(40, 22, 8, 0.45),
+    inset 0 0 40px rgba(255, 240, 200, 0.12);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
+.banana-chips-art .cloth-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 48%, transparent 35%, rgba(20, 10, 4, 0.28) 100%);
+  z-index: 1;
+}
+
+/* ── Turned walnut bowl ── */
 .banana-chips-art .wooden-bowl {
   position: relative;
   width: 450px;
   height: 450px;
   border-radius: 50%;
-  background: #452818;
-  border: 15px solid #331b0e;
-  border-top-color: #4f311d;
+  background:
+    radial-gradient(ellipse at 36% 32%, #6b4024 0%, #4a2a16 38%, #2e170c 72%, #1a0c06 100%);
+  border: 16px solid #2a150c;
+  border-top-color: #5a3820;
+  border-left-color: #3d2414;
+  border-right-color: #241208;
+  border-bottom-color: #180c06;
   box-shadow:
-    inset 0 12px 35px rgba(0, 0, 0, 0.9),
-    25px 45px 65px rgba(0, 0, 0, 0.5);
+    inset 0 14px 40px rgba(0, 0, 0, 0.92),
+    inset 0 -8px 20px rgba(80, 45, 20, 0.25),
+    22px 42px 70px rgba(0, 0, 0, 0.55),
+    8px 16px 28px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(90, 55, 30, 0.4);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,19 +86,60 @@
 
 .banana-chips-art .bowl-wood-grain {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 50%;
-  background: radial-gradient(ellipse at 38% 38%, transparent 58%, rgba(28, 12, 4, 0.3) 92%);
   pointer-events: none;
+  background:
+    repeating-radial-gradient(
+      ellipse 90% 70% at 48% 50%,
+      transparent 0,
+      transparent 7px,
+      rgba(20, 8, 2, 0.14) 8px,
+      transparent 9px
+    ),
+    repeating-conic-gradient(
+      from 12deg at 50% 50%,
+      rgba(90, 50, 22, 0.08) 0deg 2deg,
+      transparent 2deg 8deg
+    ),
+    radial-gradient(ellipse at 38% 36%, transparent 55%, rgba(18, 8, 2, 0.45) 95%);
+  opacity: 0.95;
+}
+
+.banana-chips-art .bowl-lathe-rings {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(120, 75, 40, 0.18),
+    inset 0 0 0 10px transparent,
+    inset 0 0 0 11px rgba(30, 12, 4, 0.12),
+    inset 0 0 0 22px transparent,
+    inset 0 0 0 23px rgba(100, 60, 30, 0.1);
+  z-index: 2;
+}
+
+.banana-chips-art .bowl-highlight {
+  position: absolute;
+  width: 42%;
+  height: 28%;
+  top: 8%;
+  left: 18%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 220, 160, 0.22) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 3;
+  filter: blur(2px);
 }
 
 .banana-chips-art .inner-shadow-rim {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   border-radius: 50%;
-  box-shadow: inset 6px 18px 38px rgba(0, 0, 0, 0.7);
+  box-shadow:
+    inset 8px 20px 42px rgba(0, 0, 0, 0.78),
+    inset -4px -6px 18px rgba(60, 35, 15, 0.2);
   pointer-events: none;
   z-index: 85;
 }
@@ -72,72 +150,230 @@
   height: 97%;
 }
 
+/* ════════════════════════════════════════════════════════
+   BANANA COIN — oil-fried nendran chip engine
+   ════════════════════════════════════════════════════════ */
 .banana-chips-art .banana-coin {
   position: absolute;
-  background: radial-gradient(circle at 45% 45%, #ffd447 0%, #ebb91e 52%, #cf9c11 80%, #a67b02 100%);
-  box-shadow: 3px 5px 12px rgba(0, 0, 0, 0.45);
+  /* Warm translucent fried flesh → caramel rim */
+  background:
+    radial-gradient(ellipse 70% 65% at 42% 40%, #ffe07a 0%, #f0c43a 28%, #e0a818 55%, #c48a0c 78%, #8f5e08 100%);
+  box-shadow:
+    3px 5px 10px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(255, 220, 120, 0.35),
+    inset 0 -3px 6px rgba(90, 40, 0, 0.18),
+    inset 2px 2px 5px rgba(255, 250, 210, 0.25);
   overflow: hidden;
-  border: 1px solid #b38b10;
+  border: 1.5px solid #a87810;
   transition: filter 0.35s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  isolation: isolate;
 }
 
+/* Soft cellular pith (starch core) */
 .banana-chips-art .pith-center {
   position: absolute;
-  width: 46%;
-  height: 46%;
-  top: 27%;
-  left: 27%;
-  background: radial-gradient(circle, #fdf4c6 8%, rgba(232, 187, 32, 0.65) 50%, transparent 72%);
+  width: 48%;
+  height: 48%;
+  top: 26%;
+  left: 26%;
   border-radius: 50%;
-  background-image: repeating-radial-gradient(circle at 50% 50%, transparent, transparent 3px, #cc9a0e 4px, transparent 5px);
-  opacity: 0.88;
+  background:
+    radial-gradient(circle at 48% 48%, #fff6d0 0%, #f5e09a 35%, rgba(232, 187, 40, 0.55) 62%, transparent 78%);
+  opacity: 0.95;
+  z-index: 2;
 }
 
+.banana-chips-art .pith-center::before {
+  content: "";
+  position: absolute;
+  inset: 8%;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at 50% 50%,
+    transparent 0,
+    transparent 2.5px,
+    rgba(180, 130, 20, 0.22) 3px,
+    transparent 3.5px
+  );
+  opacity: 0.7;
+}
+
+/* Classic 3-lobe plantain seed star */
+.banana-chips-art .seed-star {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background:
+    conic-gradient(
+      from -30deg at 50% 50%,
+      transparent 0deg 40deg,
+      rgba(140, 90, 10, 0.45) 40deg 55deg,
+      transparent 55deg 160deg,
+      rgba(140, 90, 10, 0.45) 160deg 175deg,
+      transparent 175deg 280deg,
+      rgba(140, 90, 10, 0.45) 280deg 295deg,
+      transparent 295deg 360deg
+    );
+  opacity: 0.85;
+  z-index: 3;
+  filter: blur(0.3px);
+}
+
+.banana-chips-art .seed-star::before {
+  content: "";
+  position: absolute;
+  width: 14%;
+  height: 14%;
+  top: 43%;
+  left: 43%;
+  border-radius: 50%;
+  background: radial-gradient(circle, #c9a028 0%, #8a6010 70%, transparent 100%);
+  box-shadow:
+    0 -18px 0 -1px rgba(150, 95, 12, 0.35),
+    16px 10px 0 -1px rgba(150, 95, 12, 0.32),
+    -16px 10px 0 -1px rgba(150, 95, 12, 0.32);
+}
+
+/* Micro starch / fiber pores */
 .banana-chips-art .fiber-grain {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background-image: repeating-radial-gradient(circle at 44% 44%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 2px, transparent 3px, transparent 5px);
-  opacity: 0.85;
+  inset: 0;
+  z-index: 4;
+  background-image:
+    radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.14) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 62% 48%, rgba(255, 255, 255, 0.1) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 48% 68%, rgba(160, 100, 20, 0.12) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.08) 0 0.8px, transparent 1.2px),
+    radial-gradient(circle at 22% 60%, rgba(120, 70, 10, 0.1) 0 1px, transparent 1.4px),
+    repeating-radial-gradient(
+      circle at 44% 44%,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.06) 1.5px,
+      transparent 2px,
+      transparent 4.5px
+    );
+  opacity: 0.9;
+  mix-blend-mode: soft-light;
+}
+
+/* Thin oil film — fried sheen */
+.banana-chips-art .oil-film {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background:
+    linear-gradient(
+      125deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      transparent 28%,
+      transparent 55%,
+      rgba(180, 100, 20, 0.12) 78%,
+      transparent 100%
+    ),
+    radial-gradient(ellipse 50% 40% at 35% 30%, rgba(255, 250, 220, 0.35) 0%, transparent 60%);
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+}
+
+/* Caramelized crisp perimeter ring */
+.banana-chips-art .crisp-rim {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  border-radius: inherit;
+  box-shadow:
+    inset 0 0 0 3px rgba(130, 70, 8, 0.22),
+    inset 0 0 8px 2px rgba(90, 40, 0, 0.2),
+    inset 4px 0 6px rgba(110, 50, 0, 0.18),
+    inset -3px 2px 5px rgba(160, 90, 10, 0.15);
+  pointer-events: none;
+}
+
+/* Fine salt flecks */
+.banana-chips-art .salt-dust {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 22% 28%, #fff 0 0.7px, transparent 1px),
+    radial-gradient(circle at 58% 22%, rgba(255, 255, 255, 0.9) 0 0.6px, transparent 1px),
+    radial-gradient(circle at 74% 48%, #fff 0 0.5px, transparent 0.9px),
+    radial-gradient(circle at 38% 62%, rgba(255, 255, 255, 0.85) 0 0.65px, transparent 1px),
+    radial-gradient(circle at 65% 72%, #fff 0 0.55px, transparent 0.95px),
+    radial-gradient(circle at 18% 55%, rgba(255, 255, 255, 0.7) 0 0.5px, transparent 0.9px),
+    radial-gradient(circle at 48% 38%, #fff 0 0.45px, transparent 0.85px);
+  opacity: 0.75;
 }
 
 .banana-chips-art .toasted-lip {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
+  z-index: 8;
   box-shadow:
-    inset 3px 0 4px rgba(110, 58, 4, 0.3),
-    inset -3px 0 4px rgba(110, 58, 4, 0.3),
-    inset 0 3px 4px rgba(110, 58, 4, 0.2);
+    inset 4px 0 5px rgba(100, 48, 4, 0.35),
+    inset -4px 0 5px rgba(100, 48, 4, 0.32),
+    inset 0 4px 5px rgba(100, 48, 4, 0.25),
+    inset 0 -3px 4px rgba(160, 90, 10, 0.2);
+  pointer-events: none;
 }
 
 .banana-chips-art .sun-sheen {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, transparent 42%, rgba(0, 0, 0, 0.1) 75%, transparent 100%);
+  inset: 0;
+  z-index: 9;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.42) 0%,
+      rgba(255, 255, 255, 0.12) 18%,
+      transparent 40%,
+      rgba(0, 0, 0, 0.08) 72%,
+      transparent 100%
+    );
   pointer-events: none;
 }
 
-/* Layer matrix */
-.banana-chips-art .c-bg-1 { width: 92px; height: 88px; left: 50px; top: 15px; border-radius: 46% 52% 48% 50%; transform: rotate(12deg); z-index: 1; opacity: 0.72; }
-.banana-chips-art .c-bg-2 { width: 95px; height: 90px; right: 60px; top: 20px; border-radius: 51% 47% 53% 48%; transform: rotate(-38deg); z-index: 2; opacity: 0.72; }
-.banana-chips-art .c-bg-3 { width: 88px; height: 86px; left: 15px; top: 115px; border-radius: 48% 50% 52% 47%; transform: rotate(45deg); z-index: 3; opacity: 0.75; }
-.banana-chips-art .c-bg-4 { width: 94px; height: 91px; right: 20px; top: 125px; border-radius: 53% 45% 48% 52%; transform: rotate(-15deg); z-index: 4; opacity: 0.75; }
-.banana-chips-art .c-bg-5 { width: 90px; height: 90px; left: 160px; top: 5px; border-radius: 50% 48% 52% 50%; transform: rotate(70deg); z-index: 5; opacity: 0.78; }
+/* Tone variation — some chips toastier / paler */
+.banana-chips-art .c-bg-1,
+.banana-chips-art .c-bg-3,
+.banana-chips-art .c-mid-4,
+.banana-chips-art .c-spill-left {
+  filter: brightness(0.92) saturate(1.08) hue-rotate(-4deg);
+}
 
-.banana-chips-art .c-mid-1 { width: 96px; height: 92px; left: 110px; top: 45px; border-radius: 49% 51% 53% 47%; transform: rotate(6deg); z-index: 6; }
-.banana-chips-art .c-mid-2 { width: 91px; height: 89px; right: 115px; top: 60px; border-radius: 52% 48% 47% 51%; transform: rotate(40deg); z-index: 7; }
-.banana-chips-art .c-mid-3 { width: 98px; height: 94px; left: 50px; top: 175px; border-radius: 47% 54% 50% 48%; transform: rotate(-55deg); z-index: 8; }
-.banana-chips-art .c-mid-4 { width: 93px; height: 90px; right: 55px; top: 185px; border-radius: 50% 46% 52% 50%; transform: rotate(22deg); z-index: 9; }
-.banana-chips-art .c-mid-5 { width: 95px; height: 92px; left: 145px; top: 225px; border-radius: 52% 49% 47% 52%; transform: rotate(-20deg); z-index: 10; }
-.banana-chips-art .c-mid-6 { width: 92px; height: 88px; right: 140px; top: 10px; border-radius: 45% 52% 48% 50%; transform: rotate(-75deg); z-index: 11; }
+.banana-chips-art .c-bg-2,
+.banana-chips-art .c-mid-2,
+.banana-chips-art .c-mid-8,
+.banana-chips-art .loose-2 {
+  filter: brightness(1.06) saturate(0.95);
+}
 
-.banana-chips-art .c-mid-7  { width: 94px; height: 90px; left: 30px; top: 85px; border-radius: 50% 50% 46% 54%; transform: rotate(65deg); z-index: 16; }
-.banana-chips-art .c-mid-8  { width: 96px; height: 92px; right: 25px; top: 95px; transform: rotate(-42deg); border-radius: 48% 52% 50% 48%; z-index: 17; }
-.banana-chips-art .c-mid-9  { width: 100px; height: 95px; left: 100px; top: 105px; border-radius: 53% 47% 51% 50%; transform: rotate(18deg); z-index: 18; }
-.banana-chips-art .c-mid-10 { width: 93px; height: 89px; right: 90px; top: 135px; border-radius: 46% 54% 48% 52%; transform: rotate(-28deg); z-index: 19; }
-.banana-chips-art .c-mid-11 { width: 98px; height: 94px; left: 120px; top: 165px; border-radius: 51% 49% 53% 47%; transform: rotate(32deg); z-index: 20; }
+.banana-chips-art .c-mid-5,
+.banana-chips-art .c-spill-front,
+.banana-chips-art .c-fg-right-edge {
+  filter: brightness(0.88) saturate(1.12) contrast(1.05);
+}
+
+/* ── Layer matrix (positions) ── */
+.banana-chips-art .c-bg-1 { width: 92px; height: 88px; left: 50px; top: 15px; border-radius: 46% 52% 48% 50% / 50% 48% 52% 50%; transform: rotate(12deg); z-index: 1; opacity: 0.78; }
+.banana-chips-art .c-bg-2 { width: 95px; height: 90px; right: 60px; top: 20px; border-radius: 51% 47% 53% 48% / 49% 52% 48% 51%; transform: rotate(-38deg); z-index: 2; opacity: 0.78; }
+.banana-chips-art .c-bg-3 { width: 88px; height: 86px; left: 15px; top: 115px; border-radius: 48% 50% 52% 47% / 51% 49% 50% 50%; transform: rotate(45deg); z-index: 3; opacity: 0.8; }
+.banana-chips-art .c-bg-4 { width: 94px; height: 91px; right: 20px; top: 125px; border-radius: 53% 45% 48% 52% / 48% 52% 48% 52%; transform: rotate(-15deg); z-index: 4; opacity: 0.8; }
+.banana-chips-art .c-bg-5 { width: 90px; height: 90px; left: 160px; top: 5px; border-radius: 50% 48% 52% 50% / 52% 48% 52% 48%; transform: rotate(70deg); z-index: 5; opacity: 0.82; }
+
+.banana-chips-art .c-mid-1 { width: 96px; height: 92px; left: 110px; top: 45px; border-radius: 49% 51% 53% 47% / 50% 50% 48% 52%; transform: rotate(6deg); z-index: 6; }
+.banana-chips-art .c-mid-2 { width: 91px; height: 89px; right: 115px; top: 60px; border-radius: 52% 48% 47% 51% / 49% 51% 49% 51%; transform: rotate(40deg); z-index: 7; }
+.banana-chips-art .c-mid-3 { width: 98px; height: 94px; left: 50px; top: 175px; border-radius: 47% 54% 50% 48% / 52% 48% 52% 48%; transform: rotate(-55deg); z-index: 8; }
+.banana-chips-art .c-mid-4 { width: 93px; height: 90px; right: 55px; top: 185px; border-radius: 50% 46% 52% 50% / 48% 52% 48% 52%; transform: rotate(22deg); z-index: 9; }
+.banana-chips-art .c-mid-5 { width: 95px; height: 92px; left: 145px; top: 225px; border-radius: 52% 49% 47% 52% / 50% 50% 50% 50%; transform: rotate(-20deg); z-index: 10; }
+.banana-chips-art .c-mid-6 { width: 92px; height: 88px; right: 140px; top: 10px; border-radius: 45% 52% 48% 50% / 51% 49% 51% 49%; transform: rotate(-75deg); z-index: 11; }
+
+.banana-chips-art .c-mid-7  { width: 94px; height: 90px; left: 30px; top: 85px; border-radius: 50% 50% 46% 54% / 48% 52% 48% 52%; transform: rotate(65deg); z-index: 16; }
+.banana-chips-art .c-mid-8  { width: 96px; height: 92px; right: 25px; top: 95px; transform: rotate(-42deg); border-radius: 48% 52% 50% 48% / 52% 48% 52% 48%; z-index: 17; }
+.banana-chips-art .c-mid-9  { width: 100px; height: 95px; left: 100px; top: 105px; border-radius: 53% 47% 51% 50% / 49% 51% 49% 51%; transform: rotate(18deg); z-index: 18; }
+.banana-chips-art .c-mid-10 { width: 93px; height: 89px; right: 90px; top: 135px; border-radius: 46% 54% 48% 52% / 50% 48% 52% 50%; transform: rotate(-28deg); z-index: 19; }
+.banana-chips-art .c-mid-11 { width: 98px; height: 94px; left: 120px; top: 165px; border-radius: 51% 49% 53% 47% / 48% 52% 48% 52%; transform: rotate(32deg); z-index: 20; }
 
 .banana-chips-art .c-fg-center-main {
   width: 106px;
@@ -146,9 +382,13 @@
   top: 130px;
   border-radius: 51% 49% 52% 48% / 53% 47% 53% 48%;
   z-index: 45;
-  box-shadow: 4px 12px 20px rgba(0, 0, 0, 0.5);
-  border: 1px solid #e1b424;
+  box-shadow:
+    4px 12px 22px rgba(0, 0, 0, 0.52),
+    inset 0 0 0 1px rgba(255, 230, 140, 0.45),
+    inset 0 -4px 8px rgba(100, 50, 0, 0.2);
+  border: 1.5px solid #e1b424;
   cursor: pointer;
+  filter: brightness(1.05) saturate(1.08);
 }
 
 .banana-chips-art .c-fg-left-tilt {
@@ -156,10 +396,10 @@
   height: 94px;
   left: 80px;
   top: 110px;
-  border-radius: 48% 52% 50% 50%;
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
   transform: rotate(-24deg);
   z-index: 38;
-  box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.42);
+  box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.44);
 }
 
 .banana-chips-art .c-fg-bottom-prominent {
@@ -167,11 +407,14 @@
   height: 100px;
   left: 195px;
   top: 195px;
-  border-radius: 50% 50% 46% 54%;
+  border-radius: 50% 50% 46% 54% / 48% 52% 48% 52%;
   transform: rotate(10deg);
   z-index: 50;
-  box-shadow: 5px 14px 24px rgba(0, 0, 0, 0.55);
-  border: 1px solid #e6ba29;
+  box-shadow:
+    5px 14px 26px rgba(0, 0, 0, 0.58),
+    inset 0 0 0 1px rgba(255, 230, 140, 0.4);
+  border: 1.5px solid #e6ba29;
+  filter: brightness(1.04) contrast(1.04);
 }
 
 .banana-chips-art .c-fg-right-edge {
@@ -179,7 +422,7 @@
   height: 92px;
   right: 45px;
   top: 145px;
-  border-radius: 52% 48% 50% 50%;
+  border-radius: 52% 48% 50% 50% / 49% 51% 49% 51%;
   transform: rotate(52deg);
   z-index: 34;
   box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.5);
@@ -190,27 +433,82 @@
   height: 96px;
   left: 185px;
   top: 55px;
-  border-radius: 47% 53% 49% 51%;
+  border-radius: 47% 53% 49% 51% / 51% 49% 51% 49%;
   transform: rotate(-12deg);
   z-index: 40;
 }
 
-.banana-chips-art .c-spill-left { width: 90px; height: 86px; left: -15px; bottom: 140px; transform: rotate(-65deg); border-radius: 46% 54% 50% 50%; z-index: 60; box-shadow: -4px 8px 15px rgba(0, 0, 0, 0.5); }
-.banana-chips-art .c-spill-right { width: 92px; height: 88px; right: -10px; bottom: 130px; transform: rotate(70deg); border-radius: 52% 48% 50% 50%; z-index: 60; box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.5); }
-.banana-chips-art .c-spill-front { width: 94px; height: 90px; left: 110px; bottom: -10px; transform: rotate(15deg); border-radius: 50% 50% 45% 55%; z-index: 60; box-shadow: 0 10px 18px rgba(0, 0, 0, 0.55); }
-.banana-chips-art .c-spill-top-rim { width: 88px; height: 85px; left: 160px; top: -15px; transform: rotate(-40deg); border-radius: 48% 52% 50% 48%; z-index: 60; box-shadow: 0 -5px 12px rgba(0, 0, 0, 0.3); }
+.banana-chips-art .c-spill-left {
+  width: 90px;
+  height: 86px;
+  left: -15px;
+  bottom: 140px;
+  transform: rotate(-65deg);
+  border-radius: 46% 54% 50% 50% / 50% 48% 52% 50%;
+  z-index: 60;
+  box-shadow: -4px 8px 16px rgba(0, 0, 0, 0.52);
+}
+.banana-chips-art .c-spill-right {
+  width: 92px;
+  height: 88px;
+  right: -10px;
+  bottom: 130px;
+  transform: rotate(70deg);
+  border-radius: 52% 48% 50% 50% / 48% 52% 48% 52%;
+  z-index: 60;
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.52);
+}
+.banana-chips-art .c-spill-front {
+  width: 94px;
+  height: 90px;
+  left: 110px;
+  bottom: -10px;
+  transform: rotate(15deg);
+  border-radius: 50% 50% 45% 55% / 52% 48% 52% 48%;
+  z-index: 60;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.58);
+}
+.banana-chips-art .c-spill-top-rim {
+  width: 88px;
+  height: 85px;
+  left: 160px;
+  top: -15px;
+  transform: rotate(-40deg);
+  border-radius: 48% 52% 50% 48% / 50% 50% 50% 50%;
+  z-index: 60;
+  box-shadow: 0 -5px 14px rgba(0, 0, 0, 0.32);
+}
 
-/* Side decorations */
+/* ════════════════════════════════════════════════════════
+   SIDE PROPS
+   ════════════════════════════════════════════════════════ */
+
+/* Salt bowl */
 .banana-chips-art .salt-bowl {
   position: absolute;
   left: 55px;
   top: 55px;
   width: 125px;
   height: 125px;
-  background: radial-gradient(circle at 40% 40%, #593924 0%, #382012 70%, #1c0e06 100%);
+  background:
+    radial-gradient(circle at 38% 35%, #6a4428 0%, #3d2212 55%, #1a0c06 100%);
   border-radius: 50%;
-  border: 6px solid #2b160b;
-  box-shadow: 8px 14px 22px rgba(0, 0, 0, 0.45);
+  border: 7px solid #2b160b;
+  box-shadow:
+    8px 14px 24px rgba(0, 0, 0, 0.48),
+    inset 0 4px 10px rgba(0, 0, 0, 0.55),
+    inset 0 -2px 6px rgba(90, 55, 30, 0.3);
+  pointer-events: none;
+  z-index: 8;
+}
+
+.banana-chips-art .salt-bowl-rim {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 0 2px rgba(100, 65, 35, 0.35),
+    inset 3px 5px 10px rgba(0, 0, 0, 0.4);
   pointer-events: none;
 }
 
@@ -220,34 +518,127 @@
   height: 76%;
   top: 12%;
   left: 12%;
-  background: radial-gradient(circle, #ffffff 45%, #e0e0e0 78%, transparent 85%);
   border-radius: 50%;
-  background-image:
-    radial-gradient(circle at 50% 50%, #fff 2px, transparent 3px),
-    radial-gradient(circle at 35% 65%, #fff 1.5px, transparent 2.5px);
-  background-size: 8px 8px;
+  background:
+    radial-gradient(circle at 45% 40%, #ffffff 0%, #f2f0ea 40%, #d8d4cc 72%, #b8b2a6 100%);
+  box-shadow:
+    inset 0 3px 8px rgba(255, 255, 255, 0.7),
+    inset 0 -4px 10px rgba(120, 110, 95, 0.35),
+    0 2px 4px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
 }
 
+.banana-chips-art .salt-crystals::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, #fff 0 1.8px, transparent 2.2px),
+    radial-gradient(circle at 45% 22%, #fff 0 1.4px, transparent 1.8px),
+    radial-gradient(circle at 68% 35%, rgba(255, 255, 255, 0.95) 0 1.6px, transparent 2px),
+    radial-gradient(circle at 35% 55%, #fff 0 1.2px, transparent 1.6px),
+    radial-gradient(circle at 58% 62%, #fff 0 1.5px, transparent 1.9px),
+    radial-gradient(circle at 78% 58%, rgba(255, 255, 255, 0.9) 0 1.1px, transparent 1.5px),
+    radial-gradient(circle at 28% 72%, #fff 0 1.3px, transparent 1.7px),
+    radial-gradient(circle at 52% 78%, #fff 0 1px, transparent 1.4px),
+    radial-gradient(circle at 15% 50%, rgba(240, 240, 235, 0.9) 0 1.2px, transparent 1.6px);
+  opacity: 0.95;
+}
+
+.banana-chips-art .salt-sparkle {
+  position: absolute;
+  width: 30%;
+  height: 22%;
+  top: 18%;
+  left: 28%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.65) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Green plantains */
 .banana-chips-art .banana-cluster {
   position: absolute;
   right: -25px;
   top: -25px;
-  width: 260px;
-  height: 210px;
+  width: 280px;
+  height: 230px;
   transform: rotate(-14deg);
-  opacity: 0.88;
+  opacity: 0.94;
   pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(6px 10px 14px rgba(0, 0, 0, 0.35));
 }
 
 .banana-chips-art .banana-fruit {
   position: absolute;
-  background: linear-gradient(to bottom, #7fa33b 0%, #597822 60%, #334710 100%);
+  background:
+    linear-gradient(
+      180deg,
+      #9bb84a 0%,
+      #7fa33b 22%,
+      #5f8528 55%,
+      #3d5c14 82%,
+      #2a400c 100%
+    );
   border-radius: 42% 42% 35% 35% / 22% 22% 78% 78%;
+  box-shadow:
+    inset 2px 0 6px rgba(255, 255, 200, 0.18),
+    inset -3px 0 8px rgba(20, 40, 5, 0.35),
+    2px 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
 }
 
-.banana-chips-art .b1 { width: 185px; height: 56px; top: 30px; right: 20px; transform: rotate(12deg); }
-.banana-chips-art .b2 { width: 195px; height: 62px; top: 75px; right: -10px; transform: rotate(6deg); }
+.banana-chips-art .banana-ridge {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, transparent 18%, rgba(0, 0, 0, 0.12) 22%, transparent 26%),
+    linear-gradient(90deg, transparent 48%, rgba(0, 0, 0, 0.1) 52%, transparent 56%),
+    linear-gradient(90deg, transparent 72%, rgba(0, 0, 0, 0.08) 76%, transparent 80%);
+  opacity: 0.85;
+}
 
+.banana-chips-art .banana-blush {
+  position: absolute;
+  width: 40%;
+  height: 55%;
+  top: 10%;
+  left: 12%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(200, 220, 100, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.banana-chips-art .banana-fruit::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(40, 55, 10, 0.55);
+  top: 35%;
+  left: 55%;
+  box-shadow:
+    12px 8px 0 -1px rgba(50, 60, 12, 0.4),
+    -8px 14px 0 -1.5px rgba(45, 55, 10, 0.35),
+    22px -4px 0 -2px rgba(60, 70, 15, 0.3);
+}
+
+.banana-chips-art .b1 { width: 185px; height: 56px; top: 30px; right: 20px; transform: rotate(12deg); z-index: 2; }
+.banana-chips-art .b2 { width: 195px; height: 62px; top: 75px; right: -10px; transform: rotate(6deg); z-index: 3; }
+.banana-chips-art .b3 {
+  width: 170px;
+  height: 50px;
+  top: 52px;
+  right: 40px;
+  transform: rotate(9deg);
+  z-index: 1;
+  filter: brightness(0.88);
+}
+
+/* Loose tabletop chips */
 .banana-chips-art .loose-chips-container {
   position: absolute;
   left: 45px;
@@ -255,12 +646,14 @@
   width: 210px;
   height: 210px;
   pointer-events: none;
+  z-index: 8;
 }
 
 .banana-chips-art .loose-1 { width: 78px; height: 75px; bottom: 85px; left: 10px; transform: rotate(22deg); z-index: 5; }
 .banana-chips-art .loose-2 { width: 80px; height: 77px; bottom: 15px; left: 45px; transform: rotate(-18deg); z-index: 6; }
 .banana-chips-art .loose-3 { width: 76px; height: 72px; bottom: 35px; left: -12px; transform: rotate(58deg); z-index: 4; }
 
+/* Vintage silver spoon */
 .banana-chips-art .vintage-spoon {
   position: absolute;
   right: 55px;
@@ -268,44 +661,69 @@
   width: 95px;
   height: 265px;
   transform: rotate(-36deg);
-  filter: drop-shadow(6px 10px 14px rgba(0, 0, 0, 0.38));
+  filter: drop-shadow(6px 10px 16px rgba(0, 0, 0, 0.42));
   cursor: pointer;
   transition: transform 0.4s var(--food-bezier-spring, cubic-bezier(0.34, 1.56, 0.64, 1));
+  z-index: 12;
 }
 
 .banana-chips-art .spoon-cup {
   width: 52px;
   height: 78px;
-  background: linear-gradient(135deg, #41423d 0%, #878983 35%, #a4a69c 45%, #52544e 80%, #1f201d 100%);
+  background:
+    radial-gradient(ellipse 70% 55% at 45% 40%, #b8bab0 0%, #878983 35%, #52544e 70%, #1f201d 100%);
   border-radius: 50% 50% 46% 46%;
   position: relative;
   overflow: hidden;
+  box-shadow:
+    inset 2px 4px 8px rgba(255, 255, 255, 0.2),
+    inset -3px -4px 10px rgba(0, 0, 0, 0.45);
 }
 
 .banana-chips-art .metal-shine {
   position: absolute;
-  width: 32%;
+  width: 34%;
   height: 100%;
-  left: 22%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.24), transparent);
+  left: 20%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.38), transparent);
   transform: skewX(-18deg);
+  z-index: 2;
+}
+
+.banana-chips-art .spoon-bowl-depth {
+  position: absolute;
+  inset: 18% 15% 22%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at 45% 40%, rgba(0, 0, 0, 0.35) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .banana-chips-art .spoon-neck {
   width: 12px;
   height: 22px;
-  background: linear-gradient(to right, #41423d, #7d7e78, #1f201d);
+  background: linear-gradient(to right, #2a2b26, #8a8c84, #3a3b36, #1a1b18);
   margin-left: 20px;
   margin-top: -2px;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15);
 }
 
 .banana-chips-art .spoon-stem {
   width: 10px;
   height: 175px;
-  background: linear-gradient(to right, #30312c 0%, #767771 40%, #8e9187 60%, #181917 100%);
+  background: linear-gradient(to right, #22231e 0%, #767771 35%, #9a9d93 55%, #4a4b45 78%, #141512 100%);
   margin-left: 21px;
   border-radius: 0 0 4px 4px;
   position: relative;
+}
+
+.banana-chips-art .stem-bevel {
+  position: absolute;
+  left: 2px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.25), transparent 40%, rgba(255, 255, 255, 0.08));
+  pointer-events: none;
 }
 
 .banana-chips-art .filigree-carving {
@@ -314,19 +732,35 @@
   left: 1.5px;
   width: 7px;
   height: 68px;
-  background-image: repeating-linear-gradient(0deg, #111, #111 2px, transparent 2px, transparent 5px);
-  opacity: 0.88;
+  background-image:
+    repeating-linear-gradient(0deg, #0a0a08 0, #0a0a08 1.5px, transparent 1.5px, transparent 5px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(20, 20, 18, 0.5) 2px, transparent 3px);
+  opacity: 0.9;
 }
 
+/* Chili / masala dish */
 .banana-chips-art .chili-dish {
   position: absolute;
   right: 30px;
   bottom: 30px;
   width: 90px;
   height: 90px;
-  background: radial-gradient(circle at 40% 40%, #ded5c3 0%, #b2a894 70%, #7c7260 100%);
+  background:
+    radial-gradient(circle at 38% 35%, #e8dfcc 0%, #b8ae98 55%, #6e6454 100%);
   border-radius: 50%;
-  box-shadow: 4px 7px 14px rgba(0, 0, 0, 0.32);
+  box-shadow:
+    4px 8px 16px rgba(0, 0, 0, 0.38),
+    inset 0 3px 6px rgba(255, 255, 255, 0.25),
+    inset 0 -3px 8px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 11;
+}
+
+.banana-chips-art .chili-dish-rim {
+  position: absolute;
+  inset: 5%;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px rgba(90, 80, 60, 0.25);
   pointer-events: none;
 }
 
@@ -336,14 +770,37 @@
   height: 78%;
   top: 11%;
   left: 11%;
-  background: radial-gradient(circle, #aa2509 50%, #6b1201 92%);
+  background:
+    radial-gradient(circle at 42% 38%, #d43818 0%, #aa2509 45%, #6b1201 85%, #3a0800 100%);
   border-radius: 50%;
+  box-shadow:
+    inset 0 3px 8px rgba(255, 120, 60, 0.25),
+    inset 0 -4px 10px rgba(40, 5, 0, 0.45);
+  overflow: hidden;
 }
 
-/* Hovers */
+.banana-chips-art .masala-grain {
+  position: absolute;
+  width: 78%;
+  height: 78%;
+  top: 11%;
+  left: 11%;
+  border-radius: 50%;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 30% 35%, rgba(255, 180, 80, 0.35) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 55% 28%, rgba(80, 10, 0, 0.4) 0 1.2px, transparent 1.6px),
+    radial-gradient(circle at 70% 50%, rgba(255, 140, 60, 0.3) 0 0.9px, transparent 1.3px),
+    radial-gradient(circle at 40% 65%, rgba(60, 8, 0, 0.35) 0 1.1px, transparent 1.5px),
+    radial-gradient(circle at 22% 55%, rgba(200, 80, 30, 0.3) 0 0.8px, transparent 1.2px),
+    radial-gradient(circle at 60% 70%, rgba(255, 160, 70, 0.25) 0 1px, transparent 1.4px);
+  opacity: 0.9;
+}
+
+/* ── Hovers ── */
 .banana-chips-art .wooden-bowl:hover .banana-coin,
 .order-card--banana-chips .banana-chips-art .wooden-bowl:hover .banana-coin {
-  filter: brightness(1.04) contrast(1.03);
+  filter: brightness(1.06) contrast(1.04) saturate(1.05);
 }
 
 .banana-chips-art .wooden-bowl:hover,
@@ -353,9 +810,12 @@
 
 .banana-chips-art .c-fg-center-main:hover,
 .order-card--banana-chips .banana-chips-art .c-fg-center-main:hover {
-  transform: scale(1.06) translateY(-4px);
-  box-shadow: 8px 18px 28px rgba(0, 0, 0, 0.6);
+  transform: scale(1.07) translateY(-5px);
+  box-shadow:
+    8px 18px 30px rgba(0, 0, 0, 0.62),
+    inset 0 0 0 1px rgba(255, 240, 160, 0.55);
   z-index: 70;
+  filter: brightness(1.1) saturate(1.12);
 }
 
 .banana-chips-art .vintage-spoon:hover,

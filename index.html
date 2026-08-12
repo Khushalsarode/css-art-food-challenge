@@ -8,25 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta
       name="description"
-      content="Tapri Central — CSS Art Comfort Food. A street kitchen order counter showcasing eight hyper-real Indian comfort dishes sculpted in pure CSS. DEV Frontend Challenge submission."
+      content="Nukkad Chat Corner — CSS Art Comfort Food. Eight Indian street-kitchen plates sculpted in pure CSS. Warm night tapri atmosphere, comforting stories, zero photographs. DEV Frontend Challenge submission."
     />
-    <meta name="author" content="Tapri Central" />
+    <meta name="author" content="Nukkad Chat Corner" />
     <meta name="keywords" content="CSS art, comfort food, Indian street food, tapri, chai, DEV challenge, vada pav, masala chai, pani puri, idli, dosa" />
     <meta name="theme-color" content="#0a0806" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Tapri Central" />
-    <meta property="og:title" content="Tapri Central — CSS Art Comfort Food Counter" />
-    <meta property="og:description" content="Street kitchen order counter · eight comfort foods · pure CSS art · zero photographs." />
+    <meta property="og:site_name" content="Nukkad Chat Corner" />
+    <meta property="og:title" content="Nukkad Chat Corner — Comfort Food Sculpted in CSS" />
+    <meta property="og:description" content="Eight comfort plates · pure CSS art · night tapri atmosphere · zero photographs." />
     <meta property="og:image" content="og-cover.svg" />
     <meta property="og:locale" content="en_IN" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Tapri Central — CSS Art Comfort Food" />
-    <meta name="twitter:description" content="Eight comfort foods sculpted in pure CSS on a street kitchen order counter." />
+    <meta name="twitter:title" content="Nukkad Chat Corner — Comfort Food Sculpted in CSS" />
+    <meta name="twitter:description" content="Eight comfort foods sculpted in pure CSS — hover plates, open a bigger view, feel the tapri." />
     <meta name="twitter:image" content="og-cover.svg" />
-    <title>Tapri Central — CSS Art Comfort Food</title>
+    <title>Nukkad Chat Corner — Comfort Food Sculpted in CSS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="sitemap.xml" />
+    <link rel="preload" as="style" href="css/scene.css" />
+    <link rel="preload" as="style" href="css/counter-app.css" />
     <link
       rel="preload"
       as="style"
@@ -50,21 +52,59 @@
     <link rel="stylesheet" href="css/tapri-lighting.css" />
     <link rel="stylesheet" href="css/ambient-warmth.css" />
     <link rel="stylesheet" href="css/dishes/food-3d-primitives.css" />
-    <link rel="stylesheet" href="css/dishes/vada-pav.css" />
     <link rel="stylesheet" href="css/dishes/chai.css" />
-    <link rel="stylesheet" href="css/dishes/pani-puri.css" />
-    <link rel="stylesheet" href="css/dishes/idli.css" />
-    <link rel="stylesheet" href="css/dishes/dosa.css" />
-    <link rel="stylesheet" href="css/dishes/poha.css" />
-    <link rel="stylesheet" href="css/dishes/misal-pav.css" />
-    <link rel="stylesheet" href="css/dishes/banana-chips.css" />
+    <link rel="stylesheet" href="css/dishes/vada-pav.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/pani-puri.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/idli.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/dosa.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/poha.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/misal-pav.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="css/dishes/banana-chips.css" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="css/dishes/food-3d-primitives.css" />
+      <link rel="stylesheet" href="css/dishes/vada-pav.css" />
+      <link rel="stylesheet" href="css/dishes/chai.css" />
+      <link rel="stylesheet" href="css/dishes/pani-puri.css" />
+      <link rel="stylesheet" href="css/dishes/idli.css" />
+      <link rel="stylesheet" href="css/dishes/dosa.css" />
+      <link rel="stylesheet" href="css/dishes/poha.css" />
+      <link rel="stylesheet" href="css/dishes/misal-pav.css" />
+      <link rel="stylesheet" href="css/dishes/banana-chips.css" />
+    </noscript>
     <link rel="stylesheet" href="css/food-item-interactions.css" />
     <link rel="stylesheet" href="css/dish-modal.css" />
     <link rel="stylesheet" href="css/responsive.css" />
     <link rel="stylesheet" href="css/performance.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.css" />
+    <link rel="stylesheet" href="css/scroll-theater.css" />
+    <link rel="stylesheet" href="css/landing.css" />
   </head>
-  <body class="counter-app">
+  <body class="counter-app landing-app">
+    <input type="checkbox" id="welcome-dismiss" class="welcome-dismiss-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-none" class="plate-toggle" checked tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-vada-pav" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-chai" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-pani-puri" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-idli" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-dosa" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-poha" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-misal-pav" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+    <input type="radio" name="plate-modal" id="plate-banana-chips" class="plate-toggle" tabindex="-1" aria-hidden="true" />
+
+    <div class="welcome-curtain" id="welcome-curtain" role="dialog" aria-modal="true" aria-labelledby="welcome-curtain-title" aria-describedby="welcome-curtain-line">
+      <div class="welcome-curtain__stage">
+        <div class="welcome-curtain__kulhad" aria-hidden="true">
+          <span class="welcome-curtain__steam"></span>
+          <span class="welcome-curtain__steam welcome-curtain__steam--2"></span>
+          <span class="welcome-curtain__steam welcome-curtain__steam--3"></span>
+          <span class="welcome-curtain__cup"></span>
+          <span class="welcome-curtain__saucer"></span>
+        </div>
+        <p class="welcome-curtain__script">नुक्कड़ चैट कॉर्नर</p>
+        <h2 class="welcome-curtain__title" id="welcome-curtain-title">Nukkad Chat Corner</h2>
+        <p class="welcome-curtain__line" id="welcome-curtain-line">Arre bhai, cutting chai garam hai…</p>
+        <label class="welcome-curtain__skip" for="welcome-dismiss">Enter the tapri</label>
+      </div>
+    </div>
     <div class="app-night-shell">
       <div class="app-night-shell__fx" aria-hidden="true">
         <div class="page-night-sky"></div>
@@ -93,7 +133,18 @@
           <div class="tapri-light-pool tapri-light-pool--b"></div>
           <div class="tapri-light-pool tapri-light-pool--c"></div>
         </div>
-        <div class="page-bokeh-field" id="page-bokeh-field"></div>
+        <div class="page-bokeh-field" id="page-bokeh-field" aria-hidden="true">
+          <span class="page-bokeh-orb" style="left:8%;top:12%;--bokeh-size:14px;--drift-dur:6.2s;--drift-delay:0.2s;--bokeh-op:0.22"></span>
+          <span class="page-bokeh-orb" style="left:22%;top:68%;--bokeh-size:10px;--drift-dur:7.1s;--drift-delay:1.1s;--bokeh-op:0.18"></span>
+          <span class="page-bokeh-orb" style="left:38%;top:24%;--bokeh-size:18px;--drift-dur:8s;--drift-delay:0.6s;--bokeh-op:0.16"></span>
+          <span class="page-bokeh-orb" style="left:54%;top:78%;--bokeh-size:12px;--drift-dur:5.8s;--drift-delay:2s;--bokeh-op:0.24"></span>
+          <span class="page-bokeh-orb" style="left:66%;top:18%;--bokeh-size:9px;--drift-dur:6.7s;--drift-delay:0.9s;--bokeh-op:0.2"></span>
+          <span class="page-bokeh-orb" style="left:78%;top:52%;--bokeh-size:16px;--drift-dur:7.4s;--drift-delay:1.6s;--bokeh-op:0.15"></span>
+          <span class="page-bokeh-orb" style="left:88%;top:34%;--bokeh-size:11px;--drift-dur:5.5s;--drift-delay:0.4s;--bokeh-op:0.21"></span>
+          <span class="page-bokeh-orb" style="left:14%;top:42%;--bokeh-size:13px;--drift-dur:6.9s;--drift-delay:2.4s;--bokeh-op:0.17"></span>
+          <span class="page-bokeh-orb" style="left:46%;top:58%;--bokeh-size:8px;--drift-dur:7.8s;--drift-delay:1.3s;--bokeh-op:0.19"></span>
+          <span class="page-bokeh-orb" style="left:72%;top:84%;--bokeh-size:15px;--drift-dur:6.4s;--drift-delay:0.7s;--bokeh-op:0.14"></span>
+        </div>
         <div class="steam-mote-field" aria-hidden="true">
           <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
           <span class="steam-mote"></span><span class="steam-mote"></span><span class="steam-mote"></span>
@@ -116,74 +167,137 @@
       </div>
 
       <div class="app-stage">
-    <a class="skip-link" href="#artwork">Skip to counter</a>
+    <a class="skip-link" href="#plates">Skip to plates</a>
 
     <header class="app-header">
-      <a class="app-brand-link" href="index.html">
+      <a class="app-brand-link" href="#top">
         <img class="app-logo" src="logo.svg" width="36" height="36" alt="" aria-hidden="true" />
         <span class="ui-vrule ui-vrule--brand" aria-hidden="true"></span>
         <div class="app-brand-text">
-          <p class="app-brand-script">टपरी सेंट्रल</p>
-          <h1>Tapri Central</h1>
-          <p class="app-brand-tagline">Street Kitchen · Comfort Food · Order Counter</p>
+          <p class="app-brand-script">नुक्कड़ चैट कॉर्नर</p>
+          <p class="app-brand-title">Nukkad Chat Corner</p>
         </div>
       </a>
       <span class="ui-vrule ui-vrule--header" aria-hidden="true"></span>
       <nav class="app-nav" aria-label="Site navigation">
-        <a class="app-nav-link" href="welcome.html">Welcome</a>
-        <a class="app-nav-link app-nav-link--active" href="index.html" aria-current="page">Counter</a>
+        <a class="app-nav-link" href="#story">Story</a>
+        <a class="app-nav-link" href="#plates">Plates</a>
         <a class="app-nav-link" href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge</a>
-        <span class="app-nav-pill app-nav-pill--live"><span class="live-dot" aria-hidden="true"></span> Live</span>
-        <time class="app-clock" id="live-clock" datetime="">--:--</time>
       </nav>
     </header>
 
-    <div class="stats-bar" aria-label="Tonight's stats">
-      <div class="stat-card">
-        <p class="stat-label">Orders Tonight</p>
-        <p class="stat-value stat-value--accent" id="stat-orders">47</p>
-      </div>
-      <div class="stat-card">
-        <p class="stat-label">Menu Items</p>
-        <p class="stat-value">8</p>
-      </div>
-      <div class="stat-card">
-        <p class="stat-label">Technique</p>
-        <p class="stat-value">CSS Art</p>
-      </div>
-      <div class="stat-card">
-        <p class="stat-label">Now Serving</p>
-        <p class="stat-value stat-value--serving" id="stat-serving" aria-live="polite">#049 · Masala Chai</p>
-      </div>
-    </div>
-
-    <hr class="ui-hrule ui-hrule--page" aria-hidden="true" />
-
-    <div class="app-shell">
-      <aside class="order-sidebar" aria-label="Order queue">
-        <h2 class="sidebar-title ui-section-label">
-          <span class="ui-hrule" aria-hidden="true"></span>
-          <span>Active Queue</span>
-          <span class="ui-hrule" aria-hidden="true"></span>
-        </h2>
-        <ol class="queue-list" data-lenis-prevent>
-          <li class="queue-item" data-dish="vada-pav" data-order-num="#048"><span class="queue-num">#048</span><span class="queue-name">Vada Pav ×2</span><span class="queue-status">Hot</span></li>
-          <li class="queue-item queue-item--active" data-dish="chai" data-order-num="#049"><span class="queue-num">#049</span><span class="queue-name">Masala Chai</span><span class="queue-status">Ready</span></li>
-          <li class="queue-item" data-dish="pani-puri" data-order-num="#050"><span class="queue-num">#050</span><span class="queue-name">Pani Puri ×6</span><span class="queue-status">Fresh</span></li>
-          <li class="queue-item" data-dish="idli" data-order-num="#051"><span class="queue-num">#051</span><span class="queue-name">Idli Platter</span><span class="queue-status">Hot</span></li>
-          <li class="queue-item" data-dish="dosa" data-order-num="#052"><span class="queue-num">#052</span><span class="queue-name">Paneer Dosa</span><span class="queue-status">Ready</span></li>
-          <li class="queue-item" data-dish="poha" data-order-num="#053"><span class="queue-num">#053</span><span class="queue-name">Indori Poha</span><span class="queue-status">Fresh</span></li>
-          <li class="queue-item" data-dish="misal-pav" data-order-num="#054"><span class="queue-num">#054</span><span class="queue-name">Misal Pav</span><span class="queue-status">Spicy</span></li>
-          <li class="queue-item" data-dish="banana-chips" data-order-num="#055"><span class="queue-num">#055</span><span class="queue-name">Jalgaon Chips</span><span class="queue-status">Crisp</span></li>
-        </ol>
-        <div class="challenge-badge">
-          <hr class="ui-hrule ui-hrule--inset" aria-hidden="true" />
-          <strong>DEV · CSS Art: Comfort Food</strong>
-          <p>Eight dishes inspired by the food you grew up eating — sculpted entirely in CSS. Hover for parallax · click any card for the full dish story.</p>
+    <section class="hero" id="top" aria-label="Nukkad Chat Corner hero">
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__plate dish dish--chai">
+          <div class="dish-art chai-glass-art">
+            <div class="ambient-studio-light"></div>
+            <div class="thermal-heat-glow"></div>
+            <div class="steam-convection-engine">
+              <div class="steam-wave steam-left"></div>
+              <div class="steam-wave steam-center"></div>
+              <div class="steam-wave steam-right"></div>
+            </div>
+            <div class="display-assembly">
+              <div class="glass-cup-assembly food-rim-light">
+                <div class="glass-container">
+                  <div class="glass-inner-wall"></div>
+                  <div class="glass-lip-rim"></div>
+                  <div class="glass-inner-specular"></div>
+                  <div class="glass-condensation"></div>
+                  <div class="tea-liquid-volume">
+                    <div class="tea-liquid-surface">
+                      <div class="tea-froth-foam"></div>
+                      <div class="tea-meniscus-shimmer"></div>
+                      <div class="cardamom-float"></div>
+                    </div>
+                    <div class="tea-liquid-depth"><div class="tea-spice-flecks"></div></div>
+                  </div>
+                  <div class="glass-flute flute-1"></div>
+                  <div class="glass-flute flute-2"></div>
+                  <div class="glass-flute flute-3"></div>
+                  <div class="glass-flute flute-4"></div>
+                  <div class="glass-highlight-arc glass-highlight-arc--1"></div>
+                  <div class="glass-highlight-arc glass-highlight-arc--2"></div>
+                  <div class="glass-specular-shimmer"></div>
+                  <div class="glass-solid-base-bottom"></div>
+                </div>
+                <div class="glass-cup-shadow food-cast-shadow"></div>
+              </div>
+              <div class="biscuits-rack">
+                <div class="biscuit biscuit-primary food-rim-light">
+                  <div class="biscuit-top-face"></div>
+                  <div class="biscuit-side-face biscuit-side-face--front"></div>
+                  <div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div>
+                </div>
+                <div class="biscuit biscuit-secondary food-rim-light">
+                  <div class="biscuit-top-face"></div>
+                  <div class="biscuit-side-face biscuit-side-face--right"></div>
+                  <div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div>
+                </div>
+                <div class="biscuit-crumb-dust"></div>
+              </div>
+              <div class="clay-plate-3d">
+                <div class="plate-lip-bevel"></div>
+                <div class="glass-caustic-spot"></div>
+                <div class="plate-sunken-basin"><div class="tea-spill drop-alpha"></div><div class="tea-spill drop-beta"></div><div class="tea-spill drop-gamma"></div></div>
+                <div class="plate-foot-ring"></div>
+              </div>
+            </div>
+            <div class="floor-shadow-deep"></div>
+            <div class="floor-shadow-ambient"></div>
+          </div>
         </div>
-      </aside>
+        <div class="hero__visual-wash"></div>
+      </div>
+      <div class="hero__copy">
+        <p class="hero__brand-script">नुक्कड़ चैट कॉर्नर</p>
+        <p class="hero__brand">Nukkad Chat Corner</p>
+        <h1 class="hero__headline">The comfort you grew up tasting — poured into pure CSS.</h1>
+        <p class="hero__lede">A night tapri of eight street-kitchen plates. Steam, spice, and memory. No photographs. Just CSS craft.</p>
+        <div class="hero__cta-row">
+          <a class="hero__cta" href="#plates">Explore the plates</a>
+          <a class="hero__cta-ghost" href="#story">Why it comforts</a>
+        </div>
+      </div>
+    </section>
 
-      <main id="artwork" class="counter-main" aria-label="Tapri Central street kitchen counter with CSS art food orders">
+    <section class="comfort-story" id="story" aria-labelledby="story-title">
+      <h2 class="comfort-story__title" id="story-title">Your feet turn before your brain does.</h2>
+      <p class="comfort-story__body">
+        That tapri smell hits — and suddenly the plan is chai, pani puri, maybe a vada pav “just one.”
+        Nukkad Chat Corner rebuilds that night: eight real comfort plates, sculpted in pure CSS.
+      </p>
+      <ul class="comfort-story__beats">
+        <li>
+          <span class="comfort-story__beat-kicker">Anytime fuel</span>
+          <span class="comfort-story__beat-text">Wake up, study, nap, guests — chai is the opening move.</span>
+        </li>
+        <li>
+          <span class="comfort-story__beat-kicker">Mood-based ordering</span>
+          <span class="comfort-story__beat-text">Same vada pav citywide. We still picked the stall by feeling.</span>
+        </li>
+        <li>
+          <span class="comfort-story__beat-kicker">Finishing move</span>
+          <span class="comfort-story__beat-text">Two suki papdi after pani puri. Non-negotiable. Local law.</span>
+        </li>
+      </ul>
+      <p class="comfort-story__cta-row">
+        <a class="comfort-story__cta" href="#plates">Open the night counter</a>
+      </p>
+    </section>
+
+    <section class="plates-section" id="plates" aria-labelledby="plates-title">
+      <header class="plates-section__head">
+        <p class="plates-section__label">CSS art plates</p>
+        <h2 class="plates-section__title" id="plates-title">Eight dishes. One night counter.</h2>
+        <p class="plates-section__lede">
+          Hover the food itself for motion. Click any plate for a larger view, the story behind it,
+          and a little comfort to take with you.
+        </p>
+      </header>
+
+      <div class="app-shell">
+      <main id="artwork" class="counter-main" aria-label="Nukkad Chat Corner CSS art comfort plates">
         <div class="counter-top">
           <div class="night-atmosphere" aria-hidden="true">
             <div class="night-stars"></div>
@@ -235,18 +349,37 @@
             <span class="tapri-neon-sign__dot"></span>
             <span class="tapri-neon-sign__text">OPEN</span>
           </div>
-          <div class="counter-string-lights" id="counter-string-lights" aria-hidden="true"></div>
+          <div class="counter-string-lights" id="counter-string-lights" aria-hidden="true">
+            <div class="string-wire" style="top:50%;left:4%;width:92%;transform:rotate(0.5deg)"></div>
+            <span class="string-bulb-pool" style="left:4%;top:46%;--flicker-dur:3.5s;--flicker-delay:0s"></span>
+            <span class="string-bulb" style="left:4%;top:46%;--flicker-dur:3.5s;--flicker-delay:0s"></span>
+            <span class="string-bulb-pool" style="left:13%;top:48%;--flicker-dur:4s;--flicker-delay:0.3s"></span>
+            <span class="string-bulb" style="left:13%;top:48%;--flicker-dur:4s;--flicker-delay:0.3s"></span>
+            <span class="string-bulb-pool" style="left:22%;top:45%;--flicker-dur:3.8s;--flicker-delay:0.6s"></span>
+            <span class="string-bulb" style="left:22%;top:45%;--flicker-dur:3.8s;--flicker-delay:0.6s"></span>
+            <span class="string-bulb-pool" style="left:31%;top:49%;--flicker-dur:4.2s;--flicker-delay:0.9s"></span>
+            <span class="string-bulb" style="left:31%;top:49%;--flicker-dur:4.2s;--flicker-delay:0.9s"></span>
+            <span class="string-bulb-pool" style="left:40%;top:46%;--flicker-dur:3.6s;--flicker-delay:1.2s"></span>
+            <span class="string-bulb" style="left:40%;top:46%;--flicker-dur:3.6s;--flicker-delay:1.2s"></span>
+            <span class="string-bulb-pool" style="left:49%;top:48%;--flicker-dur:4.1s;--flicker-delay:0.4s"></span>
+            <span class="string-bulb" style="left:49%;top:48%;--flicker-dur:4.1s;--flicker-delay:0.4s"></span>
+            <span class="string-bulb-pool" style="left:58%;top:45%;--flicker-dur:3.9s;--flicker-delay:0.8s"></span>
+            <span class="string-bulb" style="left:58%;top:45%;--flicker-dur:3.9s;--flicker-delay:0.8s"></span>
+            <span class="string-bulb-pool" style="left:67%;top:49%;--flicker-dur:4.3s;--flicker-delay:1.1s"></span>
+            <span class="string-bulb" style="left:67%;top:49%;--flicker-dur:4.3s;--flicker-delay:1.1s"></span>
+            <span class="string-bulb-pool" style="left:76%;top:46%;--flicker-dur:3.7s;--flicker-delay:0.5s"></span>
+            <span class="string-bulb" style="left:76%;top:46%;--flicker-dur:3.7s;--flicker-delay:0.5s"></span>
+            <span class="string-bulb-pool" style="left:85%;top:48%;--flicker-dur:4s;--flicker-delay:1.5s"></span>
+            <span class="string-bulb" style="left:85%;top:48%;--flicker-dur:4s;--flicker-delay:1.5s"></span>
+            <span class="string-bulb-pool" style="left:94%;top:47%;--flicker-dur:3.8s;--flicker-delay:0.2s"></span>
+            <span class="string-bulb" style="left:94%;top:47%;--flicker-dur:3.8s;--flicker-delay:0.2s"></span>
+          </div>
           <div class="counter-night-vignette" aria-hidden="true"></div>
 
-          <div class="counter-section-head ui-section-label">
-            <span class="ui-hrule" aria-hidden="true"></span>
-            <span class="counter-section-title">Live Order Counter · CSS Art Plates</span>
-            <span class="ui-hrule" aria-hidden="true"></span>
-          </div>
-
           <div class="counter-surface">
-            <div class="order-grid" data-lenis-prevent>
+            <div class="order-grid">
 
+              <label class="order-card-label" for="plate-vada-pav">
               <article class="order-card order-card--vada-pav dish dish--vada-pav" data-dish="vada-pav" tabindex="0" aria-label="Vada Pav — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#048</span>
@@ -313,11 +446,13 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">वड़ा पाव</span>Vada Pav</h3>
-                  <p class="order-card__meta"><span>Mumbai street classic</span><span class="order-price">₹20</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Shop by mood</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
+              <label class="order-card-label" for="plate-chai">
               <article class="order-card order-card--chai order-card--serving dish dish--chai" data-dish="chai" tabindex="0" aria-label="Masala Chai — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#049</span>
@@ -384,11 +519,13 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">मसाला चाय</span>Masala Chai</h3>
-                  <p class="order-card__meta"><span>Cutting + biscuits</span><span class="order-price">₹15</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Cutting · two dunks</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
+              <label class="order-card-label" for="plate-pani-puri">
               <article class="order-card order-card--pani-puri dish dish--pani-puri" data-dish="pani-puri" tabindex="0" aria-label="Pani Puri — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#050</span>
@@ -418,11 +555,13 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">पानी पूरी</span>Pani Puri</h3>
-                  <p class="order-card__meta"><span>6 pc · teekha pani</span><span class="order-price">₹40</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Always two suki papdi</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
+              <label class="order-card-label" for="plate-idli">
               <article class="order-card order-card--idli dish dish--idli" data-dish="idli" tabindex="0" aria-label="Idli Platter — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#051</span>
@@ -498,11 +637,13 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">इडली</span>Idli Platter</h3>
-                  <p class="order-card__meta"><span>Sambar + chutneys</span><span class="order-price">₹60</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Break, dip, then chutney</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
+              <label class="order-card-label" for="plate-dosa">
               <article class="order-card order-card--dosa dish dish--dosa" data-dish="dosa" tabindex="0" aria-label="Paneer Dosa — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#052</span>
@@ -567,12 +708,14 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">पनीर डोसा</span>Paneer Dosa</h3>
-                  <p class="order-card__meta"><span>Cone · coconut chutney</span><span class="order-price">₹90</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Tear while it crackles</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
 
+              <label class="order-card-label" for="plate-poha">
               <article class="order-card order-card--poha dish dish--poha" data-dish="poha" tabindex="0" aria-label="Indori Poha — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#053</span>
@@ -588,7 +731,64 @@
                         <div class="bowl-rim-lip"></div>
                         <div class="bowl-rim">
                           <div class="bowl-interior">
-                            <canvas class="poha-canvas" data-poha-canvas width="248" height="248"></canvas>
+                                                        <div class="poha-mound" aria-hidden="true">
+                              <span class="poha-mound__base"></span>
+                              <span class="poha-flake-field poha-flake-field--far"></span>
+                              <span class="poha-flake-field poha-flake-field--mid"></span>
+                              <span class="poha-flake-field poha-flake-field--near"></span>
+                              <span class="poha-mustard-field"></span>
+                              <span class="poha-coconut-field"></span>
+                              <span class="poha-turmeric-field"></span>
+                              <span class="poha-peanut poha-peanut--1"></span>
+                              <span class="poha-peanut poha-peanut--2"></span>
+                              <span class="poha-peanut poha-peanut--3"></span>
+                              <span class="poha-peanut poha-peanut--4"></span>
+                              <span class="poha-peanut poha-peanut--5"></span>
+                              <span class="poha-peanut poha-peanut--6"></span>
+                              <span class="poha-peanut poha-peanut--7"></span>
+                              <span class="poha-peanut poha-peanut--8"></span>
+                              <span class="poha-onion poha-onion--1"></span>
+                              <span class="poha-onion poha-onion--2"></span>
+                              <span class="poha-onion poha-onion--3"></span>
+                              <span class="poha-onion poha-onion--4"></span>
+                              <span class="poha-onion poha-onion--5"></span>
+                              <span class="poha-onion poha-onion--6"></span>
+                              <span class="poha-onion poha-onion--7"></span>
+                              <span class="poha-onion poha-onion--8"></span>
+                              <span class="poha-onion poha-onion--9"></span>
+                              <span class="poha-onion poha-onion--10"></span>
+                              <span class="poha-leaf poha-leaf--1"></span>
+                              <span class="poha-leaf poha-leaf--2"></span>
+                              <span class="poha-leaf poha-leaf--3"></span>
+                              <span class="poha-leaf poha-leaf--4"></span>
+                              <span class="poha-leaf poha-leaf--5"></span>
+                              <span class="poha-leaf poha-leaf--6"></span>
+                              <span class="poha-curry poha-curry--1"></span>
+                              <span class="poha-curry poha-curry--2"></span>
+                              <span class="poha-curry poha-curry--3"></span>
+                              <span class="poha-curry poha-curry--4"></span>
+                              <span class="poha-chilli poha-chilli--1"></span>
+                              <span class="poha-chilli poha-chilli--2"></span>
+                              <span class="poha-chilli poha-chilli--3"></span>
+                              <span class="poha-anar poha-anar--1"></span>
+                              <span class="poha-anar poha-anar--2"></span>
+                              <span class="poha-anar poha-anar--3"></span>
+                              <span class="poha-anar poha-anar--4"></span>
+                              <span class="poha-anar poha-anar--5"></span>
+                              <span class="poha-anar poha-anar--6"></span>
+                              <span class="poha-anar poha-anar--7"></span>
+                              <span class="poha-anar poha-anar--8"></span>
+                              <span class="poha-stem poha-stem--1"></span>
+                              <span class="poha-stem poha-stem--2"></span>
+                              <span class="poha-stem poha-stem--3"></span>
+                              <span class="poha-stem poha-stem--4"></span>
+                              <div class="poha-spoon">
+                                <span class="poha-spoon__handle"></span>
+                                <span class="poha-spoon__bowl"></span>
+                                <span class="poha-spoon__shine"></span>
+                                <span class="poha-spoon__poha"></span>
+                              </div>
+                            </div>
                             <div class="poha-garnish-layer" aria-hidden="true">
                               <span class="poha-sev-strand poha-sev-strand--1"></span>
                               <span class="poha-sev-strand poha-sev-strand--2"></span>
@@ -628,12 +828,14 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">पोहा</span>Indori Poha</h3>
-                  <p class="order-card__meta"><span>Flattened rice · sev</span><span class="order-price">₹35</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Lemon first, sev last</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
 
+              <label class="order-card-label" for="plate-misal-pav">
               <article class="order-card order-card--misal-pav dish dish--misal-pav" data-dish="misal-pav" tabindex="0" aria-label="Misal Pav — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#054</span>
@@ -688,12 +890,14 @@
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">मिसळ पाव</span>Misal Pav</h3>
-                  <p class="order-card__meta"><span>Iron thali · tar rassa · laadi pav</span><span class="order-price">₹80</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">Farsan just before the bite</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
 
+              <label class="order-card-label" for="plate-banana-chips">
               <article class="order-card order-card--banana-chips dish dish--banana-chips" data-dish="banana-chips" tabindex="0" aria-label="Jalgaon Banana Chips — click for dish details">
                 <div class="order-card__head">
                   <span class="order-id">#055</span>
@@ -702,76 +906,115 @@
                 <div class="order-card__viewport">
                   <div class="dish-art banana-chips-art">
                     <div class="linen-tablecloth">
+                      <div class="cloth-vignette" aria-hidden="true"></div>
                       <div class="salt-bowl">
+                        <div class="salt-bowl-rim"></div>
                         <div class="salt-crystals"></div>
+                        <div class="salt-sparkle"></div>
                       </div>
                       <div class="banana-cluster">
-                        <div class="banana-fruit b1"></div>
-                        <div class="banana-fruit b2"></div>
+                        <div class="banana-fruit b1"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
+                        <div class="banana-fruit b2"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
+                        <div class="banana-fruit b3"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
                       </div>
                       <div class="loose-chips-container">
-                        <div class="banana-coin loose-1"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                        <div class="banana-coin loose-2"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                        <div class="banana-coin loose-3"><div class="pith-center"></div><div class="fiber-grain"></div></div>
+                        <div class="banana-coin loose-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                        <div class="banana-coin loose-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                        <div class="banana-coin loose-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
                       </div>
                       <div class="wooden-bowl">
                         <div class="bowl-wood-grain"></div>
+                        <div class="bowl-lathe-rings"></div>
+                        <div class="bowl-highlight"></div>
                         <div class="inner-shadow-rim"></div>
                         <div class="chips-overflow-mound">
-                          <div class="banana-coin c-bg-1"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-bg-2"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-bg-3"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-bg-4"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-bg-5"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-1"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-2"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-3"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-4"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-5"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-6"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-7"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-8"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-9"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-10"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-mid-11"><div class="pith-center"></div><div class="fiber-grain"></div></div>
+                          <div class="banana-coin c-bg-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-4"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-5"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-mid-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-4"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-5"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-6"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-7"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-8"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-9"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-10"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-11"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
                           <div class="banana-coin c-fg-center-main">
-                            <div class="pith-center"></div><div class="fiber-grain"></div><div class="sun-sheen"></div><div class="toasted-lip"></div>
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
                           </div>
                           <div class="banana-coin c-fg-left-tilt">
-                            <div class="pith-center"></div><div class="fiber-grain"></div><div class="sun-sheen"></div><div class="toasted-lip"></div>
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
                           </div>
                           <div class="banana-coin c-fg-bottom-prominent">
-                            <div class="pith-center"></div><div class="fiber-grain"></div><div class="sun-sheen"></div><div class="toasted-lip"></div>
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
                           </div>
                           <div class="banana-coin c-fg-right-edge">
-                            <div class="pith-center"></div><div class="fiber-grain"></div><div class="sun-sheen"></div><div class="toasted-lip"></div>
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
                           </div>
                           <div class="banana-coin c-fg-top-stack">
-                            <div class="pith-center"></div><div class="fiber-grain"></div><div class="sun-sheen"></div><div class="toasted-lip"></div>
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
                           </div>
-                          <div class="banana-coin c-spill-left"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-spill-right"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-spill-front"><div class="pith-center"></div><div class="fiber-grain"></div></div>
-                          <div class="banana-coin c-spill-top-rim"><div class="pith-center"></div><div class="fiber-grain"></div></div>
+                          <div class="banana-coin c-spill-left"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-right"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-front"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-top-rim"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
                         </div>
                       </div>
                       <div class="vintage-spoon">
-                        <div class="spoon-cup"><div class="metal-shine"></div></div>
+                        <div class="spoon-cup"><div class="metal-shine"></div><div class="spoon-bowl-depth"></div></div>
                         <div class="spoon-neck"></div>
-                        <div class="spoon-stem"><div class="filigree-carving"></div></div>
+                        <div class="spoon-stem"><div class="filigree-carving"></div><div class="stem-bevel"></div></div>
                       </div>
                       <div class="chili-dish">
+                        <div class="chili-dish-rim"></div>
                         <div class="masala-powder"></div>
+                        <div class="masala-grain"></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="order-card__foot">
                   <h3 class="order-card__title"><span class="order-card__script">केळी चिप्स</span>Jalgaon Banana Chips</h3>
-                  <p class="order-card__meta"><span>Wood bowl · 25 coin layers</span><span class="order-price">₹50</span></p>
-                  <p class="order-card__hint">Tap for story &amp; nutrition</p>
+                  <p class="order-card__meta"><span class="order-card__ritual">A coin with every sip</span></p>
+                  <p class="order-card__hint">Tap for larger view &amp; comfort story</p>
                 </div>
               </article>
+              </label>
 
 
             </div>
@@ -779,43 +1022,942 @@
           <div class="counter-lip-bar" aria-hidden="true"></div>
         </div>
       </main>
-    </div>
-
-    <div class="dish-modal" id="dish-modal" hidden>
-      <div class="dish-modal__backdrop" data-close aria-hidden="true"></div>
-      <div class="dish-modal__panel" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title">
-        <div class="dish-modal__toolbar">
-          <span class="dish-modal__toolbar-label">Order Ticket</span>
-          <button class="dish-modal__close" type="button" aria-label="Close dish details">&times;</button>
-        </div>
-        <div class="dish-modal__scroll" data-lenis-prevent>
-          <div class="dish-modal__content" id="dish-modal-content"></div>
-        </div>
       </div>
-    </div>
+    </section>
 
-    <hr class="ui-hrule ui-hrule--page" aria-hidden="true" />
+    <hr class="ui-hrule ui-hrule--page page-foot-divider" aria-hidden="true" />
 
     <footer class="page-foot">
       <p class="page-foot-brand ui-section-label">
         <span class="ui-hrule" aria-hidden="true"></span>
-        <span>Tapri Central · CSS Art Comfort Food</span>
+        <span>Nukkad Chat Corner · CSS Art Comfort Food</span>
         <span class="ui-hrule" aria-hidden="true"></span>
       </p>
-      <p>DEV Frontend Challenge · Hover cards for parallax · <code>@keyframes</code> steam &amp; heat</p>
+      <p>Eight comfort plates · DEV Frontend Challenge · Pure CSS · Zero photographs</p>
       <nav aria-label="Footer">
         <ul class="page-foot-nav">
-          <li><a href="welcome.html">Welcome</a></li>
-          <li><a href="index.html" aria-current="page">Order Counter</a></li>
+          <li><a href="#top">Top</a></li>
+          <li><a href="#plates">Plates</a></li>
           <li><a href="https://dev.to/challenges/frontend-2026-07-29" target="_blank" rel="noopener noreferrer">Challenge Details</a></li>
         </ul>
       </nav>
     </footer>
 
       </div><!-- /.app-stage -->
+
     </div><!-- /.app-night-shell -->
 
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.15/dist/lenis.min.js"></script>
+    <div class="dish-modal dish-modal--vada-pav dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-vada-pav">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--vada-pav">
+              <div class="dish-art dish-modal__stage-art vada-pav-art">
+                    <div class="food-key-ray"></div>
+                    <div class="vada-pav-thermal-glow food-thermal-glow"></div>
+                    <div class="vada-pav-steam-wrapper food-steam-engine">
+                      <div class="steam-line food-steam-trail food-steam-trail--1"></div>
+                      <div class="steam-line food-steam-trail food-steam-trail--2"></div>
+                      <div class="steam-line food-steam-trail food-steam-trail--3"></div>
+                    </div>
+                    <div class="vada-pav-stage-3d">
+                      <div class="vada-pav-plate">
+                        <div class="plate-lip-bevel"></div>
+                        <div class="plate-inner-rim"></div>
+                        <div class="plate-foot-ring"></div>
+                        <div class="plate-base-shadow"></div>
+                      </div>
+                      <div class="vada-pav">
+                        <div class="vada-pav-bun vada-pav-bun-top food-volume-cylinder food-rim-light food-specular-cap">
+                          <div class="food-volume-cylinder__cap bun-dome-cap">
+                            <div class="bun-bake-highlight"></div>
+                            <div class="hot-butter-glaze"></div>
+                            <div class="food-subsurface-wash"></div>
+                          </div>
+                          <div class="bun-cylinder-wall food-volume-cylinder__wall"></div>
+                          <div class="bun-side-face bun-side-face--top"></div>
+                        </div>
+                        <div class="vada-pav-chutney-layer">
+                          <div class="vada-pav-chutney-sauce chutney-green food-meniscus-pool"></div>
+                          <div class="vada-pav-chutney-sauce chutney-tamarind food-meniscus-pool"></div>
+                          <div class="chutney-drip chutney-drip--green"></div>
+                          <div class="chutney-drip chutney-drip--red"></div>
+                        </div>
+                        <div class="vada-pav-masala-crumbs"></div>
+                        <div class="vada-pav-chili food-rim-light">
+                          <div class="chili-curve"></div>
+                          <div class="chili-stem"></div>
+                        </div>
+                        <div class="vada-pav-vada-wrap">
+                          <div class="vada-pav-vada food-volume-sphere food-fried-surface food-specular-cap food-rim-light">
+                            <div class="food-volume-sphere__body"></div>
+                            <div class="food-volume-sphere__equator"></div>
+                            <div class="food-subsurface-wash"></div>
+                          </div>
+                          <div class="vada-cast-shadow food-cast-shadow"></div>
+                        </div>
+                        <div class="vada-pav-bun vada-pav-bun-bottom food-volume-cylinder">
+                          <div class="bun-bottom-sliced-surface"></div>
+                          <div class="bun-bottom-crust-shading"></div>
+                          <div class="bun-chutney-stain"></div>
+                          <div class="bun-cylinder-wall bun-cylinder-wall--bottom food-volume-cylinder__wall"></div>
+                          <div class="bun-side-face bun-side-face--bottom"></div>
+                        </div>
+                        <div class="stack-plate-shadow food-cast-shadow"></div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-occlusion vada-pav-shadow-deep"></div>
+                    <div class="floor-shadow-ambient vada-pav-shadow-ambient"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">वड़ा पाव</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-vada-pav">Vada Pav</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Mumbai, Maharashtra</span>
+              </div>
+              <p class="dish-modal__comfort">Hot pav in your palm after a long commute — spice, softness, and the city exhaling.</p>
+              <p class="dish-modal__ritual">Shop by mood — green for heat, tamarind for sweet.</p>
+              <p class="dish-modal__famous">Mumbai’s “Bombay burger” — the city’s most iconic street bite since the 1960s.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">@keyframes steam</span><span class="dish-modal__technique">radial-gradient pav</span><span class="dish-modal__technique">layered transforms</span><span class="dish-modal__technique">pseudo-elements</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Born around Dadar and Shivaji Park, vada pav was the affordable fuel of mill workers and commuters. A spiced potato fritter tucked in a soft pav with chutneys — quick, filling, and unmistakably Mumbai.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Hold the pav firmly, take a big bite from the side so you get vada, chutney, and bread together. Squeeze a little lime if offered. Eat fast while the vada is still crisp — that’s the whole point.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Pav (soft bread roll)</li><li>Spiced potato vada (besan batter)</li><li>Green chutney (coriander–mint)</li><li>Sweet tamarind chutney</li><li>Garlic–red chili chutney (lasun)</li><li>Fried green chili (optional)</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Share one pav between two, skip the fried chili, and ask for less chutney. Pair with a cutting chai instead of a second vada. Homemade versions can use air-fried vada and whole-wheat pav.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~280 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~6 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~38 g</dd></div>
+                  <div><dt>Fat</dt><dd>~12 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~4 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--chai dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-chai">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--chai">
+              <div class="dish-art dish-modal__stage-art chai-glass-art">
+                    <div class="ambient-studio-light"></div>
+                    <div class="thermal-heat-glow"></div>
+                    <div class="steam-convection-engine">
+                      <div class="steam-wave steam-left"></div>
+                      <div class="steam-wave steam-center"></div>
+                      <div class="steam-wave steam-right"></div>
+                    </div>
+                    <div class="display-assembly">
+                      <div class="glass-cup-assembly food-rim-light">
+                        <div class="glass-container">
+                          <div class="glass-inner-wall"></div>
+                          <div class="glass-lip-rim"></div>
+                          <div class="glass-inner-specular"></div>
+                          <div class="glass-condensation"></div>
+                          <div class="tea-liquid-volume">
+                            <div class="tea-liquid-surface">
+                              <div class="tea-froth-foam"></div>
+                              <div class="tea-meniscus-shimmer"></div>
+                              <div class="cardamom-float"></div>
+                            </div>
+                            <div class="tea-liquid-depth"><div class="tea-spice-flecks"></div></div>
+                          </div>
+                          <div class="glass-flute flute-1"></div>
+                          <div class="glass-flute flute-2"></div>
+                          <div class="glass-flute flute-3"></div>
+                          <div class="glass-flute flute-4"></div>
+                          <div class="glass-highlight-arc glass-highlight-arc--1"></div>
+                          <div class="glass-highlight-arc glass-highlight-arc--2"></div>
+                          <div class="glass-specular-shimmer"></div>
+                          <div class="glass-solid-base-bottom"></div>
+                        </div>
+                        <div class="glass-cup-shadow food-cast-shadow"></div>
+                      </div>
+                      <div class="biscuits-rack">
+                        <div class="biscuit biscuit-primary food-rim-light">
+                          <div class="biscuit-top-face"></div>
+                          <div class="biscuit-side-face biscuit-side-face--front"></div>
+                          <div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div>
+                        </div>
+                        <div class="biscuit biscuit-secondary food-rim-light">
+                          <div class="biscuit-top-face"></div>
+                          <div class="biscuit-side-face biscuit-side-face--right"></div>
+                          <div class="biscuit-inner-rim"></div><div class="biscuit-dots"></div><div class="biscuit-sugar-crust"></div>
+                        </div>
+                        <div class="biscuit-crumb-dust"></div>
+                      </div>
+                      <div class="clay-plate-3d">
+                        <div class="plate-lip-bevel"></div>
+                        <div class="glass-caustic-spot"></div>
+                        <div class="plate-sunken-basin"><div class="tea-spill drop-alpha"></div><div class="tea-spill drop-beta"></div><div class="tea-spill drop-gamma"></div></div>
+                        <div class="plate-foot-ring"></div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-deep"></div>
+                    <div class="floor-shadow-ambient"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">मसाला चाय</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-chai">Masala Chai</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Indian subcontinent · chai tapri culture</span>
+              </div>
+              <p class="dish-modal__comfort">Steam on your face, ginger in the air, and two minutes where the world can wait.</p>
+              <p class="dish-modal__ritual">Cutting chai · two dunks, not twenty.</p>
+              <p class="dish-modal__famous">The rhythm of every galli — cutting chai sipped between conversations, rain, and rush hour.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">@property meniscus</span><span class="dish-modal__technique">conic tea surface</span><span class="dish-modal__technique">biscuit dunk</span><span class="dish-modal__technique">glass condensation</span><span class="dish-modal__technique">steam @keyframes</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Tea arrived in India under British trade, but masala chai as we know it was shaped by street vendors who boiled milk, tea, ginger, and spices together in large vessels — stronger, sweeter, and built for sharing.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Sip from a small glass or kulhad while it’s hot — blow gently first. Dunk a biscuit for two seconds, not twenty. “Cutting” means half a glass; perfect when you’re standing at the counter.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>CTC black tea leaves</li><li>Full-fat milk</li><li>Fresh ginger</li><li>Green cardamom</li><li>Cloves & cinnamon</li><li>Sugar (or jaggery)</li><li>Parle-G biscuits (classic pairing)</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Use less sugar or swap for jaggery, increase ginger and cardamom, and choose low-fat milk. Limit to 1–2 cups daily. Skip the biscuit stack if you’re watching carbs.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~120 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~3 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~18 g</dd></div>
+                  <div><dt>Fat</dt><dd>~4 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~0 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--pani-puri dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-pani-puri">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--pani-puri">
+              <div class="dish-art dish-modal__stage-art pani-puri-art">
+                    <div class="food-key-ray"></div>
+                    <div class="pani-puri-thermal-glow food-thermal-glow"></div>
+                    <div class="pani-puri-stage-3d">
+                      <div class="chocolate-dish">
+                        <div class="dish-gloss-rim"></div>
+                        <div class="puris-render-cluster">
+                        <div class="clay-puri-shell p-3d-bg-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-2"></div></div></div>
+                        <div class="clay-puri-shell p-3d-bg-right"><div class="teekha-pool"><div class="bead-boondi b-3"></div><div class="bead-boondi b-4"></div></div></div>
+                        <div class="clay-puri-shell p-3d-mid-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-3"></div></div></div>
+                        <div class="clay-puri-shell p-3d-center"><div class="teekha-pool"><div class="bead-boondi b-2"></div><div class="bead-boondi b-4"></div><div class="bead-boondi b-5"></div></div></div>
+                        <div class="clay-puri-shell p-3d-mid-right"><div class="teekha-pool"><div class="bead-boondi b-2"></div><div class="bead-boondi b-3"></div></div></div>
+                        <div class="clay-puri-shell p-3d-fg-left"><div class="teekha-pool"><div class="bead-boondi b-1"></div><div class="bead-boondi b-4"></div></div></div>
+                        <div class="clay-puri-shell p-3d-fg-right"><div class="teekha-pool"><div class="bead-boondi b-3"></div><div class="bead-boondi b-5"></div></div></div>
+                      </div>
+                    </div>
+                    </div>
+                    <div class="floor-shadow-occlusion render-shadow-contact"></div>
+                    <div class="floor-shadow-ambient render-shadow-ambient"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">पानी पूरी</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-pani-puri">Pani Puri</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">North & West India (regional names: golgappa, puchka)</span>
+              </div>
+              <p class="dish-modal__comfort">Laughter between bites — crisp shells, cool pani, friends waiting for the next one.</p>
+              <p class="dish-modal__ritual">Always two suki papdi before the last puri.</p>
+              <p class="dish-modal__famous">The ultimate one-bite thrill — six puris, six explosions of teekha pani.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">preserve-3d isometric</span><span class="dish-modal__technique">fill-tilt-pop ritual</span><span class="dish-modal__technique">teekha pani pools</span><span class="dish-modal__technique">boondi spheres</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Crisp hollow puris filled with potato, sprouts, and tangy spiced water trace roots to Magadh-era traditions. Every region claims its version — but the joy is universal.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Eat one puri at a time, whole — cup your hand, tilt your head back, and pop it in before the puri softens. Never save the last puri for “later.”</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Semolina–wheat puri shells</li><li>Boiled potato & sprouted moong</li><li>Teekha pani (mint–tamarind–spice water)</li><li>Meetha pani (sweet tamarind)</li><li>Boondi, sev & chaat masala</li><li>Coriander & onion (optional)</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Ask for less potato, more sprouts, and skip sev. Choose vendors with fresh pani made daily. At home, bake puris lightly or use smaller portions.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~180 kcal (6 pc)</dd></div>
+                  <div><dt>Protein</dt><dd>~4 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~32 g</dd></div>
+                  <div><dt>Fat</dt><dd>~5 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~3 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--idli dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-idli">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--idli">
+              <div class="dish-art dish-modal__stage-art idli-platter-art">
+                    <div class="studio-key-ray"></div>
+                    <div class="thermal-glow-aura"></div>
+                    <div class="thermal-steam-engine">
+                      <div class="steam-trail st-1"></div>
+                      <div class="steam-trail st-2"></div>
+                      <div class="steam-trail st-3"></div>
+                    </div>
+                    <div class="platter-stage-3d">
+                      <div class="clay-dish-3d">
+                        <div class="clay-lip-specular"></div>
+                        <div class="clay-internal-wall-shade"></div>
+                        <div class="fibrous-banana-leaf-3d">
+                          <div class="leaf-backbone-spine"></div>
+                          <div class="leaf-capillary-ribs"></div>
+                          <div class="idli-fan-cluster-3d">
+                            <div class="porous-idli-3d food-volume-cylinder food-rim-light idli-3d-pos-1">
+                              <div class="food-volume-cylinder__cap idli-dome-cap"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                              <div class="food-volume-cylinder__wall idli-side-wall"></div>
+                              <div class="idli-contact-shadow food-cast-shadow"></div>
+                            </div>
+                            <div class="porous-idli-3d food-volume-cylinder food-rim-light idli-3d-pos-2">
+                              <div class="food-volume-cylinder__cap idli-dome-cap idli-dome-cap--sm"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                              <div class="food-volume-cylinder__wall idli-side-wall"></div>
+                              <div class="idli-contact-shadow food-cast-shadow"></div>
+                            </div>
+                            <div class="porous-idli-3d food-volume-cylinder food-rim-light idli-3d-pos-3">
+                              <div class="food-volume-cylinder__cap idli-dome-cap idli-dome-cap--md"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div></div>
+                              <div class="food-volume-cylinder__wall idli-side-wall"></div>
+                              <div class="idli-contact-shadow food-cast-shadow"></div>
+                            </div>
+                            <div class="porous-idli-3d food-volume-cylinder food-rim-light idli-3d-pos-4">
+                              <div class="food-volume-cylinder__cap idli-dome-cap"><div class="idli-grain-noise"></div><div class="idli-subsurface-glow"></div><div class="hot-steam-sheen"></div></div>
+                              <div class="food-volume-cylinder__wall idli-side-wall"></div>
+                              <div class="idli-contact-shadow food-cast-shadow"></div>
+                            </div>
+                          </div>
+                          <div class="bowls-front-row-3d">
+                            <div class="glazed-katori-3d bowl-left-white">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip"></div>
+                              <div class="fluid-chamber-3d"><div class="liquid-meniscus-glow red-meniscus"></div><div class="liquid-mass-body red-chutney-core"><div class="tadka-oil-glaze"><div class="curry-leaf-float clf-1"></div><div class="mustard-speck m-1"></div></div></div></div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                            <div class="glazed-katori-3d bowl-center-yellow">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip yellow-lip-tint"></div>
+                              <div class="fluid-chamber-3d"><div class="liquid-meniscus-glow white-meniscus"></div><div class="liquid-mass-body white-chutney-core"><div class="coconut-shred-fibers"></div><div class="tadka-oil-glaze"><div class="curry-leaf-float clf-2"></div><div class="mustard-speck m-2"></div><div class="mustard-speck m-3"></div></div></div></div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                            <div class="glazed-katori-3d bowl-right-sambar">
+                              <div class="ceramic-wall-shading"></div><div class="ceramic-rim-thick-lip"></div>
+                              <div class="fluid-chamber-3d">
+                                <div class="liquid-meniscus-glow sambar-meniscus"></div>
+                                <div class="sambar-fluid-volume">
+                                  <div class="sambar-oil-horizon"><div class="surface-garnish-stack"><div class="drumstick-cylinder-3d"><div class="pulp-core-3d"></div></div><div class="mustard-speck m-4"></div><div class="charred-chili-flake"></div></div></div>
+                                  <div class="sambar-broth-depth"></div>
+                                </div>
+                              </div>
+                              <div class="katori-occlusion-shadow"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-occlusion-dark"></div>
+                    <div class="floor-shadow-atmospheric-soft"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">इडली</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-idli">Idli Platter</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Tamil Nadu · South Indian breakfast canon</span>
+              </div>
+              <p class="dish-modal__comfort">Soft steam and sambar warmth — the kind of breakfast that apologises for yesterday.</p>
+              <p class="dish-modal__ritual">Break, dip, then chutney — never reverse the order.</p>
+              <p class="dish-modal__famous">Cloud-soft steamed rice cakes — the gentlest comfort on a banana leaf.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">platter levitation</span><span class="dish-modal__technique">individual idli pop</span><span class="dish-modal__technique">katori lift & ripple</span><span class="dish-modal__technique">thermal steam wisps</span><span class="dish-modal__technique">leaf capillary ribs</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Idli appears in ancient Kannada and Tamil texts; modern fermented idli spread from Karnataka and Tamil Nadu tiffin rooms across India. Steamed, not fried.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Break idli with fingers or spoon, dip in sambar, then coconut chutney. Eat hot; cold idli loses its magic.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Fermented idli batter (rice + urad dal)</li><li>Sambar (toor dal, tamarind, vegetables)</li><li>Coconut chutney</li><li>Tomato or gunpowder chutney</li><li>Banana leaf liner</li><li>Curry leaves & mustard tadka</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Idli is naturally low-fat and fermented. Choose sambar heavy on vegetables, go easy on coconut chutney oil, and add a side of greens.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~320 kcal (4 idli + sides)</dd></div>
+                  <div><dt>Protein</dt><dd>~10 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~58 g</dd></div>
+                  <div><dt>Fat</dt><dd>~6 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~5 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--dosa dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-dosa">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--dosa">
+              <div class="dish-art dish-modal__stage-art dosa-platter-art">
+                    <div class="key-spotlight-ray"></div>
+                    <div class="ambient-fill-glow"></div>
+                    <div class="dosa-thermal-glow"></div>
+                    <div class="dosa-steam-engine">
+                      <div class="dosa-steam-trail ds-st-1"></div>
+                      <div class="dosa-steam-trail ds-st-2"></div>
+                      <div class="dosa-steam-trail ds-st-3"></div>
+                    </div>
+                    <div class="platter-stage-3d">
+                      <div class="ceramic-cocoa-plate">
+                        <div class="plate-specular-rim"></div>
+                        <div class="plate-basin-depth"></div>
+                        <div class="organic-leaf-liner">
+                          <div class="leaf-backbone-vein"></div>
+                          <div class="leaf-capillary-ribs"></div>
+                          <div class="ceramic-katori">
+                            <div class="katori-rim-polish"></div>
+                            <div class="chutney-paste-mass">
+                              <div class="chutney-fibrous-noise"></div>
+                              <div class="chutney-gloss-sheen"></div>
+                              <div class="tadka-oil-bleed"><div class="wilted-curry-leaf"></div><div class="charred-onion-sliver sl-1"></div><div class="charred-onion-sliver sl-2"></div></div>
+                            </div>
+                            <div class="katori-cast-shadow"></div>
+                          </div>
+                          <div class="paneer-dosa-cylinder">
+                            <div class="dosa-crispy-hull">
+                              <div class="dosa-lace-pattern"></div>
+                              <div class="dosa-griddle-burns"></div>
+                              <div class="dosa-subsurface-glow"></div>
+                              <div class="dosa-oil-glaze"></div>
+                              <div class="dosa-ghee-drip"></div>
+                              <div class="dosa-crackle-rim"></div>
+                              <div class="dosa-open-aperture">
+                                <div class="aperture-interior-darkness">
+                                  <div class="core-onion-slice onion-s1"></div>
+                                  <div class="core-onion-slice onion-s2"></div>
+                                  <div class="paneer-cubes-pile">
+                                    <div class="roasted-paneer-cube paneer-c1"></div>
+                                    <div class="roasted-paneer-cube paneer-c2"></div>
+                                    <div class="roasted-paneer-cube paneer-c3"></div>
+                                    <div class="roasted-paneer-cube paneer-c4"></div>
+                                    <div class="roasted-paneer-cube paneer-c5"></div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="dosa-contact-shadow"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ground-shadow-occlusion"></div>
+                    <div class="ground-shadow-ambient"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">पनीर डोसा</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-dosa">Paneer Dosa</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">South India · Udupi–Chennai tiffin evolution</span>
+              </div>
+              <p class="dish-modal__comfort">Crisp edges, soft fold, chutney on the fingers — celebration disguised as tiffin.</p>
+              <p class="dish-modal__ritual">Tear from the tip while it still crackles.</p>
+              <p class="dish-modal__famous">Paper-thin crisp dosa rolled into a cone stuffed with spiced paneer — street luxury.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">cone tilt reveal</span><span class="dish-modal__technique">griddle lace burns</span><span class="dish-modal__technique">paneer cube pop</span><span class="dish-modal__technique">katori lift</span><span class="dish-modal__technique">dosa steam trails</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Dosa is centuries old; stuffed variations like masala and paneer dosa grew with urban tiffin culture. The cone roll lets you eat on the move.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Tear off pieces of the cone with your right hand, dip in chutney, alternate with sambar sips. Eat while the dosa crackles.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Fermented rice–urad batter</li><li>Grated paneer & onion masala</li><li>Turmeric, chili & cumin</li><li>Coconut chutney</li><li>Sambar (optional side)</li><li>Ghee or oil on the griddle</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Request less ghee, fill with extra paneer and vegetables. Share one dosa — portions are huge. Pair with sambar for protein.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~450 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~14 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~52 g</dd></div>
+                  <div><dt>Fat</dt><dd>~18 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~4 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--poha dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-poha">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--poha">
+              <div class="dish-art dish-modal__stage-art poha-art">
+                    <div class="food-key-ray"></div>
+                    <div class="poha-thermal-glow food-thermal-glow"></div>
+                    <div class="poha-stage-3d">
+                      <div class="bowl-shadow floor-shadow-occlusion"></div>
+                      <div class="bowl-outer">
+                        <div class="bowl-rim-lip"></div>
+                        <div class="bowl-rim">
+                          <div class="bowl-interior">
+                                                        <div class="poha-mound" aria-hidden="true">
+                              <span class="poha-mound__base"></span>
+                              <span class="poha-flake-field poha-flake-field--far"></span>
+                              <span class="poha-flake-field poha-flake-field--mid"></span>
+                              <span class="poha-flake-field poha-flake-field--near"></span>
+                              <span class="poha-mustard-field"></span>
+                              <span class="poha-coconut-field"></span>
+                              <span class="poha-turmeric-field"></span>
+                              <span class="poha-peanut poha-peanut--1"></span>
+                              <span class="poha-peanut poha-peanut--2"></span>
+                              <span class="poha-peanut poha-peanut--3"></span>
+                              <span class="poha-peanut poha-peanut--4"></span>
+                              <span class="poha-peanut poha-peanut--5"></span>
+                              <span class="poha-peanut poha-peanut--6"></span>
+                              <span class="poha-peanut poha-peanut--7"></span>
+                              <span class="poha-peanut poha-peanut--8"></span>
+                              <span class="poha-onion poha-onion--1"></span>
+                              <span class="poha-onion poha-onion--2"></span>
+                              <span class="poha-onion poha-onion--3"></span>
+                              <span class="poha-onion poha-onion--4"></span>
+                              <span class="poha-onion poha-onion--5"></span>
+                              <span class="poha-onion poha-onion--6"></span>
+                              <span class="poha-onion poha-onion--7"></span>
+                              <span class="poha-onion poha-onion--8"></span>
+                              <span class="poha-onion poha-onion--9"></span>
+                              <span class="poha-onion poha-onion--10"></span>
+                              <span class="poha-leaf poha-leaf--1"></span>
+                              <span class="poha-leaf poha-leaf--2"></span>
+                              <span class="poha-leaf poha-leaf--3"></span>
+                              <span class="poha-leaf poha-leaf--4"></span>
+                              <span class="poha-leaf poha-leaf--5"></span>
+                              <span class="poha-leaf poha-leaf--6"></span>
+                              <span class="poha-curry poha-curry--1"></span>
+                              <span class="poha-curry poha-curry--2"></span>
+                              <span class="poha-curry poha-curry--3"></span>
+                              <span class="poha-curry poha-curry--4"></span>
+                              <span class="poha-chilli poha-chilli--1"></span>
+                              <span class="poha-chilli poha-chilli--2"></span>
+                              <span class="poha-chilli poha-chilli--3"></span>
+                              <span class="poha-anar poha-anar--1"></span>
+                              <span class="poha-anar poha-anar--2"></span>
+                              <span class="poha-anar poha-anar--3"></span>
+                              <span class="poha-anar poha-anar--4"></span>
+                              <span class="poha-anar poha-anar--5"></span>
+                              <span class="poha-anar poha-anar--6"></span>
+                              <span class="poha-anar poha-anar--7"></span>
+                              <span class="poha-anar poha-anar--8"></span>
+                              <span class="poha-stem poha-stem--1"></span>
+                              <span class="poha-stem poha-stem--2"></span>
+                              <span class="poha-stem poha-stem--3"></span>
+                              <span class="poha-stem poha-stem--4"></span>
+                              <div class="poha-spoon">
+                                <span class="poha-spoon__handle"></span>
+                                <span class="poha-spoon__bowl"></span>
+                                <span class="poha-spoon__shine"></span>
+                                <span class="poha-spoon__poha"></span>
+                              </div>
+                            </div>
+                            <div class="poha-garnish-layer" aria-hidden="true">
+                              <span class="poha-sev-strand poha-sev-strand--1"></span>
+                              <span class="poha-sev-strand poha-sev-strand--2"></span>
+                              <span class="poha-sev-strand poha-sev-strand--3"></span>
+                              <span class="poha-sev-strand poha-sev-strand--4"></span>
+                            </div>
+                            <div class="spoon-heat-glow"></div>
+                            <div class="spoon-steam">
+                              <div class="spoon-steam-wisp"></div>
+                              <div class="spoon-steam-wisp"></div>
+                              <div class="spoon-steam-wisp"></div>
+                              <div class="spoon-steam-wisp"></div>
+                            </div>
+                            <div class="steam-container">
+                              <div class="steam-vane"></div>
+                              <div class="steam-vane"></div>
+                              <div class="steam-vane"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="lemon-container food-rim-light">
+                        <div class="lemon-rind">
+                          <div class="lemon-rind-side"></div>
+                          <div class="lemon-flesh">
+                            <div class="lemon-membrane m-1"></div>
+                            <div class="lemon-membrane m-2"></div>
+                            <div class="lemon-pulp"></div>
+                            <div class="lemon-seed lemon-seed--1"></div>
+                            <div class="lemon-seed lemon-seed--2"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="floor-shadow-ambient"></div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">पोहा</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-poha">Indori Poha</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Indore, Madhya Pradesh</span>
+              </div>
+              <p class="dish-modal__comfort">Lemon, sev, and a quiet morning — comfort that never asks you to hurry.</p>
+              <p class="dish-modal__ritual">Lemon first, sev last — crunch stays alive.</p>
+              <p class="dish-modal__famous">Flattened rice tossed with peanuts, sev, and lime — Indore’s gentle morning comfort.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">box-shadow flake field</span><span class="dish-modal__technique">radial mound</span><span class="dish-modal__technique">CSS spoon</span><span class="dish-modal__technique">purple bowl rim</span><span class="dish-modal__technique">lemon wedge garnish</span><span class="dish-modal__technique">heat glow pulse</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Poha is eaten across India, but Indori poha — with jeera, curry leaves, sev, and pomegranate — is a breakfast institution. Light, savoury, and endlessly customisable.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Squeeze lemon over the bowl, mix with a spoon, and eat hot. Add sev at the end for crunch.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Flattened rice (poha)</li><li>Peanuts & curry leaves</li><li>Turmeric & mustard tadka</li><li>Sev & coriander</li><li>Lemon juice</li><li>Onion (optional)</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Use thick poha, less oil in tadka, extra peanuts for protein, and skip sev or use baked sev.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~250 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~5 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~38 g</dd></div>
+                  <div><dt>Fat</dt><dd>~9 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~3 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--misal-pav dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-misal-pav">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--misal-pav">
+              <div class="dish-art dish-modal__stage-art misal-pav-art">
+                    <div class="table-surface">
+                      <div class="draped-muslin-cloth"></div>
+                      <div class="vintage-iron-thali">
+                        <div class="thali-rim-shading"></div>
+                        <div class="brushed-steel-bowl">
+                          <div class="rassa-curry-base">
+                            <div class="floating-oil-tarri"></div>
+                            <div class="submerged-matki-beans"></div>
+                            <div class="crunchy-farsan-mound"></div>
+                            <div class="diced-onion-garnish"></div>
+                            <div class="coriander-leaf-flakes"></div>
+                          </div>
+                          <div class="wet-lemon-wedge wedge-top">
+                            <div class="lemon-pith"></div>
+                            <div class="juice-pulp-vesicles"></div>
+                            <div class="specular-wet-glaze"></div>
+                          </div>
+                          <div class="wet-lemon-wedge wedge-bottom">
+                            <div class="lemon-pith"></div>
+                            <div class="juice-pulp-vesicles"></div>
+                            <div class="specular-wet-glaze"></div>
+                          </div>
+                        </div>
+                        <div class="laadi-pav pav-crust-up">
+                          <div class="butter-glaze-sheen"></div>
+                          <div class="organic-skin-creases"></div>
+                        </div>
+                        <div class="laadi-pav pav-crumb-exposed">
+                          <div class="crust-outer-rim"></div>
+                          <div class="porous-bread-cells"></div>
+                          <div class="soft-feather-blur"></div>
+                        </div>
+                        <div class="carved-metal-spoon">
+                          <div class="spoon-bowl-cup">
+                            <div class="high-contrast-reflection"></div>
+                          </div>
+                          <div class="spoon-neck-joint"></div>
+                          <div class="spoon-handle-shaft">
+                            <div class="filigree-engraving"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">मिसळ पाव</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-misal-pav">Misal Pav</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Pune, Maharashtra</span>
+              </div>
+              <p class="dish-modal__comfort">Heat that wakes you kindly — pav for scooping, farsan for crunch, home in a bowl.</p>
+              <p class="dish-modal__ritual">Mix gently — farsan goes on just before the first bite.</p>
+              <p class="dish-modal__famous">A volcanic bowl of kat — spicy tarri, farsan mountain, and buttered laadi pav for scooping.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">kat meniscus ripples</span><span class="dish-modal__technique">farsan sev strands</span><span class="dish-modal__technique">cast iron thali</span><span class="dish-modal__technique">brushed steel bowl</span><span class="dish-modal__technique">pav butter glaze</span><span class="dish-modal__technique">wet lemon wedges</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Misal evolved from humble usal (sprouted bean curry) into Pune’s signature breakfast — kat poured over farsan, eaten with pav, raw onion, and lemon. Every misal joint guards its spice blend.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Mix the usal and tar gently, pile farsan on top just before eating so it stays crisp. Tear pav, dunk into the rassa, alternate with spoonfuls. Squeeze lemon, add raw onion if you like heat.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Matki & moong usal base</li><li>Spicy kat / tar rassa</li><li>Crunchy farsan (sev, gathiya)</li><li>Laadi pav with butter glaze</li><li>Raw onion & coriander</li><li>Fresh lemon wedges</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Ask for less oil in tar, skip extra farsan, and share one plate. Homemade misal can use less salt and baked sev.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~450 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~14 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~52 g</dd></div>
+                  <div><dt>Fat</dt><dd>~18 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~4 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dish-modal dish-modal--banana-chips dish-modal--theater" role="dialog" aria-modal="true" aria-labelledby="dish-modal-title-banana-chips">
+      <label class="dish-modal__backdrop" for="plate-none" aria-hidden="true"></label>
+      <div class="dish-modal__panel">
+        <div class="dish-modal__toolbar">
+          <span class="dish-modal__toolbar-label">Comfort plate</span>
+          <label class="dish-modal__close" for="plate-none" tabindex="0" role="button" aria-label="Close dish details">&times;</label>
+        </div>
+        <div class="dish-modal__layout">
+          <div class="dish-modal__stage" aria-hidden="true">
+            <div class="dish dish-modal__stage-wrap dish--banana-chips">
+              <div class="dish-art dish-modal__stage-art banana-chips-art">
+                    <div class="linen-tablecloth">
+                      <div class="cloth-vignette" aria-hidden="true"></div>
+                      <div class="salt-bowl">
+                        <div class="salt-bowl-rim"></div>
+                        <div class="salt-crystals"></div>
+                        <div class="salt-sparkle"></div>
+                      </div>
+                      <div class="banana-cluster">
+                        <div class="banana-fruit b1"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
+                        <div class="banana-fruit b2"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
+                        <div class="banana-fruit b3"><div class="banana-ridge"></div><div class="banana-blush"></div></div>
+                      </div>
+                      <div class="loose-chips-container">
+                        <div class="banana-coin loose-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                        <div class="banana-coin loose-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                        <div class="banana-coin loose-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                      </div>
+                      <div class="wooden-bowl">
+                        <div class="bowl-wood-grain"></div>
+                        <div class="bowl-lathe-rings"></div>
+                        <div class="bowl-highlight"></div>
+                        <div class="inner-shadow-rim"></div>
+                        <div class="chips-overflow-mound">
+                          <div class="banana-coin c-bg-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-4"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-bg-5"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div></div>
+                          <div class="banana-coin c-mid-1"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-2"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-3"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-4"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-5"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-6"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-7"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-8"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-9"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-10"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-mid-11"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-fg-center-main">
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
+                          </div>
+                          <div class="banana-coin c-fg-left-tilt">
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
+                          </div>
+                          <div class="banana-coin c-fg-bottom-prominent">
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
+                          </div>
+                          <div class="banana-coin c-fg-right-edge">
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
+                          </div>
+                          <div class="banana-coin c-fg-top-stack">
+                            <div class="pith-center"><div class="seed-star"></div></div>
+                            <div class="fiber-grain"></div>
+                            <div class="oil-film"></div>
+                            <div class="crisp-rim"></div>
+                            <div class="salt-dust"></div>
+                            <div class="sun-sheen"></div>
+                            <div class="toasted-lip"></div>
+                          </div>
+                          <div class="banana-coin c-spill-left"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-right"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-front"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                          <div class="banana-coin c-spill-top-rim"><div class="pith-center"><div class="seed-star"></div></div><div class="fiber-grain"></div><div class="oil-film"></div><div class="crisp-rim"></div><div class="salt-dust"></div></div>
+                        </div>
+                      </div>
+                      <div class="vintage-spoon">
+                        <div class="spoon-cup"><div class="metal-shine"></div><div class="spoon-bowl-depth"></div></div>
+                        <div class="spoon-neck"></div>
+                        <div class="spoon-stem"><div class="filigree-carving"></div><div class="stem-bevel"></div></div>
+                      </div>
+                      <div class="chili-dish">
+                        <div class="chili-dish-rim"></div>
+                        <div class="masala-powder"></div>
+                        <div class="masala-grain"></div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+          <div class="dish-modal__scroll">
+            <div class="dish-modal__content">
+            <header class="dish-modal__header">
+              <p class="dish-modal__script">केळी चिप्स</p>
+              <h2 class="dish-modal__title" id="dish-modal-title-banana-chips">Jalgaon Banana Chips</h2>
+              <div class="dish-modal__badges">
+                <span class="dish-modal__badge">Jalgaon · Maharashtra (Banana City)</span>
+              </div>
+              <p class="dish-modal__comfort">Crisp coins beside chai — the small ritual that makes waiting feel like company.</p>
+              <p class="dish-modal__ritual">Pinch a coin with every sip of chai.</p>
+              <p class="dish-modal__famous">Paper-thin nendran coins, double-fried in coconut oil — Jalgaon’s famous tea-time crunch.</p>
+              <div class="dish-modal__techniques" aria-label="CSS techniques used">
+                <span class="dish-modal__technique">25-layer coin matrix</span><span class="dish-modal__technique">pith radial segments</span><span class="dish-modal__technique">walnut wood bowl</span><span class="dish-modal__technique">linen weave</span><span class="dish-modal__technique">sun sheen highlights</span>
+              </div>
+            </header>
+            <div class="dish-modal__body">
+              <section class="dish-modal__section dish-modal__section--css"><h3>CSS Craft</h3><p>Pure CSS art — gradients, transforms, and keyframes. No photographs.</p></section>
+              <section class="dish-modal__section"><h3>History</h3><p>Jalgaon sits in the heart of Maharashtra’s banana belt. Local chip makers slice raw nendran bananas into coins, fry them golden, and sell them by the bowl at every bus stand and chai tapri.</p></section>
+              <section class="dish-modal__section"><h3>How to Eat</h3><p>Eat straight from the bowl with chai — pinch a coin, dip in salt or chili masala if you like heat. Best when still audibly crisp.</p></section>
+              <section class="dish-modal__section"><h3>Ingredients</h3><ul class="dish-modal__list"><li>Raw nendran bananas</li><li>Coconut / groundnut oil</li><li>Rock salt</li><li>Optional chili masala</li><li>Turmeric (some batches)</li></ul></section>
+              <section class="dish-modal__section dish-modal__section--health"><h3>Healthier Style</h3><p>Share one bowl, blot excess oil on tissue, skip extra salt, and pair with unsweetened chai instead of a second serving.</p></section>
+              <details class="dish-modal__nutrition-fold">
+                <summary>Nutrition <span class="dish-modal__note">(approx.)</span></summary>
+                <dl class="dish-modal__nutrition">
+                  <div><dt>Calories</dt><dd>~320 kcal</dd></div>
+                  <div><dt>Protein</dt><dd>~2 g</dd></div>
+                  <div><dt>Carbs</dt><dd>~38 g</dd></div>
+                  <div><dt>Fat</dt><dd>~18 g</dd></div>
+                  <div><dt>Fiber</dt><dd>~3 g</dd></div>
+                </dl>
+              </details>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <a class="back-to-top" href="#top" aria-label="Back to top">
+      <span aria-hidden="true">↑</span>
+    </a>
+
     <script src="js/app.js" defer></script>
   </body>
 </html>

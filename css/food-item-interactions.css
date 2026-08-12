@@ -100,7 +100,7 @@
   transform: perspective(900px) rotateX(4deg) rotateY(-3deg) scale(1.03);
 }
 
-.order-card--poha .poha-art:has(.bowl-outer:hover) canvas {
+.order-card--poha .poha-art:has(.bowl-outer:hover) .poha-mound {
   transform: scale(1.05);
 }
 
