@@ -2,19 +2,6 @@
 
 Draft for the DEV.to challenge post. Fill placeholders before publishing.
 
-## Before you publish (checklist)
-
-- [ ] Deploy this folder to GitHub Pages, Netlify, or Cloudflare Pages
-- [ ] Replace `YOUR_LIVE_DEMO_URL` in the **Demo** section below
-- [ ] Replace `@YOUR-FRIEND-DEV-USERNAME` with your friend's real DEV handle
-- [ ] Update `sitemap.xml` and `robots.txt` with your live origin (`YOUR_LIVE_DEMO_URL`)
-- [ ] Add a cover image (`og-cover.svg` or a screenshot of the counter)
-- [ ] Publish with `#devchallenge` and `#frontendchallenge` tags
-
-> **Copy everything below the line into your DEV post editor.**
->
-> **Before publishing:** replace `@YOUR-FRIEND-DEV-USERNAME` with your friend's actual DEV handle and set the live demo to `YOUR_LIVE_DEMO_URL`.
-
 ---
 
 This is a submission for [Frontend Challenge — Comfort Food Edition, CSS Art](https://dev.to/challenges/frontend-2026-07-29).
@@ -126,7 +113,7 @@ _(Replace the username above with their real DEV handle before publishing.)_
 
 ## Demo
 
-**Live site:** `YOUR_LIVE_DEMO_URL`
+**Live site:** `https://css-art-food-challenge.khushalsarode-in.workers.dev/`
 
 <!-- After deploy, embed using one of these: -->
 
@@ -192,7 +179,7 @@ Warm string bulbs. Amber corner pools. Neon spill. Chai steam catching lamplight
 
 ### What's next
 
-- Deploy to a permanent URL (`YOUR_LIVE_DEMO_URL`) and add a cover image to this post
+- Deploy to a permanent URL (`https://css-art-food-challenge.khushalsarode-in.workers.dev/`) and add a cover image to this post
 - Tell me which dish feels most like *your* thela — I'd love to hear it
 
 ---
